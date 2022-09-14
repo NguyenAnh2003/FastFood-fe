@@ -7,6 +7,8 @@ const productSchema = new mongoose.Schema(
     price: {type: Number, required: true},
     countInStock: {type: Number, required: true},
     category: { type: String, required: true },
+    isSale: {type: Boolean, default: false, require: true},
+    isNew: {type: Boolean, default: false, require: true},
   },
   {
     timestamps: true
