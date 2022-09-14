@@ -10,7 +10,7 @@ const data = {
       price: 30.000,
       category: 'burger',
       isSale: false
-    }
+    }  
   ]
 }
 
