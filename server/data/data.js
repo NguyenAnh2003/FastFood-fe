@@ -9,7 +9,8 @@ const data = {
       status: 10,
       price: 30.000,
       category: 'burger',
-      isSale: false
+      isSale: false,
+      isNew: false,
     }  
   ]
 }
