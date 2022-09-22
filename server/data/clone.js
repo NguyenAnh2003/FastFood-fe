@@ -274,58 +274,6 @@ const data = {
       category: 'Gà Giòn',
       new: false,
     },
-    // spaghetti
-    {
-      name: '1 GÀ GIÒN + 1 MỲ Ý SỐT BÒ BẰM + 1 NƯỚC NGỌT',
-      description: '1 GÀ GIÒN + 1 MỲ Ý SỐT BÒ BẰM + 1 NƯỚC NGỌT',
-      slug: '_01_MIENG_GA_GION_01_MY_Y_SOT_BO_BAM_01_NUOC_NGOT_(VUA)_',
-      image: '/assets/menu/spaghetti/_01_MIENG_GA_GION_01_MY_Y_SOT_BO_BAM_01_NUOC_NGOT_(VUA)_65.000VND_.png',
-      price: 65.000,
-      countInStock: 10,
-      category: 'Spaghetti',
-      new: false,
-    },
-    {
-      name: 'MỲ Ý SỐT BÒ BẰM',
-      description: 'MỲ Ý SỐT BÒ BẰM',
-      slug: '_MI_Y_SOT_BO_BAM_',
-      image: '/assets/menu/spaghetti/_MI_Y_SOT_BO_BAM_30.000VND_.png',
-      price: 30.000,
-      countInStock: 10,
-      category: 'Spaghetti',
-      new: false,
-    },
-    {
-      name: 'MỲ Ý SỐT BÒ BẰM LỚN + GÀ RÁN + NƯỚC NGỌT',
-      description: 'MỲ Ý SỐT BÒ BẰM LỚN + GÀ RÁN + NƯỚC NGỌT',
-      slug: '_MI_Y_SOT_BO_BAM_LON_1_MIENG _GA_RAN_NUOC_NGOT_',
-      image: '/assets/menu/spaghetti/_MI_Y_SOT_BO_BAM_LON_1_MIENG _GA_RAN_NUOC_NGOT_75.000VND_.png',
-      price: 75.000,
-      countInStock: 10,
-      category: 'Spaghetti',
-      new: false,
-    },
-    {
-      name: 'MỲ Ý SỐT BÒ BẮM LỚN + NƯỚC NGỌT',
-      description: 'MỲ Ý SỐT BÒ BẮM LỚN + NƯỚC NGỌT',
-      slug: '_MI_Y_SOT_BO_BAM_LON_NUOC_NGOT_',
-      image: '/assets/menu/spaghetti/_MI_Y_SOT_BO_BAM_LON_NUOC_NGOT_45.000VND_.png',
-      price: 45.000,
-      countInStock: 10,
-      category: 'Spaghetti',
-      new: false,
-    },
-    // spicy chickens
-    {
-      name: '2 GÀ CAY',
-      description: '2 GÀ CAY',
-      slug: '2_GA_CAY_',
-      image: '/assets/menu/spicy_chick/2_GA_CAY_65.000VND.png',
-      price: 65.000,
-      countInStock: 10,
-      category: 'Gà Cay',
-      new: false,
-    },
   ]
 }
 

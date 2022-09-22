@@ -9,6 +9,7 @@ productRouter.get('/', async (req, res) => {
   const products = await Product.find({
     "new": true,
   });
+  
   res.send(products);
 });
 

@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import seedRouter from './routers/SeedRouter.js';
 import productRouter from './routers/ProductsRouter.js';
 import data from './data/data.js';
+import combineRouter from './routers/CombineRouter.js';
 
 
 // config dotenv file
@@ -19,6 +20,7 @@ app.use(express.urlencoded({extended: true}));
 
 // api
 app.use('/api/seed', seedRouter);
+app.use('/api/combine', combineRouter);
 app.use('/api/products', productRouter);
 
 
