@@ -2,6 +2,7 @@ import React, { useEffect, useReducer } from 'react'
 import axios from 'axios';
 import ProductCard from '../../components/card/ProductCard.jsx';
 import NewsCard from '../../components/card/NewsCard.jsx';
+import { Helmet } from 'react-helmet-async';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -39,7 +40,10 @@ export default function Home() {
 
   return (
     <React.Fragment>
-      <div className='flex flex-row'>
+      <Helmet>
+        <title>Home</title>
+      </Helmet>
+      <div className='flex flex-row gap-10 flex-wrap'>
         {products.map(product => (
           <ProductCard key={product._id} product={product} />
         ))}

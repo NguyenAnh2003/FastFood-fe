@@ -7,6 +7,7 @@ module.exports = {
     },
     extend: {
       fontSize: {
+        8: '8px',
         13:'13px',
         14:'14px',
         16:'16px',
@@ -23,6 +24,11 @@ module.exports = {
       },
       screens: {
         'mob': '520px'
+      },
+      colors: {
+        'description-color': "#7e8d98" ,
+        'price-color': '#ff6573',
+        'add-to-cart-btn': '#ff5b6a',
       },
     },
   },

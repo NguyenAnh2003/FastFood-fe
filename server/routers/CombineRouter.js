@@ -6,7 +6,7 @@ const combineRouter = express.Router();
 
 combineRouter.get('/home', async (req, res) => {
   const products = await Product.find({
-    "new": true,
+    new: true
   });
   const news = await News.find();
   res.send({
