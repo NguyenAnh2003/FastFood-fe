@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { Store } from '../../store/Store.js';
 import { Link } from "react-router-dom";
-import {AiOutlineHeart} from 'react-icons/ai'
+import {AiFillHeart} from 'react-icons/ai'
 
 export default function ProductCard(props) {
   const { product } = props;
@@ -31,9 +31,9 @@ export default function ProductCard(props) {
               onClick={addFavorHandler}
               > 
                 {fillHeart ? (
-                  <AiOutlineHeart fill='#ff5b6a' size={30} className="hover:cursor-pointer"/>
+                  <AiFillHeart fill='#ff5b6a' size={30} className="hover:cursor-pointer"/>
                 ) : (
-                  <AiOutlineHeart  size={30} className="hover:cursor-pointer"/>
+                  <AiFillHeart  size={30} className="hover:cursor-pointer"/>
                 )}
               </button>
             </div>
@@ -45,7 +45,7 @@ export default function ProductCard(props) {
           <div className='px-2 mb-2 flex flex-col border-t-2 border-[#eeeeee]'>
             <h1 className='my-2 font-bold text-price-color'>{product.price} đ</h1>
             <button 
-            className='py-3 mb-2 rounded-xl bg-add-to-cart-btn text-white text-16'
+            className='py-3 mb-2 rounded-xl bg-primary-btn text-white text-16'
             onClick={addToCartHandler}
             >Thêm vào giỏ hàng</button>
           </div>

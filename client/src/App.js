@@ -5,6 +5,13 @@ import Home from "./pages/home/Home";
 import About from "./pages/about/About";
 import MenuProducts from "./pages/menu/MenuProducts";
 import News from "./pages/news/News";
+import Contact from "./pages/contact/Contact";
+import CartScreen from "./pages/cart/CartScreen";
+import SavedScreen from "./pages/favorite/SavedScreen";
+import SignInScreen from "./pages/login/SignInScreen";
+import SignUpScreen from "./pages/login/SignUpScreen";
+import ProfileScreen from "./pages/profile/ProfileScreen";
+import OrderHistoryScreen from "./pages/orderhistory/OrderHistoryScreen";
 
 function App() {
   return (
@@ -15,10 +22,18 @@ function App() {
         </header>
         <main>
           <Routes>
-            <Route path="/" element={<Home/>}/>
-            <Route path="/about" element={<About/>}/>
-            <Route path="/menu" element={<MenuProducts/>}/>
-            <Route path="/news" element={<News/>}/>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/menu" element={<MenuProducts />} />
+            <Route path="/news" element={<News />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/cart" element={<CartScreen />} />
+            <Route path="/saved" element={<SavedScreen />} />
+            {/* User*/}
+            <Route path="/signin" element={<SignInScreen />} />
+            <Route path="/signup" element={<SignUpScreen />} />
+            <Route path="/profile" element={<ProfileScreen />} />
+            <Route path="/orderhistory" element={<OrderHistoryScreen />} />
           </Routes>
         </main>
         <footer>

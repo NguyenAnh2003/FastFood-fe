@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Contact() {
+export default function SavedScreen() {
   return (
     <div>
-      Contact
+      SavedPage
     </div>
   )
 }

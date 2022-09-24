@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Contact() {
+export default function CartScreen() {
   return (
     <div>
-      Contact
+      CartScreen
     </div>
   )
 }

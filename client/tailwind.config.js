@@ -20,7 +20,7 @@ module.exports = {
         48:'48px',
       },
       boxShadow: {
-        'md': '6px 6px 16px 0 rgba(0,0,0,0.25), -4px -4px 12px 0 rgba(255,255,255,0.3)'
+        'md': ' 0 0px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);'
       },
       screens: {
         'mob': '520px'
@@ -28,7 +28,9 @@ module.exports = {
       colors: {
         'description-color': "#7e8d98" ,
         'price-color': '#ff6573',
-        'add-to-cart-btn': '#ff5b6a',
+        'primary-btn': '#ff5b6a',
+        'primary-color': '#ff5b6a',
+        'hover': '#ecf1f5'
       },
     },
   },
