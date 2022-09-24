@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function MailForm() {
+export default function LoadingDirect() {
   return (
     <div>
-      Mail
+      
     </div>
   )
 }
