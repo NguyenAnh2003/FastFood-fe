@@ -30,7 +30,8 @@ module.exports = {
         'price-color': '#ff6573',
         'primary-btn': '#ff5b6a',
         'primary-color': '#ff5b6a',
-        'hover': '#ecf1f5'
+        'hover': '#ecf1f5',
+        'gray': '#7e8d98',
       },
     },
   },
