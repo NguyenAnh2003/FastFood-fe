@@ -2,7 +2,8 @@ import React from 'react';
 import titlePage from '../../data/PageDirectTitle.js';
 import { Link } from 'react-router-dom';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
-import {  AiOutlineHeart  } from 'react-icons/ai'
+import {  AiOutlineHeart  } from 'react-icons/ai';
+import { IoLocationOutline } from 'react-icons/io5';
 import DropDownUser from '../dropdown/DropDownUser';
 
 export default function NavBar() {
@@ -12,10 +13,11 @@ export default function NavBar() {
         <div className="container px-12 flex flex-wrap justify-between items-center mx-auto">
           <Link to={'/'} className="flex items-center">
             <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
-            <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+            <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">FastFood</span>
           </Link>
           <div className="flex md:order-2">
             <div className="hidden md:flex md:flex-row items-center gap-5">
+              <IoLocationOutline size={24}/>
               <Link to={'/saved'}>
                 <AiOutlineHeart fill='#000' size={24} />
               </Link>

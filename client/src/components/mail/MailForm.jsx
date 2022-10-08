@@ -1,17 +1,20 @@
-import React, { useState } from 'react';
-import validator from 'validator';
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 
 export default function MailForm() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  const [email, setEmail] = useState('');
-
-  const mailHandler = () => {
-    alert(validator.isEmail(email) ? 'Valid' : `Invalid email: ${email}`);
-  }
+  const onSubmit = (data) => {
+    console.log(data);
+  };
 
   return (
     <React.Fragment>
-      <form action="">
+      <form action="POST" onSubmit={handleSubmit(onSubmit)}>
         <div className="grid md:grid-cols-3 gird-cols-1 gap-4 flex justify-center items-center">
           <div className="md:ml-auto md:mb-6">
             <p className="">
@@ -21,23 +24,27 @@ export default function MailForm() {
 
           <div className="md:mb-6">
             <input
-              type="email"
-              className='mail-form'
+              type="text"
+              className="mail-form"
               id="exampleFormControlInput1"
-              onChange={e => setEmail(e.target.value)}
-              placeholder="Email address" />
+              placeholder="Email address"
+              {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
+            />
           </div>
 
           <div className="md:mr-auto mb-6">
-            <button
-              onClick={mailHandler}
-              type="submit"
-              className="subsribe-btn">
+            <button type="submit" className="subsribe-btn">
               Subscribe
             </button>
           </div>
         </div>
+        {errors.email?.type === "required" && (
+          <p className="text-xs text-red-500 mb-3">Email is required</p>
+        )}
+        {errors.email?.type === "pattern" && (
+          <p className="text-xs text-red-500 mb-3">Invalid email syntax</p>
+        )}
       </form>
     </React.Fragment>
-  )
+  );
 }
