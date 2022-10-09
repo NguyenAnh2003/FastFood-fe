@@ -3,6 +3,11 @@ import axios from "axios";
 import ProductCard from "../../components/card/ProductCard.jsx";
 import NewsCard from "../../components/card/NewsCard.jsx";
 import { Helmet } from "react-helmet-async";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { HeaderSlider, settingsSlideProduct, SimpleSlider, subDriection } from "./Constants.js";
+import { Link } from "react-router-dom";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -52,15 +57,43 @@ export default function Home() {
       <Helmet>
         <title>Home</title>
       </Helmet>
-      <div className="flex flex-row gap-10 flex-wrap">
-        {products.map((product) => (
-          <ProductCard key={product._id} product={product} />
-        ))}
+      {/* Slide header (direct to menu page) */}
+      <div className="overflow-hidden">
+        <Slider {...SimpleSlider}>
+          {HeaderSlider.map((item, index) => (
+            <Link to={'/menu'} key={index}>
+              <img className="w-full min-h-[350px] object-cover" src={item.image} alt={item.alt} />
+            </Link>
+          ))}
+        </Slider>
       </div>
-      <div className="">
-        {news.map((post) => (
-          <NewsCard key={post._id} post={post} />
-        ))}
+      <div className="container">
+        {/* Directory */}
+        <div className="flex flex-col md:flex-row md:gap-3 justify-center mb-5">
+          {subDriection.map((item, index) => (
+            <Link to={`${item.path}`} key={index} className='my-2 md:my-8 rounded flex gap-3 text-20 font-semibold p-5 items-center bg-[#ffeae3]'>
+              <img src={item.thumbnail} alt={item.name} />
+              <h1>
+                {item.name}
+              </h1>
+            </Link>
+          ))}
+        </div>
+        {/* Slide product */}
+        <Link to={'/menu'} className='py-3 px-6 rounded bg-primary-color shadow-md font-semibold text-14 text-white'>Xem Tất Cả</Link>
+        <div className="my-10">
+          <Slider {...settingsSlideProduct}>
+            {products.map((product) => (
+              <ProductCard key={product._id} product={product} />
+            ))}
+          </Slider>
+        </div>
+        <Link to={'/news'} className='py-3 px-6 rounded bg-primary-color shadow-md font-semibold text-14 text-white'>Xem Tất Cả</Link>
+        <div className="grid-cols-1 sm:grid-cols-2 mt-6 grid gap-6 xl:grid-cols-4 lg:grid-cols-3">
+          {news.map((post) => (
+            <NewsCard key={post._id} post={post} />
+          ))}
+        </div>
       </div>
     </React.Fragment>
   );

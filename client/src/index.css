@@ -15,4 +15,7 @@
   .primary-btn {
     @apply py-3 rounded-xl bg-primary-btn text-white text-16;
   }
+  .container {
+    @apply mx-auto px-10 overflow-hidden;
+  }
 }

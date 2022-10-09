@@ -1,15 +1,15 @@
 import React from 'react';  
-import titlePage from '../../data/PageDirectTitle.js';
 import { Link } from 'react-router-dom';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import {  AiOutlineHeart  } from 'react-icons/ai';
 import { IoLocationOutline } from 'react-icons/io5';
 import DropDownUser from '../dropdown/DropDownUser';
+import titlePage from './Constants';
 
 export default function NavBar() {
   return (
     <React.Fragment>
-      <nav className="bg-white px-2 sm:px-4 py-2.5 mb-6 shadow-md">
+      <nav className="bg-white px-2 sm:px-4 py-2.5 shadow-md">
         <div className="container px-12 flex flex-wrap justify-between items-center mx-auto">
           <Link to={'/'} className="flex items-center">
             <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />

@@ -1,10 +1,10 @@
 const titlePage = [
   {
-    page: 'Home',
+    page: 'Trang Chủ',
     directname: '/'
   },
   {
-    page: 'About',
+    page: 'Cửa Hàng',
     directname: '/about'
   },
   {
@@ -12,7 +12,7 @@ const titlePage = [
     directname: '/menu'
   },
   {
-    page: 'News',
+    page: 'Tin Tức',
     directname: '/news'
   },
 ]

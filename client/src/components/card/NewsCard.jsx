@@ -11,20 +11,20 @@ export default function NewsCard(props) {
   };
 
   return (
-    <div className="max-w-[302px] flex flex-col items-center rounded shadow-md overflow-hidden">
+    <div className="flex min-w-full cursor-pointer flex-col gap-3 overflow-hidden lg:mb-14 shadow-md">
       <a href="">
         <img
-          className="w-100 h-60 object-cover rounded-t-md"
+          className="w-full h-60 object-cover rounded-t-md"
           src={post.image}
           alt={post.title}
         />
       </a>
-      <div className="">
-        <div className="mt-1 text-26 overflow-hidden">
+      <div className="w-full">
+        <div className="mt-3 text-26 overflow-hidden">
           {/* Content */}
-          <div className="px-2 mb-2 flex flex-col">
+          <div className="min-h-[86px] px-2 mb-2 flex flex-col">
             <div className="mb-2 flex flex-col justify-between">
-              <h1 className="w-64 text-14 font-bold text-gray-700">
+              <h1 className="h-[42px] text-14 font-bold text-gray-700">
                 {post.title}
               </h1>
               <div className="mt-3 gap-2 flex flex-row items-center">

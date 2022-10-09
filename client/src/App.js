@@ -12,6 +12,7 @@ import SignInScreen from "./pages/login/SignInScreen";
 import SignUpScreen from "./pages/login/SignUpScreen";
 import ProfileScreen from "./pages/profile/ProfileScreen";
 import OrderHistoryScreen from "./pages/orderhistory/OrderHistoryScreen";
+import CategoryDropDown from "./pages/favorite/module/CategoryDropDown";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/cart" element={<CartScreen />} />
             <Route path="/saved" element={<SavedScreen />} />
+            <Route path="/temp" element={<CategoryDropDown />} />
             {/* User*/}
             <Route path="/signin" element={<SignInScreen />} />
             <Route path="/signup" element={<SignUpScreen />} />

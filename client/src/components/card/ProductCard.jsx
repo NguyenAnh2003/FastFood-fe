@@ -52,10 +52,10 @@ export default function ProductCard(props) {
 
 
   return (
-    <div className="max-w-[320px] flex items-center">
-      <div className="px-2 bg-white rounded shadow-md">
+    <div className="flex min-w-full cursor-pointer flex-col gap-3 overflow-hidden lg:mb-14 shadow-md">
+      <div className="px-2 bg-white rounded">
         <img
-          className="w-100 h-60 object-cover rounded-t-md"
+          className="w-full h-60 object-cover rounded-t-md"
           src={product.image}
           alt={product.name}
         />
