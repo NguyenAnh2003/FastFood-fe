@@ -2,17 +2,18 @@ import Footer from "./components/footer/Footer";
 import NavBar from "./components/navbar/NavBar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/home/Home";
-import About from "./pages/about/About";
+import About from "./pages/About";
 import MenuProducts from "./pages/menu/MenuProducts";
 import News from "./pages/news/News";
-import Contact from "./pages/contact/Contact";
+import Contact from "./pages/Contact";
 import CartScreen from "./pages/cart/CartScreen";
 import SavedScreen from "./pages/favorite/SavedScreen";
 import SignInScreen from "./pages/login/SignInScreen";
 import SignUpScreen from "./pages/login/SignUpScreen";
 import ProfileScreen from "./pages/profile/ProfileScreen";
-import OrderHistoryScreen from "./pages/orderhistory/OrderHistoryScreen";
+import OrderHistoryScreen from "./pages/OrderHistoryScreen";
 import CategoryDropDown from "./pages/favorite/module/CategoryDropDown";
+import LoadingDirect from "./components/loading/LoadingDirect";
 
 function App() {
   return (
@@ -30,7 +31,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/cart" element={<CartScreen />} />
             <Route path="/saved" element={<SavedScreen />} />
-            <Route path="/temp" element={<CategoryDropDown />} />
+            <Route path="/temp" element={<LoadingDirect />} />
             {/* User*/}
             <Route path="/signin" element={<SignInScreen />} />
             <Route path="/signup" element={<SignUpScreen />} />

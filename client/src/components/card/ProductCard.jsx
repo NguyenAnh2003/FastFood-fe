@@ -59,7 +59,7 @@ export default function ProductCard(props) {
           src={product.image}
           alt={product.name}
         />
-        <div className=" mt-4 text-26 overflow-hidden">
+        <div className="mt-4 text-26 overflow-hidden">
           {/* Content */}
           <div className="min-h-[98px] px-2 mb-2 flex flex-col">
             <div className="mb-2 flex justify-between">

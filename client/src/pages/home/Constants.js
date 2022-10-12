@@ -11,7 +11,7 @@ export const settingsSlideProduct = {
     {
       breakpoint: 1024,
       settings: {
-        slidesToShow: 3,
+        slidesToShow: 2,
         slidesToScroll: 1,
         infinite: true,
       }
@@ -62,11 +62,11 @@ export const subDriection = [
   { 
     name: 'Cửa Hàng',
     path: '/about',
-    thumbnail: '/assets/sub/sub-1.svg'
+    thumbnail: '/assets/logo/sub-1.svg'
   },
   { 
     name: 'Đặt Hàng',
     path: '/menu',
-    thumbnail: '/assets/sub/sub-2.svg'
+    thumbnail: '/assets/logo/sub-2.svg'
   }
 ] 

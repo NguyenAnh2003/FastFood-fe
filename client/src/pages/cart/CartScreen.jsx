@@ -139,7 +139,7 @@ export default function CartScreen() {
             </Link>
           </div>
           {/* Summary */}
-          <div id="summary" className="lg:w-1/4 px-8 py-10">
+          <div id="summary" className="lg:w-1/4 px-8 py-10 bg-white">
             <h1 className="font-semibold text-2xl border-b border-[#eeeeee] pb-8">
               Order Summary
             </h1>

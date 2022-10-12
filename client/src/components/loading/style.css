@@ -1,0 +1,132 @@
+.loadingContainer{
+    height: 340px;
+    width: 340px;
+    background-color: #ff9ea2;
+    position: relative;
+    border-radius: 360px;
+}
+
+.head{
+    background-color: #ba1a1a;
+    height: 260px;
+    width: 130px;
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    border-radius: 130px 0 0 130px;
+    transform-origin: 130px;
+    animation: spin 5s forwards infinite;
+}
+
+@keyframes spin{
+    35%{
+        transform: rotate(0deg);
+    }
+    50%{
+        transform: rotate(180deg);
+    }
+    85%{
+        transform: rotate(180deg);
+    }
+    100%{
+        transform: rotate(0deg);
+    }
+
+}
+
+.head:after{
+    position: absolute;
+    content: "";
+    height: 180px;
+    width: 90px;
+    background: linear-gradient(
+        to bottom,
+        #f2f7f9 50%,
+        #deecf1 50%
+    );
+    top: 40px;
+    left: 40px;
+    border-radius: 90px 0 0 90px;
+}
+
+.eye{
+    height: 45px;
+    width: 45px;
+    background-color: #714c2f;
+    position: absolute;
+    border-radius: 50%;
+    top: 123px;
+    left: 123px;
+    animation: move 5s forwards infinite;
+}
+
+@keyframes move {
+    35%{
+        transform: translateX(0);
+    }
+    50%{
+        transform: translate(47px);
+    }
+    85%{
+        transform: translate(47px);
+    }
+    100%{
+        transform: translateX(0);
+    }
+
+}
+.beakLarge{
+    background-color: #fdd159;
+    height: 90px;
+    width: 90px;
+    border-radius: 0 90px 0 0;
+    position: absolute;
+    top: 80px;
+    right: 80px;
+    animation: spin3 5s forwards infinite;
+    transform-origin: 0 90px;
+}
+
+@keyframes spin3{
+    35%{
+        transform: rotate(0deg);
+    }
+    50%{
+        transform: rotate(-90deg);
+    }
+    85%{
+        transform: rotate(-90deg);
+    }
+    100%{
+        transform: rotate(0deg);
+    }
+
+}
+
+.beakSmall{
+    background-color: #fcbd11;
+    height: 45px;
+    width: 45px;
+    position: absolute;
+    bottom: 125px;
+    right: 125px;
+    border-radius: 0 0 45px 0;
+    animation: spin4 5s forwards infinite;
+    transform-origin: 0 0;
+}
+
+@keyframes spin4{
+    35%{
+        transform: rotate(0);
+    }
+    50%{
+        transform: rotate(90deg);
+    }
+    85%{
+        transform: rotate(90deg);
+    }
+    100%{
+        transform: rotate(0);  
+    }
+
+}

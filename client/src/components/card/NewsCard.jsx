@@ -11,7 +11,7 @@ export default function NewsCard(props) {
   };
 
   return (
-    <div className="flex min-w-full cursor-pointer flex-col gap-3 overflow-hidden lg:mb-14 shadow-md">
+    <div className="flex bg-white min-w-full cursor-pointer flex-col gap-3 overflow-hidden lg:mb-14 shadow-md">
       <a href="">
         <img
           className="w-full h-60 object-cover rounded-t-md"

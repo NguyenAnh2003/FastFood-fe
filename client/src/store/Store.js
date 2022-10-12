@@ -18,6 +18,10 @@ const initialState = {
   savedBox: {
     savedItems: localStorage.getItem("savedItems") ?
       JSON.parse(localStorage.getItem("savedItems")) : [],
+  },
+  User: {
+    postLikes: localStorage.getItem("postLikes") ?
+    JSON.parse(localStorage.getItem("postLikes")) : []
   }
 };
 
@@ -63,6 +67,11 @@ const reducer = (state, action) => {
         localStorage.setItem("savedItems", JSON.stringify(savedItems))
         return {...state, savedBox: {...state.savedBox, savedItems}}
       }
+    case "LIKE_POSTS": {
+      const postsLiked = action.payload;
+      localStorage.setItem("postLikes", JSON.stringify(postsLiked))
+      return {...state, User: {...state.postLikes}}
+    }
     default:
       return state;
   }

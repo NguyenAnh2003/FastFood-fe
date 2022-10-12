@@ -17,7 +17,7 @@ export default function SavedScreen() {
         <title>Save</title>
       </Helmet>
       <h1 className='text-center text-26 uppercase font-semibold'>Your favorite</h1>
-      <div className='p-3 mt-5 min-h-[530px] shadow'>
+      <div className='p-3 mt-5 min-h-[530px]'>
         {/* Filter food */}
         <CategoryDropDown/>
         {/* Store save food */}

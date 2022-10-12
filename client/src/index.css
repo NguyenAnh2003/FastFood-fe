@@ -4,7 +4,7 @@
 
 @layer components {
   .contact-btn {
-    @apply bg-primary-btn text-white  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0;
+    @apply bg-primary-btn text-white focus:outline-none  font-medium rounded text-sm px-5 py-2.5 text-center mr-3 md:mr-0;
   }
   .mail-form {
     @apply block w-full px-3 py-1.5 text-base font-normal text-gray bg-white bg-clip-padding border border-solid border-gray rounded transition ease-in-out m-0 focus:text-gray focus:bg-white focus:border-blue-600 focus:outline-none
@@ -16,6 +16,12 @@
     @apply py-3 rounded-xl bg-primary-btn text-white text-16;
   }
   .container {
-    @apply mx-auto px-10 overflow-hidden;
+    @apply mx-auto px-10;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-[url('../public/assets/jollibee-kid-party-bg.png')] bg-fixed;
   }
 }
