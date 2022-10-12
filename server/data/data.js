@@ -1,12 +1,34 @@
-import bcrypt from 'bcryptjs';
+import Money from 'moneyjs';
 
 const data = {
   news:[
     {
-      title: 'Temp news',
-      description: 'Temp news has just posted today',
+      title: 'NHÀ MÁY MỚI JOLLIBEE VIỆT NAM NHẬN ĐƯỢC ISO 22000:2018',
+      description: 'Tăng sức cạnh tranh trên thị trường qua chất lượng sản phẩm',
       likes: 50,
       image: '/assets/news/news1.jpg',
+      content: 'Ông Lâm Hồng Nguyễn - Tổng giám đốc Jollibee Việt Nam - cho biết: "Với hơn 15 năm kinh nghiệm tại thị trường Việt Nam, Jollibee đủ thấu hiểu nhu cầu và thị hiếu của người tiêu dùng Việt. Vì vậy, việc đưa vào nhà máy với quy mô đáp ứng nhu cầu của hơn 500 cửa hàng, được chứng nhận ISO 22000:2018 là một niềm tự hào của toàn hệ thống Jollibee Việt Nam". Đây là động lực và nền tảng vững chắc để công ty tự tin mở rộng quy mô hệ thống cửa hàng và nâng cao chất lượng dịch vụ, sản phẩm để có thể phục vụ, đáp ứng nhu cầu ngày càng cao của người tiêu dùng, tiếp tục sứ mệnh lan toả niềm vui ẩm thực đến tấc cả mọi người, mọi gia đình trên toàn quốc Nhà máy chế biến được tích hợp dây chuyền sản xuất hiện đại, theo quy trình khép kín nhằm đảm bảo an toàn vệ sinh thực phẩm, với 4 dây chuyền chính gồm: sơ chế gà, chế biến nước sốt, trộn bột và làm bánh.'
+    },
+    {
+      title: 'JOLLIBEE KHAI TRƯƠNG CỬA HÀNG THỨ 150',
+      description: 'Jollibee Việt Nam đã đưa vào vận hành nhà máy mới với chứng nhận ISO 22000:2018 về quản lý an toàn vệ sinh thực phẩm quốc ...',
+      likes: 100,
+      image: '/assets/news/news2.jpg',
+      content: 'Để kỷ niệm dấu mốc quan trọng này, Jollibee đã tổ chức một sự kiện kết hợp giữa offline và online nhằm mục đích lan toả được những niềm vui bất tận của ngày khai trương đến với tất cả các khách hàng yêu quý của mình trên cả nước. Đặc biệt tại sự kiện offline Đà Nẵng, khách hàng còn được dịp chiêm ngưỡng khoảnh khắc đáng nhớ với cổng hoa chào mừng tại cửa hàng nở rộ 150 bông hoa tượng trưng cho 150 cửa hàng của Jollibee trên toàn quốc, cổng chào này được trưng bày trong vòng 2 tuần để khách hàng đến tham quan và chụp ảnh. Jollibee là một thương hiệu nổi tiếng thế giới với sản phẩm Gà Giòn Vui Vẻ (Chickenjoy) với hơn 1500 cửa hàng hoạt động tại hơn 17 quốc gia và vùng lãnh thổ trên thế giới. Thương hiệu này thuộc công ty kinh doanh trong lĩnh vực nhà hàng lớn nhất châu Á - Jollibee Foods Corporation.'
+    },
+    {
+      title: 'JOLLIBEE VIỆT NAM TIẾP TỤC ĐÀ TĂNG TRƯỞNG SAU GIÃN CÁCH',
+      description: 'Sự phát triển mạng lưới cửa hàng Jollibee với 149 cửa hàng từ 2018 đến 01/2022 tại Việt Nam.',
+      likes: 270,
+      image: '/assets/news/news3.jpg',
+      content: 'Việc sở hữu riêng cho mình nhà máy sản xuất riêng biệt, cùng với chuỗi cung ứng nguyên vật liệu khép kín đạt tiêu chuẩn quốc tế giúp cho chúng tôi có thể chủ động quản lý về chất lượng sản phẩm trước khi đến tay khách hàng, đồng thời đảm bảo sự đồng nhất trong mỗi đơn hàng bán ra. Hơn nữa, Jollibee hoàn toàn có thể chủ động cho chuỗi cửa hàng của mình hoạt động hiệu quả theo ý muốn mà không cần phải phụ thuộc vào bên thứ ba. Đây chính là một trong những bước đi chiến lược của JFC tại thị trường Việt Nam '
+    },
+    {
+      title: 'GÀ TUYẾT VÀNG (MỚI) - BÙNG NỔ VỊ GIÁC',
+      description: 'Lần đầu xuất hiện tại Jollibee, tân binh với tên gọi siêu lấp lánh - "Golden Snow chicken - Gà Tuyết vàng" hứa hẹn sẽ mang đến cho Fans Gà rán những trải nghiệm vô cùng mới lạ.',
+      likes: 199,
+      image: '/assets/news/news4.jpg',
+      content: 'Được biết đến là một món ăn nổi tiếng và nhận được tình cảm nồng nhiệt từ các Youtuber tại xứ sở Kim Chi,Gà Tuyết vàng là sự kết hợp giữa Gà rán truyền thống giòn rụm đi kèm lớp bột phô mai màu vàng óng ả phủ trọn bề mặt, hương vị béo bùi từ phô mai Cheddar, thêm chút thơm nồng từ hành, tỏi hòa quyện với từng thớ thịt siêu "juice", mang lại ấn tượng khó phai khi thưởng thức.'
     }
   ],
   products: [ 

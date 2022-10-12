@@ -1,10 +1,12 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import seedRouter from './routers/SeedRouter.js';
 import productRouter from './routers/ProductsRouter.js';
 import data from './data/data.js';
 import combineRouter from './routers/CombineRouter.js';
+import newsRouter from './routers/NewsRouter.js';
 
 
 // config dotenv file
@@ -22,6 +24,7 @@ app.use(express.urlencoded({extended: true}));
 app.use('/api/seed', seedRouter);
 app.use('/api/combine', combineRouter);
 app.use('/api/products', productRouter);
+app.use('/api/posts/', newsRouter);
 
 
 app.use((err, req, res, next)=>{

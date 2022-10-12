@@ -1,0 +1,71 @@
+import axios from 'axios';
+import React, { useEffect, Fragment, useState } from 'react'
+import { Listbox, Transition } from '@headlessui/react';
+
+
+export default function CategoryDropDown() {
+
+  const [categories, setCategories] = useState([]);
+  const [selected, setSelected] = useState('Category')
+ 
+  useEffect(() => {
+    const fetchCategory = async () => {
+      try {
+        const {data} = await axios.get('/api/products/categories');
+        console.log(data);
+        setCategories(data)
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchCategory()
+  }, [selected]);
+
+  // console.log(categories[0]);
+  console.log(categories[0]);
+  console.log('Selected',selected);
+
+  return (
+    <div className="w-[170px]">
+      <Listbox value={selected} onChange={setSelected}>
+        <div className="relative mt-1 ">
+          <Listbox.Button className="relative w-full cursor-default rounded bg-primary-color py-2 pl-3 pr-10 text-left text-white shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white sm:text-sm">
+            <span className="block truncate font-semibold">{selected}</span>
+          </Listbox.Button>
+          <Transition
+            as={Fragment}
+            leave="transition ease-in duration-100"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm scrollbar-hide">
+              {categories.map((category, index) => (
+                <Listbox.Option
+                  key={index}
+                  className={({ active }) =>
+                    `relative cursor-default select-none py-2 pl-3 pr-4 ${
+                      active ? 'bg-primary-color text-white' : 'text-gray-900'
+                    }`
+                  }
+                  value={category}
+                >
+                  {({ selected }) => (
+                    <React.Fragment>
+                      <span
+                        className={`block truncate ${
+                          selected ? 'font-medium' : 'font-normal'
+                        }`}
+                      >
+                        {category}
+                      </span>
+                    </React.Fragment>
+                  )}
+                </Listbox.Option>
+              ))}
+            </Listbox.Options>
+          </Transition>
+        </div>
+      </Listbox>
+    </div>
+  )
+}
