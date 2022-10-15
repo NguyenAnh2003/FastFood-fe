@@ -22,8 +22,9 @@
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
     "moneyjs": "^0.3.0",
-    "mongoose": "^6.5.4",
+    "mongoose": "^6.6.5",
     "mongoose-money": "^0.2.0",
+    "mongose": "^0.0.2-security",
     "nodemailer": "^6.7.8",
     "react-slick": "^0.29.0"
   },
