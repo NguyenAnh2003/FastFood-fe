@@ -17,6 +17,7 @@ mongoose.connect(process.env.DB_URI).then(() => {
 
 
 const app = express();
+// middleware server and client
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
@@ -24,7 +25,7 @@ app.use(express.urlencoded({extended: true}));
 app.use('/api/seed', seedRouter);
 app.use('/api/combine', combineRouter);
 app.use('/api/products', productRouter);
-app.use('/api/posts/', newsRouter);
+app.use('/api/posts', newsRouter);
 
 
 app.use((err, req, res, next)=>{
