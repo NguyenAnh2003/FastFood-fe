@@ -8,7 +8,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { HeaderSlider, settingsSlideProduct, SimpleSlider, subDriection } from "./Constants.js";
 import { Link } from "react-router-dom";
-import LoadingDirect from "../../components/loading/LoadingDirect.jsx";
+import LoadingDirect from "../../components/loading/LoadingComponent";
 
 const reducer = (state, action) => {
   switch (action.type) {

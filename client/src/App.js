@@ -8,12 +8,12 @@ import News from "./pages/news/News";
 import Contact from "./pages/Contact";
 import CartScreen from "./pages/cart/CartScreen";
 import SavedScreen from "./pages/favorite/SavedScreen";
-import SignInScreen from "./pages/login/SignInScreen";
-import SignUpScreen from "./pages/login/SignUpScreen";
+import SignInScreen from "./pages/form/SignInScreen";
+import SignUpScreen from "./pages/form/SignUpScreen";
 import ProfileScreen from "./pages/profile/ProfileScreen";
 import OrderHistoryScreen from "./pages/OrderHistoryScreen";
 import CategoryDropDown from "./pages/favorite/module/CategoryDropDown";
-import LoadingDirect from "./components/loading/LoadingDirect";
+import LoadingComponent from "./components/loading/LoadingComponent";
 
 function App() {
   return (
@@ -31,7 +31,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/cart" element={<CartScreen />} />
             <Route path="/saved" element={<SavedScreen />} />
-            <Route path="/temp" element={<LoadingDirect />} />
+            <Route path="/temp" element={<LoadingComponent />} />
             {/* User*/}
             <Route path="/signin" element={<SignInScreen />} />
             <Route path="/signup" element={<SignUpScreen />} />
