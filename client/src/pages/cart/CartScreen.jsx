@@ -1,7 +1,8 @@
 import axios from "axios";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";
+import AddressPopUp from "../../components/popup/AddressPopup";
 import { Store } from "../../store/Store";
 
 export default function CartScreen() {
@@ -12,7 +13,7 @@ export default function CartScreen() {
     cart: { cartItems },
     userInfo
   } = state;
-
+  const [isAddressOpen, setIsAddressOpen] = useState(false);
   const shippingPricefunc = (e) => {
     return e ? 15 : 0;
   };
@@ -46,7 +47,10 @@ export default function CartScreen() {
 
 
   const checkOutHandler = () => {
-    navigate("/signin?redirect=/shipping");
+    if(!userInfo) {
+      navigate("/signin?redirect");
+    } else {
+    }
   };
 
   return (

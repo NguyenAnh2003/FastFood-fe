@@ -1,34 +1,27 @@
 import { Dialog, Transition } from '@headlessui/react';
-import { Fragment, useContext, useState } from 'react';
+import React, {
+  Fragment,
+  useContext,
+  useState,
+} from 'react';
 import { Store } from '../../store/Store';
 
-const AddressPopUp = ({isAddressOpen, setIsAddressOpen}) => {
-  const { state, dispatch: ctxDispatch } =
-    useContext(Store);
+const UserPopup = ({ openUserModal, setOpenUserModal }) => {
+  const { state } = useContext(Store);
   const { userInfo } = state;
-  const [address, setAddress] = useState(userInfo.address || '');
-  const name = userInfo.name;
-  const email = userInfo.email;
-  console.log({
-    name, email
-  });
-
-  const EditAddressHandler = async () => {
-    try {
-      
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  console.log(userInfo.address);
-
+  const [email, setEmail] = useState(userInfo.email || '');
+  const [name, setName] = useState(userInfo.name || '');
+  const [address, setAddress] = useState(
+    userInfo.address || ''
+  );
+  const updateHandler = () => {};
   return (
     <div>
-      <Transition appear show={isAddressOpen} as={Fragment}>
+      <Transition appear show={openUserModal} as={Fragment}>
         <Dialog
           as="div"
           className="relative z-10"
-          onClose={() => setIsAddressOpen(false)}
+          onClose={() => setOpenUserModal(false)}
         >
           <Transition.Child
             as={Fragment}
@@ -58,12 +51,32 @@ const AddressPopUp = ({isAddressOpen, setIsAddressOpen}) => {
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900"
                   >
-                    Địa chỉ của bạn
+                    Thông tin của bạn
                   </Dialog.Title>
                   <div className="mt-2">
                     <input
                       className="block w-full px-3 py-1.5 text-base font-normal text-gray bg-white bg-clip-padding border border-solid border-gray rounded transition ease-in-out m-0 focus:text-gray focus:bg-white focus:border-blue-600 focus:outline-none"
-                      onChange={e => setAddress(e.target.value)}
+                      onChange={(e) =>
+                        setName(e.target.value)
+                      }
+                      value={name}
+                    />
+                  </div>
+                  <div className="mt-2">
+                    <input
+                      className="block w-full px-3 py-1.5 text-base font-normal text-gray bg-white bg-clip-padding border border-solid border-gray rounded transition ease-in-out m-0 focus:text-gray focus:bg-white focus:border-blue-600 focus:outline-none"
+                      onChange={(e) =>
+                        setEmail(e.target.value)
+                      }
+                      value={email}
+                    />
+                  </div>
+                  <div className="mt-2">
+                    <input
+                      className="block w-full px-3 py-1.5 text-base font-normal text-gray bg-white bg-clip-padding border border-solid border-gray rounded transition ease-in-out m-0 focus:text-gray focus:bg-white focus:border-blue-600 focus:outline-none"
+                      onChange={(e) =>
+                        setAddress(e.target.value)
+                      }
                       value={address}
                     />
                   </div>
@@ -72,7 +85,7 @@ const AddressPopUp = ({isAddressOpen, setIsAddressOpen}) => {
                     <button
                       type="button"
                       className="inline-flex justify-center rounded border border-transparent bg-primary-color px-4 py-2 text-sm font-medium text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
-                      onClick={() => setIsAddressOpen(false)}
+                      onClick={updateHandler}
                     >
                       Lưu
                     </button>
@@ -87,4 +100,4 @@ const AddressPopUp = ({isAddressOpen, setIsAddressOpen}) => {
   );
 };
 
-export default AddressPopUp;
+export default UserPopup;

@@ -39,7 +39,7 @@ function App() {
             {/* User*/}
             <Route path="/signin" element={<SignInScreen />} />
             <Route path="/signup" element={<SignUpScreen />} />
-            <Route path="/profile" element={<ProfileScreen />} />
+            <Route path="/profile?id=/:id" element={<ProfileScreen />} />
             <Route path="/orderhistory" element={<OrderHistoryScreen />} />
           </Routes>
         </main>
