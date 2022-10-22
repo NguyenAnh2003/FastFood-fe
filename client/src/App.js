@@ -14,6 +14,8 @@ import ProfileScreen from "./pages/profile/ProfileScreen";
 import OrderHistoryScreen from "./pages/OrderHistoryScreen";
 import CategoryDropDown from "./pages/favorite/module/CategoryDropDown";
 import LoadingComponent from "./components/loading/LoadingComponent";
+import SingleNews from "./pages/news/SingleNews";
+import AddressPopUp from "./components/popup/AddressPopup";
 
 function App() {
   return (
@@ -28,10 +30,12 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/menu" element={<MenuProducts />} />
             <Route path="/news" element={<News />} />
+            <Route path="/news/:id" element={<SingleNews />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/cart" element={<CartScreen />} />
             <Route path="/saved" element={<SavedScreen />} />
             <Route path="/temp" element={<LoadingComponent />} />
+            <Route path="/temp2" element={<AddressPopUp />} />
             {/* User*/}
             <Route path="/signin" element={<SignInScreen />} />
             <Route path="/signup" element={<SignUpScreen />} />

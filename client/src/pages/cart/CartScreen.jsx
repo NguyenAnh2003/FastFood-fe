@@ -10,17 +10,17 @@ export default function CartScreen() {
   console.log(state);
   const {
     cart: { cartItems },
+    userInfo
   } = state;
 
   const shippingPricefunc = (e) => {
-    return (e === 'DN') ? 15 : 0;
+    return e ? 15 : 0;
   };
 
-
   console.log('Items', cartItems);
-  cartItems.shippingAddress = 'DN';
+  console.log(userInfo.address);
   cartItems.itemsPrice = cartItems.reduce((a, c) => a + c.quantity * c.price, 0);
-  cartItems.shippingPrice = Number.parseInt(cartItems.itemsPrice ? shippingPricefunc(cartItems.shippingAddress).toFixed(3) : 0);
+  cartItems.shippingPrice = Number.parseInt(cartItems.itemsPrice ? shippingPricefunc(userInfo.address).toFixed(3) : 0);
   cartItems.totalPrice = (cartItems.itemsPrice + cartItems.shippingPrice).toFixed(3);
   console.log(cartItems.totalPrice);
 
@@ -160,12 +160,12 @@ export default function CartScreen() {
             </div>
             <div className="flex flex-col gap-2">
               {cartItems.map((item) => (
-                <span className="font-semibold text-10 flex flex-row justify-between" key={item._id}>
+                <span className="font-semibold text-10 flex flex-row justify-between gap-2" key={item._id}>
                   <p className="">
                     <span className="text-primary-color">{item.quantity} </span>
                     {item.name}
                   </p>
-                  <p className="">{(item.price * item.quantity).toFixed(3)} đ</p>
+                  <p className="">{(item.price * item.quantity).toFixed(3)}đ</p>
                 </span>
               ))}
               <div className="flex flex-row font-semibold justify-between text-10">

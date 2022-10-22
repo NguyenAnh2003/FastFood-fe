@@ -7,11 +7,12 @@ import productRouter from './routers/ProductsRouter.js';
 import data from './data/data.js';
 import combineRouter from './routers/CombineRouter.js';
 import newsRouter from './routers/NewsRouter.js';
+import userRouter from './routers/UserRouter.js';
 
 
 // config dotenv file
 dotenv.config();
-mongoose.connect(process.env.DB_URI).then(() => {
+mongoose.connect(process.env.MONGODB_URI).then(() => {
   console.log('Connected');
 }).catch(err => console.log(err.message));
 
@@ -26,6 +27,7 @@ app.use('/api/seed', seedRouter);
 app.use('/api/combine', combineRouter);
 app.use('/api/products', productRouter);
 app.use('/api/posts', newsRouter);
+app.use('/api/user', userRouter);
 
 
 app.use((err, req, res, next)=>{

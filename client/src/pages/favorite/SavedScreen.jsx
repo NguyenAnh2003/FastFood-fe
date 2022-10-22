@@ -1,4 +1,4 @@
-import React, { useContext, useState, Fragment } from 'react'
+import React, { useContext, useState, Fragment, useEffect } from 'react'
 import { Helmet } from 'react-helmet-async';
 import ProductCard from '../../components/card/ProductCard';
 import { Store } from '../../store/Store';
@@ -6,10 +6,18 @@ import { Transition } from "@headlessui/react";
 
 import { Listbox } from "@headlessui/react";
 import CategoryDropDown from './module/CategoryDropDown';
+import { useNavigate } from 'react-router-dom';
 
 export default function SavedScreen() {
   const { state, dispatch: { ctxDispatch } } = useContext(Store)
   const { savedBox: { savedItems } } = state;
+  const navigate = useNavigate()
+  const {userInfo} = state;
+  useEffect(() => {
+    if(!userInfo) {
+      navigate('/signin')
+    }
+  }, [userInfo, navigate])
 
   return (
     <div className='container'>

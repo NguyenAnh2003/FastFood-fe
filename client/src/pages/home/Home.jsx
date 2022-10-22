@@ -8,7 +8,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { HeaderSlider, settingsSlideProduct, SimpleSlider, subDriection } from "./Constants.js";
 import { Link } from "react-router-dom";
-import LoadingDirect from "../../components/loading/LoadingComponent";
+import LoadingComponent from "../../components/loading/LoadingComponent";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -55,7 +55,7 @@ export default function Home() {
 
   return (
     loading ? (
-      <LoadingDirect/>
+      <LoadingComponent/>
     ) : (
       <React.Fragment>
         <Helmet>
