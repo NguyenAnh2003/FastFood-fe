@@ -22,13 +22,14 @@ const userTitle = [
 ];
 
 export default function DropDownUser() {
-  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const { state, dispatch: ctxDispatch } =
+    useContext(Store);
   const { userInfo } = state;
-  console.log('User', userInfo);
+  console.log('User', typeof userInfo);
   const submitHandler = () => {
-    ctxDispatch({type: 'USER_LOGOUT'})
-    localStorage.removeItem('userInfo')
-  }
+    ctxDispatch({ type: 'USER_LOGOUT' });
+    localStorage.removeItem('userInfo');
+  };
   return (
     <div className="text-right">
       <Menu
@@ -66,7 +67,7 @@ export default function DropDownUser() {
                 )}
               </Menu.Item>
             ))}
-            {userInfo ? (
+            {userInfo  ? (
               <Menu.Item>
                 {({ active }) => (
                   <Link

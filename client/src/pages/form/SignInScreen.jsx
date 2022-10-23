@@ -1,12 +1,22 @@
 import axios from 'axios';
-import React, { useContext, useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import React, {
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
+import {
+  Link,
+  useLocation,
+  useNavigate,
+} from 'react-router-dom';
 import { Store } from '../../store/Store';
 
 export default function SignInScreen() {
   const navigate = useNavigate();
-  const {search} = useLocation();
-  const redirectInUrl = new URLSearchParams(search).get('redirect');
+  const { search } = useLocation();
+  const redirectInUrl = new URLSearchParams(search).get(
+    'redirect'
+  );
   const redirect = redirectInUrl ? redirectInUrl : '/';
 
   const { state, dispatch: ctxDispatch } =
@@ -14,7 +24,7 @@ export default function SignInScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const {userInfo} = state;
+  const { userInfo } = state;
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
@@ -37,10 +47,10 @@ export default function SignInScreen() {
   };
 
   useEffect(() => {
-    if(userInfo) {
-      navigate(redirect)
+    if (userInfo) {
+      navigate(redirect);
     }
-  }, [navigate, redirect, userInfo])
+  }, [navigate, redirect, userInfo]);
 
   return (
     <div>

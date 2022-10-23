@@ -9,11 +9,10 @@ import { Store } from '../../store/Store';
 const UserPopup = ({ openUserModal, setOpenUserModal }) => {
   const { state } = useContext(Store);
   const { userInfo } = state;
-  const [email, setEmail] = useState(userInfo.email || '');
-  const [name, setName] = useState(userInfo.name || '');
-  const [address, setAddress] = useState(
-    userInfo.address || ''
-  );
+  const [email, setEmail] = useState(userInfo.email);
+  const [name, setName] = useState(userInfo.name);
+  const [address, setAddress] = useState(userInfo.address);
+
   const updateHandler = () => {};
   return (
     <div>

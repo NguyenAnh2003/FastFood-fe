@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { AiOutlineHeart } from 'react-icons/ai';
@@ -7,9 +7,13 @@ import DropDownUser from '../dropdown/DropDownUser';
 import titlePage from './Constants';
 import AddressPopUp from '../popup/AddressPopup';
 import UserPopup from '../popup/UserPopup';
+import { Store } from '../../store/Store';
 
 export default function NavBar() {
   const [openUserModal, setOpenUserModal] = useState(false);
+  const { state } = useContext(Store);
+  const { userInfo } = state;
+
   return (
     <React.Fragment>
       <nav className="bg-white px-2 sm:px-4 py-2.5 shadow-lg">
@@ -26,11 +30,17 @@ export default function NavBar() {
           </Link>
           <div className="flex lg:order-2">
             <div className="hidden lg:flex lg:flex-row items-center gap-5">
-              <IoLocationOutline
-                onClick={() => setOpenUserModal(true)}
-                size={24}
-                className="hover-pointer"
-              />
+              {userInfo ? (
+                <React.Fragment>
+                  <IoLocationOutline
+                    onClick={() => setOpenUserModal(true)}
+                    size={24}
+                    className="hover-pointer"
+                  />
+                </React.Fragment>
+              ) : (
+                <React.Fragment></React.Fragment>
+              )}
               <Link to={'/saved'}>
                 <AiOutlineHeart fill="#000" size={24} />
               </Link>
@@ -89,11 +99,14 @@ export default function NavBar() {
           </div>
         </div>
       </nav>
-      {/* Pop up */}
-      <UserPopup
-      openUserModal={openUserModal}
-      setOpenUserModal={setOpenUserModal}
-      />
+      {userInfo ? (
+        <UserPopup
+          openUserModal={openUserModal}
+          setOpenUserModal={setOpenUserModal}
+        />
+      ) : (
+        <React.Fragment></React.Fragment>
+      )}
     </React.Fragment>
   );
 }

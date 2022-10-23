@@ -1,6 +1,4 @@
 import mongoose from "mongoose";
-import mongoose_money from "mongoose-money";
-import Money from "moneyjs";
 
 const Schema = mongoose.Schema;
 const productSchema = new mongoose.Schema(

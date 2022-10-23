@@ -19,10 +19,8 @@ export default function CartScreen() {
   };
 
   console.log('Items', cartItems);
-  console.log(userInfo.address);
   cartItems.itemsPrice = cartItems.reduce((a, c) => a + c.quantity * c.price, 0);
-  cartItems.shippingPrice = Number.parseInt(cartItems.itemsPrice ? shippingPricefunc(userInfo.address).toFixed(3) : 0);
-  cartItems.totalPrice = (cartItems.itemsPrice + cartItems.shippingPrice).toFixed(3);
+  cartItems.totalPrice = (cartItems.itemsPrice).toFixed(3);
   console.log(cartItems.totalPrice);
 
   const updateCartHandler = async (item, quantity) => {
@@ -172,14 +170,6 @@ export default function CartScreen() {
                   <p className="">{(item.price * item.quantity).toFixed(3)}đ</p>
                 </span>
               ))}
-              <div className="flex flex-row font-semibold justify-between text-10">
-                <p>Ship</p>
-                {cartItems.itemsPrice ? (
-                  <p>{cartItems.shippingPrice.toFixed(3)} đ</p>
-                ) : (
-                  <span></span>
-                )}
-              </div>
             </div>
             <div className="border-t border-[#eeeeee] mt-8">
               <div className="flex font-semibold justify-between py-6 text-sm">
