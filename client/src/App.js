@@ -18,6 +18,7 @@ import ProfileScreen from './pages/profile/ProfileScreen';
 import OrderHistoryScreen from './pages/OrderHistoryScreen';
 import LoadingComponent from './components/loading/LoadingComponent';
 import SingleNews from './pages/news/SingleNews';
+import PayScreen from './pages/cart/PayScreen';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
             />
             <Route path="/contact" element={<Contact />} />
             <Route path="/cart" element={<CartScreen />} />
+            <Route path="/payment" element={<PayScreen />} />
             <Route
               path="/saved"
               element={<SavedScreen />}

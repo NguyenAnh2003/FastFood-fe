@@ -5,7 +5,6 @@ import { AiOutlineHeart } from 'react-icons/ai';
 import { IoLocationOutline } from 'react-icons/io5';
 import DropDownUser from '../dropdown/DropDownUser';
 import titlePage from './Constants';
-import AddressPopUp from '../popup/AddressPopup';
 import UserPopup from '../popup/UserPopup';
 import { Store } from '../../store/Store';
 

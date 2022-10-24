@@ -4,9 +4,14 @@ import React, {
   useContext,
   useState,
 } from 'react';
+import { Link } from 'react-router-dom';
 import { Store } from '../../store/Store';
 
-const UserPopup = ({ openUserModal, setOpenUserModal }) => {
+const UserPopup = ({
+  openUserModal,
+  setOpenUserModal,
+  movingPayment,
+}) => {
   const { state } = useContext(Store);
   const { userInfo } = state;
   const [email, setEmail] = useState(userInfo.email);
@@ -79,15 +84,31 @@ const UserPopup = ({ openUserModal, setOpenUserModal }) => {
                       value={address}
                     />
                   </div>
-
-                  <div className="mt-4">
-                    <button
-                      type="button"
-                      className="inline-flex justify-center rounded border border-transparent bg-primary-color px-4 py-2 text-sm font-medium text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
-                      onClick={updateHandler}
-                    >
-                      Lưu
-                    </button>
+                  <div className="flex flex-row mt-4 justify-between">
+                    <div className="">
+                      <button
+                        type="button"
+                        className="inline-flex justify-center rounded border border-transparent bg-primary-color px-4 py-2 text-sm font-medium text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+                        onClick={updateHandler}
+                      >
+                        Lưu
+                      </button>
+                    </div>
+                    {movingPayment ? (
+                      <div className="">
+                        <Link to={'/payment'}>
+                          <button
+                            type="button"
+                            className="inline-flex justify-center rounded border border-transparent bg-primary-color px-4 py-2 text-sm font-medium text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+                            onClick={updateHandler}
+                          >
+                            Đi tới thanh toán
+                          </button>
+                        </Link>
+                      </div>
+                    ) : (
+                      <React.Fragment></React.Fragment>
+                    )}
                   </div>
                 </Dialog.Panel>
               </Transition.Child>

@@ -6,7 +6,7 @@ export default function SignUpScreen() {
   const [address, setAddress] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState();
+  const [confirmPassword, setConfirmPassword] = useState('');
   const navigate = useNavigate();
   const submitHandler = async (e) => {
     e.preventDefault();

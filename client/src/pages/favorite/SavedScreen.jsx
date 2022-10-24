@@ -5,7 +5,7 @@ import { Store } from '../../store/Store';
 import { Transition } from "@headlessui/react";
 
 import { Listbox } from "@headlessui/react";
-import CategoryDropDown from './module/CategoryDropDown';
+import CategoryDropDown from './CategoryDropDown';
 import { useNavigate } from 'react-router-dom';
 
 export default function SavedScreen() {
@@ -22,7 +22,7 @@ export default function SavedScreen() {
   return (
     <div className='container'>
       <Helmet>
-        <title>Save</title>
+        <title>Your wishlist</title>
       </Helmet>
       <h1 className='text-center text-26 uppercase font-semibold'>Your favorite</h1>
       <div className='p-3 mt-5 min-h-[530px]'>
