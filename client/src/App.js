@@ -6,7 +6,6 @@ import {
   Routes,
 } from 'react-router-dom';
 import Home from './pages/home/Home';
-import About from './pages/About';
 import MenuProducts from './pages/menu/MenuProducts';
 import News from './pages/news/News';
 import Contact from './pages/Contact';
@@ -19,6 +18,7 @@ import OrderHistoryScreen from './pages/OrderHistoryScreen';
 import LoadingComponent from './components/loading/LoadingComponent';
 import SingleNews from './pages/news/SingleNews';
 import PayScreen from './pages/cart/PayScreen';
+import About from './pages/about/About';
 
 function App() {
   return (
