@@ -1,4 +1,3 @@
-import Money from 'moneyjs';
 
 const data = {
   news:[

@@ -1,31 +1,40 @@
-import axios from "axios";
-import React, { useContext } from "react";
-import { Helmet } from "react-helmet-async";
-import { Link, useNavigate } from "react-router-dom";
-import { Store } from "../../store/Store";
+import axios from 'axios';
+import React, { useContext, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
+import { Link, useNavigate } from 'react-router-dom';
+import AddressPopUp from '../../components/popup/AddressPopup';
+import UserPopup from '../../components/popup/UserPopup';
+import { Store } from '../../store/Store';
 
 export default function CartScreen() {
   const navigate = useNavigate();
-  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const { state, dispatch: ctxDispatch } =
+    useContext(Store);
   console.log(state);
   const {
     cart: { cartItems },
+    userInfo,
   } = state;
 
+  const [openUserModal, setOpenUserModal] = useState(false);
+  const [movingPayment, setMovingPayment] = useState(false);
+
   const shippingPricefunc = (e) => {
-    return (e === 'DN') ? 15 : 0;
+    return e ? 15 : 0;
   };
 
-
   console.log('Items', cartItems);
-  cartItems.shippingAddress = 'DN';
-  cartItems.itemsPrice = cartItems.reduce((a, c) => a + c.quantity * c.price, 0);
-  cartItems.shippingPrice = Number.parseInt(cartItems.itemsPrice ? shippingPricefunc(cartItems.shippingAddress).toFixed(3) : 0);
-  cartItems.totalPrice = (cartItems.itemsPrice + cartItems.shippingPrice).toFixed(3);
+  cartItems.itemsPrice = cartItems.reduce(
+    (a, c) => a + c.quantity * c.price,
+    0
+  );
+  cartItems.totalPrice = cartItems.itemsPrice.toFixed(3);
   console.log(cartItems.totalPrice);
 
   const updateCartHandler = async (item, quantity) => {
-    const { data } = await axios.get(`/api/products/${item._id}`); //
+    const { data } = await axios.get(
+      `/api/products/${item._id}`
+    ); //
 
     if (data.countInStock < quantity) {
       window.alert(`${data.name} Out of stock`);
@@ -33,20 +42,26 @@ export default function CartScreen() {
     }
 
     ctxDispatch({
-      type: "CART_ADD_ITEM",
+      type: 'CART_ADD_ITEM',
       payload: { ...item, quantity },
     });
   };
 
-
   const removeItemHandler = (item) => {
-    ctxDispatch({ type: "CART_REMOVE_ITEM", payload: item });
+    ctxDispatch({
+      type: 'CART_REMOVE_ITEM',
+      payload: item,
+    });
     console.log('removed');
   };
 
-
   const checkOutHandler = () => {
-    navigate("/signin?redirect=/shipping");
+    if (!userInfo) {
+      navigate('/signin?redirect');
+    } else {
+      setOpenUserModal(true);
+      setMovingPayment(true);
+    }
   };
 
   return (
@@ -58,9 +73,15 @@ export default function CartScreen() {
         <div className="lg:flex shadow-md my-10">
           <div className="lg:w-3/4 bg-white px-10 py-10">
             <div className="flex justify-between border-b border-[#eeeeee] pb-8">
-              <h1 className="font-semibold text-xl">Shopping Cart</h1>
+              <h1 className="font-semibold text-xl">
+                Shopping Cart
+              </h1>
               <h2 className="font-semibold text-xl">
-                {cartItems.reduce((a, c) => a + c.quantity, 0)} Items
+                {cartItems.reduce(
+                  (a, c) => a + c.quantity,
+                  0
+                )}{' '}
+                Items
               </h2>
             </div>
             <div className="flex mt-10 mb-5">
@@ -79,15 +100,23 @@ export default function CartScreen() {
               >
                 <div className="flex w-2/3">
                   <div className="w-20">
-                    <img className="h-24" src={item.image} alt="" />
+                    <img
+                      className="h-24"
+                      src={item.image}
+                      alt=""
+                    />
                   </div>
                   <div className="flex flex-col justify-between ml-4 flex-grow">
                     <span className="font-bold">
                       <p className="text-12">{item.name}</p>
-                      <p className="text-11">{item.price} đ</p>
+                      <p className="text-11">
+                        {item.price} đ
+                      </p>
                     </span>
                     <p
-                      onClick={() => removeItemHandler(item)}
+                      onClick={() =>
+                        removeItemHandler(item)
+                      }
                       className="font-semibold text-red-500 text-xs cursor-pointer"
                     >
                       Remove
@@ -97,7 +126,12 @@ export default function CartScreen() {
                 <div className="flex justify-center w-1/3">
                   <button
                     disabled={item.quantity === 1}
-                    onClick={() => updateCartHandler(item, item.quantity - 1)}
+                    onClick={() =>
+                      updateCartHandler(
+                        item,
+                        item.quantity - 1
+                      )
+                    }
                   >
                     <svg
                       className="fill-current text-gray-600 w-3"
@@ -107,11 +141,18 @@ export default function CartScreen() {
                     </svg>
                   </button>
 
-                  <span className="mx-2  text-center w-8">{item.quantity}</span>
+                  <span className="mx-2  text-center w-8">
+                    {item.quantity}
+                  </span>
 
                   <button
                     disabled={item.quantity === item.status}
-                    onClick={() => updateCartHandler(item, item.quantity + 1)}
+                    onClick={() =>
+                      updateCartHandler(
+                        item,
+                        item.quantity + 1
+                      )
+                    }
                   >
                     <svg
                       className="fill-current text-gray-600 w-3"
@@ -126,7 +167,7 @@ export default function CartScreen() {
 
             {/* Back to product screen (home screen) */}
             <Link
-              to={"/"}
+              to={'/'}
               className="flex font-semibold text-primary-color text-sm mt-10"
             >
               <svg
@@ -139,19 +180,29 @@ export default function CartScreen() {
             </Link>
           </div>
           {/* Summary */}
-          <div id="summary" className="lg:w-1/4 px-8 py-10 bg-white">
+          <div
+            id="summary"
+            className="lg:w-1/4 px-8 py-10 bg-white"
+          >
             <h1 className="font-semibold text-2xl border-b border-[#eeeeee] pb-8">
               Order Summary
             </h1>
             <div className="flex justify-between mt-10 mb-5">
               <span className="font-semibold text-sm uppercase">
-                Items: {cartItems.reduce((a, c) => a + c.quantity, 0)}
+                Items:{' '}
+                {cartItems.reduce(
+                  (a, c) => a + c.quantity,
+                  0
+                )}
               </span>
               {cartItems.itemsPrice ? (
                 <span className="font-semibold text-sm">
                   {cartItems
-                    .reduce((a, c) => a + c.price * c.quantity, 0)
-                    .toFixed(3)}{" "}
+                    .reduce(
+                      (a, c) => a + c.price * c.quantity,
+                      0
+                    )
+                    .toFixed(3)}{' '}
                   đ
                 </span>
               ) : (
@@ -160,30 +211,30 @@ export default function CartScreen() {
             </div>
             <div className="flex flex-col gap-2">
               {cartItems.map((item) => (
-                <span className="font-semibold text-10 flex flex-row justify-between" key={item._id}>
+                <span
+                  className="font-semibold text-10 flex flex-row justify-between gap-2"
+                  key={item._id}
+                >
                   <p className="">
-                    <span className="text-primary-color">{item.quantity} </span>
+                    <span className="text-primary-color">
+                      {item.quantity}{' '}
+                    </span>
                     {item.name}
                   </p>
-                  <p className="">{(item.price * item.quantity).toFixed(3)} đ</p>
+                  <p className="">
+                    {(item.price * item.quantity).toFixed(
+                      3
+                    )}
+                    đ
+                  </p>
                 </span>
               ))}
-              <div className="flex flex-row font-semibold justify-between text-10">
-                <p>Ship</p>
-                {cartItems.itemsPrice ? (
-                  <p>{cartItems.shippingPrice.toFixed(3)} đ</p>
-                ) : (
-                  <span></span>
-                )}
-              </div>
             </div>
             <div className="border-t border-[#eeeeee] mt-8">
               <div className="flex font-semibold justify-between py-6 text-sm">
                 <span>Total cost</span>
                 {cartItems.itemsPrice ? (
-                  <span>
-                    {cartItems.totalPrice} đ
-                  </span>
+                  <span>{cartItems.totalPrice} đ</span>
                 ) : (
                   <span></span>
                 )}
@@ -199,6 +250,11 @@ export default function CartScreen() {
           </div>
         </div>
       </div>
+      <UserPopup
+        openUserModal={openUserModal}
+        setOpenUserModal={setOpenUserModal}
+        movingPayment={movingPayment}
+      />
     </div>
   );
 }

@@ -3,7 +3,7 @@ module.exports = {
   darkMode: 'class',
   theme: {
     fontFamily: {
-      sora: ["Sora"]
+      sora: ["Sora"], lob: ["lobster","serif"], playf: ["playfair","serif"]
     },
     extend: {
       fontSize: {

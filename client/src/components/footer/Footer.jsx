@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import MailForm from "../mail/MailForm";
+import MailForm from "../MailForm";
 import footerElements from "./FooterElements.js";
 
 export default function Footer() {

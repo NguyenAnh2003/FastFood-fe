@@ -1,27 +1,41 @@
-import { Menu, Transition } from "@headlessui/react";
-import { Fragment, useEffect, useRef, useState } from "react";
-import { AiOutlineUser } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Menu, Transition } from '@headlessui/react';
+import {
+  Fragment,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
+import { AiOutlineUser } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
+import { Store } from '../../store/Store';
 
 const userTitle = [
   {
-    page: "Profile",
-    path: "/profile",
+    page: 'Profile',
+    path: '/profile',
   },
   {
-    page: "Oder History",
-    path: "/orderhistory",
-  },
-  {
-    page: "Sign up",
-    path: "/signup",
+    page: 'Oder History',
+    path: '/orderhistory',
   },
 ];
 
 export default function DropDownUser() {
+  const { state, dispatch: ctxDispatch } =
+    useContext(Store);
+  const { userInfo } = state;
+  console.log('User', typeof userInfo);
+  const submitHandler = () => {
+    ctxDispatch({ type: 'USER_LOGOUT' });
+    localStorage.removeItem('userInfo');
+  };
   return (
     <div className="text-right">
-      <Menu as="div" className="relative inline-block text-left">
+      <Menu
+        as="div"
+        className="relative inline-block text-left"
+      >
         <div>
           <Menu.Button className="">
             <AiOutlineUser size={24} />
@@ -43,7 +57,9 @@ export default function DropDownUser() {
                   <Link
                     to={item.path}
                     className={`${
-                      active ? "bg-primary-color text-white" : "text-gray-900"
+                      active
+                        ? 'bg-primary-color text-white'
+                        : 'text-gray-900'
                     } group flex w-full items-center px-2 py-2 text-sm`}
                   >
                     {item.page}
@@ -51,6 +67,38 @@ export default function DropDownUser() {
                 )}
               </Menu.Item>
             ))}
+            {userInfo  ? (
+              <Menu.Item>
+                {({ active }) => (
+                  <Link
+                    onClick={submitHandler}
+                    to={'/signin'}
+                    className={`${
+                      active
+                        ? 'bg-primary-color text-white'
+                        : 'text-gray-900'
+                    } group flex w-full items-center px-2 py-2 text-sm`}
+                  >
+                    Log out
+                  </Link>
+                )}
+              </Menu.Item>
+            ) : (
+              <Menu.Item>
+                {({ active }) => (
+                  <Link
+                    to={'/signin'}
+                    className={`${
+                      active
+                        ? 'bg-primary-color text-white'
+                        : 'text-gray-900'
+                    } group flex w-full items-center px-2 py-2 text-sm`}
+                  >
+                    Sign In
+                  </Link>
+                )}
+              </Menu.Item>
+            )}
           </Menu.Items>
         </Transition>
       </Menu>
