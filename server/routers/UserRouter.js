@@ -23,7 +23,8 @@ userRouter.post(
       }
     }
     res.status(401).send({ message: 'User not found' });
-  }))
+  })
+)
 
 userRouter.post('/signup', expressAsyncHandler(async (req, res) => {
   const newUser = new User({
