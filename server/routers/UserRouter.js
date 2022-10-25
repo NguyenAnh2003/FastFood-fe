@@ -1,5 +1,8 @@
 import exrpess from 'express';
-
+import expressAsyncHandler from 'express-async-handler';
+import User from '../models/UserModel.js';
+import { generateToken } from '../utils.js';
+import bcrypt from 'bcryptjs'
 const userRouter = exrpess.Router();
 
 
@@ -39,3 +42,5 @@ userRouter.post('/signup', expressAsyncHandler(async (req, res) => {
   })
 }))
 
+
+export default userRouter;
