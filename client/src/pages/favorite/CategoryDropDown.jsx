@@ -28,8 +28,8 @@ export default function CategoryDropDown() {
   return (
     <div className="w-[170px]">
       <Listbox value={selected} onChange={setSelected}>
-        <div className="relative mt-1 ">
-          <Listbox.Button className="relative w-full cursor-default rounded bg-primary-color py-2 pl-3 pr-10 text-left text-white shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white sm:text-sm">
+        <div className="relative mt-1">
+          <Listbox.Button className="relative w-full cursor-default rounded-lg bg-primary-color py-2 pl-3 pr-4 justify-center text-white shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white sm:text-sm">
             <span className="block truncate font-semibold">{selected}</span>
           </Listbox.Button>
           <Transition
@@ -44,7 +44,7 @@ export default function CategoryDropDown() {
                   key={index}
                   className={({ active }) =>
                     `relative cursor-default select-none py-2 pl-3 pr-4 ${
-                      active ? 'bg-primary-color text-white' : 'text-gray-900'
+                      active ? 'hover:bg-[#f97316] hover:text-white hover:font-bold hover:scale-100 rounded-lg transition duration-150 ease-in-out' : 'text-gray-900'
                     }`
                   }
                   value={category}
@@ -53,7 +53,7 @@ export default function CategoryDropDown() {
                     <React.Fragment>
                       <span
                         className={`block truncate ${
-                          selected ? 'font-medium' : 'font-normal'
+                          selected ? 'py-2 pl-3 pr-4 text-center font-bold text-white bg-[#f97316] rounded-lg' : 'font-normal'
                         }`}
                       >
                         {category}

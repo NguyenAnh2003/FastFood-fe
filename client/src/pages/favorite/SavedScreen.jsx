@@ -24,7 +24,7 @@ export default function SavedScreen() {
       <Helmet>
         <title>Your wishlist</title>
       </Helmet>
-      <h1 className='text-center text-26 uppercase font-semibold'>Your favorite</h1>
+      <h1 className='text-center text-7xl font-lob font-bold uppercase text-[#f97316] mt-10'>Your favorite</h1>
       <div className='p-3 mt-5 min-h-[530px]'>
         {/* Filter food */}
         <CategoryDropDown/>
