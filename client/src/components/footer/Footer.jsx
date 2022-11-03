@@ -1,16 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import MailForm from "../MailForm";
 import footerElements from "./FooterElements.js";
 
 export default function Footer() {
   return (
     <div className="text-center text-black mt-10">
       <div className="xl:container px-6 pt-6 bg-[#ffeae3] pb-6">
-        <div>
-          <MailForm />
-        </div>
-
         <div className="grid lg:grid-cols-3 md:grid-cols-2">
           {footerElements.linkElement.map((i, index) => (
             <div className="mb-6" key={index}>
