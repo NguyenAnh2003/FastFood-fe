@@ -8,7 +8,7 @@ import {
 import Home from './pages/home/Home';
 import MenuProducts from './pages/menu/MenuProducts';
 import News from './pages/news/News';
-import Contact from './pages/Contact';
+import Contact from './pages/contact/Contact';
 import CartScreen from './pages/cart/CartScreen';
 import SavedScreen from './pages/favorite/SavedScreen';
 import SignInScreen from './pages/form/SignInScreen';

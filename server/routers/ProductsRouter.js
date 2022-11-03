@@ -8,13 +8,18 @@ const productRouter = express.Router();
 // send new product and sale
 // send news
 productRouter.get("/", async (req, res) => {
-  const products = await Product.find({
-    new: true
+  const PAGE_SIZE = 6;
+  const page = parseInt(req.query.page || "0");
+  const totalPages = await Product.countDocuments(); //
+  const products = await Product.find({}).limit(PAGE_SIZE).skip(page * PAGE_SIZE);
+
+  res.send({
+    totalPages: Math.ceil(totalPages / PAGE_SIZE),
+    products
   });
-  res.send(products);
 });
 
-productRouter.get("/categories",  expressAsyncHandler(async (req, res) => {
+productRouter.get("/categories", expressAsyncHandler(async (req, res) => {
   const categories = await Product.find().distinct('category')
   res.send(categories)
 }));
@@ -24,7 +29,7 @@ productRouter.get("/:id", expressAsyncHandler(async (req, res) => {
   if (product) {
     res.send(product);
   } else {
-    res.status(404).send({message: 'Not found'});
+    res.status(404).send({ message: 'Not found' });
   }
 }));
 

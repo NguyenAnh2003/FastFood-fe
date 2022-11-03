@@ -17,9 +17,9 @@ export default function Contact() {
                 <div class="flex items-center mt-8 text-gray-600 dark:text-gray-400">
                   <div class="space-y-4">
                     {contactConst.map((item, index) => (
-                      <a>
+                      // eslint-disable-next-line jsx-a11y/anchor-is-valid
+                      <a key={index}>
                         <svg
-                          key={index}
                           fill="none"
                           stroke="currentColor"
                           stroke-linecap="round"
@@ -40,7 +40,10 @@ export default function Contact() {
                   </div>
                   <div class="w-32 space-y-4 mb-6">
                     {contactConst.map((item, index) => (
-                      <div class="ml-5 font-semibold w-40">
+                      <div
+                        class="ml-5 font-semibold w-40"
+                        key={index}
+                      >
                         {item.infor}
                       </div>
                     ))}
