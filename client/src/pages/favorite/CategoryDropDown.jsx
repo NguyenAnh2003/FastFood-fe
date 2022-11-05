@@ -26,9 +26,9 @@ export default function CategoryDropDown() {
   console.log('Selected',selected);
 
   return (
-    <div className="w-[170px]">
+    <div className="">
       <Listbox value={selected} onChange={setSelected}>
-        <div className="relative mt-1">
+        <div className="relative">
           <Listbox.Button className="relative w-full cursor-default rounded-lg bg-primary-color py-2 pl-3 pr-4 justify-center text-white shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white sm:text-sm">
             <span className="block truncate font-semibold">{selected}</span>
           </Listbox.Button>
