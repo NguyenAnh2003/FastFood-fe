@@ -8,7 +8,7 @@ import {
 } from 'react';
 import { AiOutlineUser } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
-import { Store } from '../../store/Store';
+import { Store } from '../store/Store';
 
 const userTitle = [
   {

@@ -27,7 +27,7 @@ export default function CategorySiderBar() {
   console.log('Selected', selected);
 
   return (
-    <div className="py-16 hidden lg:block">
+    <div className="hidden lg:block">
       <div className="mx-auto w-full max-w-md">
         <RadioGroup value={selected} onChange={setSelected}>
           <RadioGroup.Label className="sr-only">
