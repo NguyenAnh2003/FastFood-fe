@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { IoLocationOutline } from 'react-icons/io5';
-import DropDownUser from '../dropdown/DropDownUser';
+import DropDownUser from '../DropDownUser';
 import titlePage from './Constants';
 import UserPopup from '../popup/UserPopup';
 import { Store } from '../../store/Store';

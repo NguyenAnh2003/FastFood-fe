@@ -7,6 +7,8 @@ import React, {
 } from 'react';
 import { useLocation } from 'react-router-dom';
 import ProductCard from '../../components/card/ProductCard';
+import CategoryDropDown from '../../components/CategoryDropDown';
+import CategorySiderBar from '../../components/CategorySiderBar';
 import LoadingComponent from '../../components/loading/LoadingComponent';
 
 const reducer = (state, action) => {
@@ -25,7 +27,7 @@ const reducer = (state, action) => {
 
 export default function MenuProducts() {
   const { search } = useLocation();
-  
+
   const [{ loading, products }, dispatch] = useReducer(
     reducer,
     {
@@ -51,7 +53,7 @@ export default function MenuProducts() {
     };
     fetchData();
   }, [pageNumber]);
-  
+
   return loading ? (
     <LoadingComponent />
   ) : (
@@ -67,13 +69,19 @@ export default function MenuProducts() {
           </button>
         ))}
       </div>
-      <div className="grid-cols-1 sm:grid-cols-2 mt-6 grid gap-6 xl:grid-cols-4 lg:grid-cols-3">
-        {products.map((product) => (
-          <ProductCard
-            key={product._id}
-            product={product}
-          />
-        ))}
+      <div className="flex flex-col lg:flex-row gap-1 mt-5">
+        <div className=" grid-cols-1 col-span-1 w-1/3">
+          {/* Filter food */}
+          <CategorySiderBar />
+          <CategoryDropDown />
+        </div>
+        <div className="pl-3 grid-cols-1 sm:grid-cols-2 col-span-5">
+          <div className=" grid-cols-1 sm:grid-cols-2 grid gap-6 lg:grid-cols-3">
+            {products.map((item) => (
+              <ProductCard product={item} key={item._id} />
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
