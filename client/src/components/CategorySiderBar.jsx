@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { RadioGroup } from '@headlessui/react';
 import axios from 'axios';
 import React, { useEffect, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function CategorySiderBar() {
   const [categories, setCategories] = useState([]);
@@ -22,62 +23,62 @@ export default function CategorySiderBar() {
     fetchCategory();
   }, [selected]);
 
-  // console.log(categories[0]);
-  console.log(categories[0]);
-  console.log('Selected', selected);
-
   return (
-    <div className="hidden lg:block">
+    <div className="">
       <div className="mx-auto w-full max-w-md">
         <RadioGroup value={selected} onChange={setSelected}>
           <RadioGroup.Label className="sr-only">
             Server size
           </RadioGroup.Label>
-          <div className="space-y-2">
+          <div className="space-y-2 flex flex-col">
             {categories.map((category, index) => (
-              <RadioGroup.Option
+              <Link
+                to={`/menu?category=${category}`}
                 key={index}
-                value={category}
-                className={({ active, checked }) =>
-                  `${
-                    active
-                      ? 'ring-2 ring-white ring-opacity-60 ring-offset-2 ring-offset-amber-400 cursor-pointer hover:scale-110 ease-out duration-300'
-                      : ''
-                  }
+              >
+                <RadioGroup.Option
+                  value={category}
+                  className={({ active, checked }) =>
+                    `${
+                      active
+                        ? 'ring-2 ring-white ring-opacity-60 ring-offset-2  cursor-pointer hover:scale-110 ease-out duration-300'
+                        : ''
+                    }
                   ${
                     checked
-                      ? 'bg-[#f97316] text-white'
+                      ? 'bg-primary-color text-white'
                       : 'bg-white'
                   }
                     relative flex cursor-pointer rounded-lg px-5 py-4 shadow-md focus:outline-none`
-                }
-              >
-                {({ active, checked }) => (
-                  <>
-                    <div className="flex w-full items-center justify-between">
-                      <div className="flex items-center">
-                        <div className="text-sm">
-                          <RadioGroup.Label
-                            as="p"
-                            className={`font-medium  ${
-                              checked
-                                ? 'text-white'
-                                : 'text-gray-900'
-                            }`}
-                          >
-                            {category}
-                          </RadioGroup.Label>
+                  }
+                >
+                  {({ active, checked }) => (
+                    <React.Fragment>
+                      <div className="flex w-full items-center justify-between">
+                        <div className="flex items-center">
+                          <div className="text-sm">
+                            <RadioGroup.Label
+                              as="p"
+                              className={`font-medium  ${
+                                checked
+                                  ? 'text-white'
+                                  : 'text-gray-900'
+                              }`}
+                            >
+                              {category}
+                            </RadioGroup.Label>
+                          </div>
                         </div>
+                        {checked && (
+                          <div className="shrink-0 text-white">
+                            <CheckIcon className="h-6 w-6" />
+                          </div>
+                        )}
                       </div>
-                      {checked && (
-                        <div className="shrink-0 text-white">
-                          <CheckIcon className="h-6 w-6" />
-                        </div>
-                      )}
-                    </div>
-                  </>
-                )}
-              </RadioGroup.Option>
+                    </React.Fragment>
+                  )}
+                </RadioGroup.Option>
+              </Link>
             ))}
           </div>
         </RadioGroup>

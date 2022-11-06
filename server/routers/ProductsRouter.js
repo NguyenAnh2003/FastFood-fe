@@ -10,14 +10,25 @@ const productRouter = express.Router();
 productRouter.get("/", async (req, res) => {
   const PAGE_SIZE = 6;
   const page = parseInt(req.query.page || "0");
-  const totalPages = await Product.countDocuments(); //
-  const products = await Product.find({}).limit(PAGE_SIZE).skip(page * PAGE_SIZE);
+  const category = req.query.category;
+  const categoryFilter = category && category !== 'all' ? { category } : {};
+
+  const totalPages = await Product.countDocuments({
+    ...categoryFilter
+  }); //
+
+  const products = await Product.find({
+    ...categoryFilter
+  }).limit(PAGE_SIZE).skip(page * PAGE_SIZE);
+
 
   res.send({
     totalPages: Math.ceil(totalPages / PAGE_SIZE),
     products
   });
 });
+
+
 
 productRouter.get("/categories", expressAsyncHandler(async (req, res) => {
   const categories = await Product.find().distinct('category')
