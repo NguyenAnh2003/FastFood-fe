@@ -5,7 +5,7 @@ import Product from '../models/ProductModel.js';
 const combineRouter = express.Router();
 
 combineRouter.get('/home', async (req, res) => {
-  const PAGE_SIZE = 3;
+  const PAGE_SIZE = 4;
   const page = parseInt(req.query.page || "0")
   const totalPagesHome = await Product.countDocuments({ new: true });
   const products = await Product.find({

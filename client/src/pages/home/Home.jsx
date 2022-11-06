@@ -4,7 +4,7 @@ import React, {
   useState,
 } from 'react';
 import axios from 'axios';
-import ProductCard from '../../components/card/ProductCard.jsx';
+import ProductCard from '../../components/ProductCard.jsx';
 import NewsCard from '../../components/card/NewsCard.jsx';
 import { Helmet } from 'react-helmet-async';
 import Slider from 'react-slick';
@@ -12,7 +12,6 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import {
   HeaderSlider,
-  settingsSlideProduct,
   SimpleSlider,
   subDriection,
 } from './Constants.js';

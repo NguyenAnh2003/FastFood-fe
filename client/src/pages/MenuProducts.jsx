@@ -6,12 +6,12 @@ import React, {
   useState,
 } from 'react';
 import { useLocation } from 'react-router-dom';
-import ProductCard from '../../components/card/ProductCard';
-import CategoryDropDown from '../../components/CategoryDropDown';
-import CategorySiderBar from '../../components/CategorySiderBar';
-import LoadingComponent from '../../components/loading/LoadingComponent';
-import Pagination from '../../components/Pagination';
-import useResize from '../../hook/useResize';
+import ProductCard from '../components/ProductCard';
+import CategoryDropDown from '../components/CategoryDropDown';
+import CategorySiderBar from '../components/CategorySiderBar';
+import LoadingComponent from '../components/loading/LoadingComponent';
+import Pagination from '../components/Pagination';
+import useResize from '../hook/useResize';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -47,7 +47,6 @@ export default function MenuProducts() {
   const pages = new Array(numberOfPage)
     .fill(null)
     .map((v, i) => i);
-    
 
   useEffect(() => {
     const fetchData = async () => {

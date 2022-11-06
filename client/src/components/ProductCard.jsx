@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Store } from '../../store/Store.js';
+import { Store } from '../store/Store.js';
 import { Link, useNavigate } from 'react-router-dom';
 import {
   AiFillHeart,
@@ -9,7 +9,6 @@ import axios from 'axios';
 
 export default function ProductCard(props) {
   const navigate = useNavigate();
-  const [fillHeart, setFillHeart] = useState(false);
   const { product } = props;
   const { state, dispatch: ctxDispatch } =
     useContext(Store);

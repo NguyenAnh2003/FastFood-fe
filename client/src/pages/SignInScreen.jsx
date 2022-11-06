@@ -9,7 +9,7 @@ import {
   useLocation,
   useNavigate,
 } from 'react-router-dom';
-import { Store } from '../../store/Store';
+import { Store } from '../store/Store';
 
 export default function SignInScreen() {
   const navigate = useNavigate();

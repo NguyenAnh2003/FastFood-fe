@@ -6,17 +6,17 @@ import {
   Routes,
 } from 'react-router-dom';
 import Home from './pages/home/Home';
-import MenuProducts from './pages/menu/MenuProducts';
-import News from './pages/news/News';
+import MenuProducts from './pages/MenuProducts';
+import News from './pages/News';
 import Contact from './pages/contact/Contact';
 import CartScreen from './pages/cart/CartScreen';
-import SavedScreen from './pages/favorite/SavedScreen';
-import SignInScreen from './pages/form/SignInScreen';
-import SignUpScreen from './pages/form/SignUpScreen';
+import SavedScreen from './pages/SavedScreen';
+import SignInScreen from './pages/SignInScreen';
+import SignUpScreen from './pages/SignUpScreen';
 import ProfileScreen from './pages/profile/ProfileScreen';
 import OrderHistoryScreen from './pages/OrderHistoryScreen';
 import LoadingComponent from './components/loading/LoadingComponent';
-import SingleNews from './pages/news/SingleNews';
+import SingleNews from './pages/SingleNews';
 import PayScreen from './pages/cart/PayScreen';
 import About from './pages/about/About';
 
@@ -42,7 +42,10 @@ function App() {
             />
             <Route path="/contact" element={<Contact />} />
             <Route path="/cart" element={<CartScreen />} />
-            <Route path="/payment" element={<PayScreen />} />
+            <Route
+              path="/payment"
+              element={<PayScreen />}
+            />
             <Route
               path="/saved"
               element={<SavedScreen />}
