@@ -7,7 +7,6 @@ const Pagination = (props) => {
   const path = location.pathname + location.search;
   console.log(path);
 
-  
 
   return (
     <div>
