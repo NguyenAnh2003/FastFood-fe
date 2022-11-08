@@ -7,6 +7,7 @@ import DropDownUser from '../DropDownUser';
 import titlePage from './Constants';
 import UserPopup from '../popup/UserPopup';
 import { Store } from '../../store/Store';
+import ButtonComponent from '../Button/ButtonComponent';
 
 export default function NavBar() {
   const [openUserModal, setOpenUserModal] = useState(false);
@@ -48,8 +49,11 @@ export default function NavBar() {
               </Link>
               {/* Drop down user */}
               <DropDownUser />
-              <Link to={'/contact'} className="contact-btn">
-                Contact
+              <Link to={'/contact'} className="button w-20 h-8 pt-1 mb-2 bg-[#ff5b6a] rounded-lg cursor-pointer select-none
+    active:translate-y-2  active:[box-shadow:0_0px_0_0_#dc2626,0_0px_0_0_#475569]
+    active:border-b-[0px]
+    transition-all duration-150 [box-shadow:0_10px_0_0_#dc2626,0_15px_0_0_#475569]
+    border-b-[1px] border-[#f87171] font-lob text-center text-black"> Contact
               </Link>
             </div>
             {/* Open side bar */}

@@ -88,14 +88,14 @@ export default function Contact() {
                     placeholder="Phone number"
                     class="w-100 mt-2 py-3 px-3 rounded bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"
                   ></input>
-                </div>
-
-                <button
-                  type="submit"
-                  class="md:w-32 bg-[#f97316] hover:bg-blue-dark text-white font-bold py-3 px-6 rounded mt-3 hover:bg-[#475569] transition ease-in-out duration-300"
-                >
-                  Submit
-                </button>
+                </div >
+                <div className="button w-40 h-12 bg-[#f97316] rounded-lg cursor-pointer select-none
+    active:translate-y-2  active:[box-shadow:0_0px_0_0_#dc2626,0_0px_0_0_#475569]
+    active:border-b-[0px] justify-center
+    transition-all duration-150 [box-shadow:0_10px_0_0_#fb923c,0_15px_0_0_#475569]
+    border-b-[1px] border-[#f87171] ml-auto mr-auto pr mt-6 font-lob text-center text-32 font-bold text-white">
+      Submit
+    </div>
               </form>
             </div>
           </div>
