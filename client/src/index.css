@@ -6,16 +6,30 @@
     @apply bg-primary-btn text-white focus:outline-none  font-medium rounded text-sm px-5 py-2.5 text-center mr-3 md:mr-0;
   }
   .mail-form {
-    @apply block w-full px-3 py-1.5 text-base font-normal text-gray bg-white bg-clip-padding border border-solid border-gray rounded transition ease-in-out m-0 focus:text-gray focus:bg-white focus:border-blue-600 focus:outline-none
+    @apply block w-full px-3 py-1.5 text-base font-normal text-gray bg-white bg-clip-padding border border-solid border-gray rounded transition ease-in-out m-0 focus:text-gray focus:bg-white focus:border-blue-600 focus:outline-none;
   }
   .subsribe-btn {
-    @apply inline-block px-6 py-2 border-2 border-white text-black font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out
+    @apply inline-block px-6 py-2 border-2 border-white text-black font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out;
   }
   .primary-btn {
     @apply py-3 rounded-xl bg-primary-btn text-white text-16;
   }
   .container {
     @apply mx-auto px-5;
+  }
+  .btn-3D {
+    @apply w-40 h-12 bg-[#f97316] rounded-lg cursor-pointer select-none
+    active:translate-y-2  active:[box-shadow:0_0px_0_0_#dc2626,0_0px_0_0_#475569]
+    active:border-b-[0px] justify-center
+    transition-all duration-150 [box-shadow:0_10px_0_0_#fb923c,0_15px_0_0_#475569]
+    border-b-[1px] border-[#f87171] ml-auto mr-auto mt-6 font-lob text-center text-32 font-bold text-white;
+  }
+  .contact-btn-3D {
+    @apply w-20 h-8 pt-1 mb-2 bg-[#ff5b6a] rounded-lg cursor-pointer select-none
+    active:translate-y-2  active:[box-shadow:0_0px_0_0_#dc2626,0_0px_0_0_#475569]
+    active:border-b-[0px]
+    transition-all duration-150 [box-shadow:0_10px_0_0_#dc2626,0_15px_0_0_#475569]
+    border-b-[1px] border-[#f87171] font-lob text-center text-white;
   }
 }
 
