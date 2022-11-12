@@ -17,9 +17,13 @@ productRouter.get("/", async (req, res) => {
     ...categoryFilter
   }); //
 
+  // const products = await Product.find({
+  //   ...categoryFilter
+  // }).limit(PAGE_SIZE).skip(page * PAGE_SIZE);
+
   const products = await Product.find({
     ...categoryFilter
-  }).limit(PAGE_SIZE).skip(page * PAGE_SIZE);
+  });
 
 
   res.send({

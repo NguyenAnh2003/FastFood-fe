@@ -5,6 +5,7 @@ import React, {
   useState,
 } from 'react';
 import { Link } from 'react-router-dom';
+import PaymentMethod from '../../pages/PaymentMethod';
 import { Store } from '../../store/Store';
 
 const UserPopup = ({
@@ -12,13 +13,35 @@ const UserPopup = ({
   setOpenUserModal,
   movingPayment,
 }) => {
-  const { state } = useContext(Store);
+  const { state, dispatch } = useContext(Store);
   const { userInfo } = state;
   const [email, setEmail] = useState(userInfo.email);
   const [name, setName] = useState(userInfo.name);
   const [address, setAddress] = useState(userInfo.address);
+  const [isOpen, setIsOpen] = useState(false);
+  const props = {
+    isOpen,
+    setIsOpen,
+  };
 
   const updateHandler = () => {};
+
+  const saveHandler = () => {
+    const shippingAddress = {
+      name,
+      email,
+      address
+    }
+    dispatch({type: 'SAVE_ADDRESS', payload: shippingAddress})
+    localStorage.setItem('shippingAddress', JSON.stringify(shippingAddress))
+  }
+
+  const onClickOpen = () => {
+    setOpenUserModal(false);
+    setIsOpen(true);
+    saveHandler();
+  };
+
   return (
     <div>
       <Transition appear show={openUserModal} as={Fragment}>
@@ -96,15 +119,13 @@ const UserPopup = ({
                     </div>
                     {movingPayment ? (
                       <div className="">
-                        <Link to={'/payment'}>
-                          <button
-                            type="button"
-                            className="inline-flex justify-center rounded border border-transparent bg-primary-color px-4 py-2 text-sm font-medium text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
-                            onClick={updateHandler}
-                          >
-                            Đi tới thanh toán
-                          </button>
-                        </Link>
+                        <button
+                          type="button"
+                          className="inline-flex justify-center rounded border border-transparent bg-primary-color px-4 py-2 text-sm font-medium text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+                          onClick={onClickOpen}
+                        >
+                          Chọn Phương Thức
+                        </button>
                       </div>
                     ) : (
                       <React.Fragment></React.Fragment>
@@ -116,6 +137,7 @@ const UserPopup = ({
           </div>
         </Dialog>
       </Transition>
+      <PaymentMethod {...props} />
     </div>
   );
 };

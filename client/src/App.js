@@ -15,10 +15,10 @@ import SignInScreen from './pages/SignInScreen';
 import SignUpScreen from './pages/SignUpScreen';
 import ProfileScreen from './pages/profile/ProfileScreen';
 import OrderHistoryScreen from './pages/OrderHistoryScreen';
-import LoadingComponent from './components/loading/LoadingComponent';
 import SingleNews from './pages/SingleNews';
-import PayScreen from './pages/cart/PayScreen';
 import About from './pages/about/About';
+import PlaceOrder from './pages/order/PlaceOrder';
+import OrderScreen from './pages/order/OrderScreen';
 
 function App() {
   return (
@@ -43,16 +43,13 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/cart" element={<CartScreen />} />
             <Route
-              path="/payment"
-              element={<PayScreen />}
+              path="/placeorder"
+              element={<PlaceOrder />}
             />
+            <Route path="/order/:id" element={<OrderScreen />} />
             <Route
               path="/saved"
               element={<SavedScreen />}
-            />
-            <Route
-              path="/temp"
-              element={<LoadingComponent />}
             />
             {/* User*/}
             <Route
