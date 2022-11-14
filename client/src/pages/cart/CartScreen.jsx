@@ -18,16 +18,14 @@ export default function CartScreen() {
   const [openUserModal, setOpenUserModal] = useState(false);
   const [movingPayment, setMovingPayment] = useState(false);
 
-  const shippingPricefunc = (e) => {
-    return e ? 15 : 0;
-  };
-
   console.log('Items', cartItems);
   cartItems.itemsPrice = cartItems.reduce(
     (a, c) => a + c.quantity * c.price,
     0
   );
-  cartItems.totalPrice = cartItems.itemsPrice.toFixed(3);
+  cartItems.totalPrice = (
+    cartItems.itemsPrice
+  ).toFixed(3);
   console.log(cartItems.totalPrice);
 
   const updateCartHandler = async (item, quantity) => {
@@ -184,7 +182,7 @@ export default function CartScreen() {
             className="lg:w-1/4 px-8 py-10 bg-white"
           >
             <h1 className="font-semibold text-2xl border-b border-[#eeeeee] pb-8">
-              Order Summary
+              Tổng cộng
             </h1>
             <div className="flex justify-between mt-10 mb-5">
               <span className="font-semibold text-sm uppercase">
@@ -231,7 +229,7 @@ export default function CartScreen() {
             </div>
             <div className="border-t border-[#eeeeee] mt-8">
               <div className="flex font-semibold justify-between py-6 text-sm">
-                <span>Total cost</span>
+                <span>Tổng phí</span>
                 {cartItems.itemsPrice ? (
                   <span>{cartItems.totalPrice} đ</span>
                 ) : (
@@ -241,9 +239,9 @@ export default function CartScreen() {
               <button
                 onClick={checkOutHandler}
                 disabled={cartItems.length === 0}
-                className="bg-primary-btn py-3 text-sm text-white uppercase w-full rounded"
+                className="bg-primary-btn py-3 text-sm text-white font-semibold uppercase w-full rounded"
               >
-                Checkout
+                Đặt Hàng
               </button>
             </div>
           </div>

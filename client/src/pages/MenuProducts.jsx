@@ -88,7 +88,6 @@ export default function MenuProducts() {
               <ProductCard product={item} key={item._id} />
             ))}
           </div>
-          <Pagination {...props} />
         </div>
       </div>
     </div>
