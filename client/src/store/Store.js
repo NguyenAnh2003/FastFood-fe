@@ -64,6 +64,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         cart: { ...state.cart, cartItems: [] },
+        
       };
     case 'STORE_SAVED': {
       const newSavedItems = action.payload;

@@ -6,7 +6,7 @@ import { Store } from '../../store/Store';
 
 const PlaceOrder = () => {
   const navigate = useNavigate();
-  const { state } = useContext(Store);
+  const { state, dispatch } = useContext(Store);
   const { cart, userInfo } = state;
 
   const shippingPrice = 15;
@@ -48,6 +48,8 @@ const PlaceOrder = () => {
           },
         }
       );
+      dispatch({type: 'CART_CLEAR'});
+      localStorage.removeItem("cartItems")
       navigate(`/order/${data.order._id}`);
     } catch (error) {
       console.log(error);
