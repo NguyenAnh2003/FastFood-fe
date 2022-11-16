@@ -12,12 +12,8 @@ import { Store } from '../store/Store';
 
 const userTitle = [
   {
-    page: 'Profile',
+    page: 'Trang Cá Nhân',
     path: '/profile',
-  },
-  {
-    page: 'Oder History',
-    path: '/orderhistory',
   },
 ];
 
@@ -50,7 +46,7 @@ export default function DropDownUser() {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="z-30 absolute right-0 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none overflow-hidden">
+          <Menu.Items className="z-30 absolute right-0 mt-2 p-3 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none overflow-hidden">
             {userTitle.map((item, index) => (
               <Menu.Item key={index}>
                 {({ active }) => (
@@ -58,7 +54,7 @@ export default function DropDownUser() {
                     to={item.path}
                     className={`${
                       active
-                        ? 'font-bold justify-center hover:bg-[#f97316] hover:text-white hover:scale-100 rounded-lg transition duration-150 ease-in-out'
+                        ? 'font-bold justify-center hover:bg-primary-color hover:text-white hover:scale-100 rounded-lg transition duration-150 ease-in-out'
                         : 'text-gray-900 justify-center'
                     } group flex w-full items-center px-2 py-2 text-sm`}
                   >
@@ -75,11 +71,11 @@ export default function DropDownUser() {
                     to={'/signin'}
                     className={`${
                       active
-                        ? ' font-bold justify-center hover:bg-[#f97316] hover:text-white hover:scale-100 rounded-lg transition duration-150 ease-in-out'
+                        ? ' font-bold justify-center hover:bg-primary-color hover:text-white hover:scale-100 rounded-lg transition duration-150 ease-in-out'
                         : 'text-gray-900 justify-center'
                     } group flex w-full items-center px-2 py-2 text-sm`}
                   >
-                    Log out
+                    Đăng Xuất
                   </Link>
                 )}
               </Menu.Item>
@@ -94,7 +90,7 @@ export default function DropDownUser() {
                         : 'text-gray-900'
                     } group flex w-full items-center px-2 py-2 text-sm`}
                   >
-                    Sign In
+                    Đăng Nhập
                   </Link>
                 )}
               </Menu.Item>
