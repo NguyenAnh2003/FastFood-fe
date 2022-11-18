@@ -120,7 +120,7 @@ export default function SignInScreen() {
             <div className="w-full md:w-full px-3 mb-6">
               <button
                 type="submit"
-                className="appearance-none block w-full bg-primary-color text-white font-bold border border-gray-200 rounded py-3 px-3 leading-tight  focus:outline-none focus:border-gray-500"
+                className="signin-btn-3D"
               >
                 Sign in
               </button>

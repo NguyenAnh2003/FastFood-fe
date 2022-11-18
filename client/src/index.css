@@ -31,6 +31,13 @@
     transition-all duration-150 [box-shadow:0_10px_0_0_#dc2626,0_15px_0_0_#475569]
     border-b-[1px] border-[#f87171] font-lob text-center text-white;
   }
+  .signin-btn-3D {
+    @apply w-full h-10 bg-[#ff5b6a] rounded-lg cursor-pointer select-none
+                active:translate-y-2  active:[box-shadow:0_0px_0_0_#dc2626,0_0px_0_0_#475569]
+                active:border-b-[0px]
+                transition-all duration-150 [box-shadow:0_10px_0_0_#dc2626,0_15px_0_0_#475569]
+                border-b-[1px] border-[#f87171] font-lob text-center text-white text-2xl
+  }
 }
 
 @layer base {
