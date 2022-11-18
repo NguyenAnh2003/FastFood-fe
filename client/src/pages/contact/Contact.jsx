@@ -1,6 +1,64 @@
-import React from 'react';
+import React, { useState } from 'react';
 import contactConst from './Constant';
+import axios from 'axios';
+import PopUpValidate from '../../components/popup/PopUpValidate';
 export default function Contact() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [notify, setNotify] = useState('');
+  const [alert, setAlert] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const props = {
+    isOpen,
+    setIsOpen,
+    notify,
+    alert,
+  };
+
+  const user = [
+    {
+      state: name,
+      setState: setName,
+      placeholder: 'Name',
+    },
+    {
+      state: email,
+      setState: setEmail,
+      placeholder: 'Email',
+    },
+    {
+      state: phone,
+      setState: setPhone,
+      placeholder: 'Phone Number',
+    },
+  ];
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios.post(
+        '/api/user/contact',
+        {
+          name,
+          email,
+        }
+      );
+      if(data) {
+        setAlert(false);
+        setNotify('Please Check your email');
+        setIsOpen(true)
+      }
+
+    } catch (error) {
+      setAlert(true);
+      setNotify('Have Some issue');
+      setIsOpen(true)
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       <div class="relative flex items-top justify-center min-h-screen dark:bg-gray-900 sm:items-center sm:pt-0">
@@ -50,51 +108,35 @@ export default function Contact() {
                   </div>
                 </div>
               </div>
-              <form class="p-6 flex flex-col justify-center">
-                <div class="flex flex-col">
-                  <label for="name" class="hidden">
-                    Full Name
-                  </label>
-                  <input
-                    type="name"
-                    name="name"
-                    id="name"
-                    placeholder="Name"
-                    class="w-100 mt-2 py-3 px-3 rounded bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"
-                  ></input>
-                </div>
+              <form
+                class="p-6 flex flex-col justify-center"
+                onSubmit={submitHandler}
+              >
+                {user.map((item) => (
+                  <div class="flex flex-col">
+                    <input
+                      type="text"
+                      name={item.state}
+                      id={item.state}
+                      value={item.state}
+                      onChange={(e) =>
+                        item.setState(e.target.value)
+                      }
+                      placeholder={item.placeholder}
+                      class="w-100 mt-2 py-3 px-3 rounded bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"
+                    />
+                  </div>
+                ))}
 
-                <div class="flex flex-col mt-2">
-                  <label for="email" class="hidden">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    placeholder="Email"
-                    class="w-100 mt-2 py-3 px-3 rounded bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"
-                  ></input>
-                </div>
-
-                <div class="flex flex-col mt-2">
-                  <label for="tel" class="hidden">
-                    Number
-                  </label>
-                  <input
-                    type="tel"
-                    name="tel"
-                    id="tel"
-                    placeholder="Phone number"
-                    class="w-100 mt-2 py-3 px-3 rounded bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"
-                  ></input>
-                </div>
-                <div className="btn-3D">Submit</div>
+                <button type="submit" className="btn-3D">
+                  Submit
+                </button>
               </form>
             </div>
           </div>
         </div>
       </div>
+      <PopUpValidate {...props} />
     </div>
   );
 }
