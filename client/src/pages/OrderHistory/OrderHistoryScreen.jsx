@@ -18,8 +18,8 @@ import { Fragment, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { Component } from 'react';
 
-export default function ProfileScreen() {
-  let [isOpen, setIsOpen] = useState(true);
+export default function SiderBar() {
+  let [isOpen, setIsOpen] = useState(false);
 
   function closeModal() {
     setIsOpen(false);
@@ -41,14 +41,14 @@ export default function ProfileScreen() {
         </button>
       </div>
       <Transition appear show={isOpen} as={Fragment}>
-        <div class="min-h-screen w-56 ">
+        <div class="fixed inset-0 min-h-screen w-56 ">
           <div class="w-56 h-full border-r overflow-hidden hover:bg-white hover:shadow-lg transition-all ease-in-out">
             <div class="h-screen flex flex-col relative justify-between pt-2 pb-6 bg-[#c91e34]">
               <button
                 onClick={closeModal}
                 type="button"
                 value="close sdiebar"
-                class="absolute pb-5 top-2 right-2 flex items-center justify-center w-10 h-10 rounded-full focus:outline-none focus:ring-2 focus:ring-gray-200"
+                class="absolute pb-5 top-2 right-2 flex items-center justify-center w-10 h-10 rounded-full"
               >
                 <AiFillCloseCircle
                   size={30}
