@@ -13,13 +13,6 @@ const AddressPopUp = ({isAddressOpen, setIsAddressOpen}) => {
     name, email
   });
 
-  const EditAddressHandler = async () => {
-    try {
-      
-    } catch (error) {
-      console.log(error);
-    }
-  }
   console.log(userInfo.address);
 
   return (
