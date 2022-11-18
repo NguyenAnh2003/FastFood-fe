@@ -7,11 +7,18 @@ import DropDownUser from '../DropDownUser';
 import titlePage from './Constants';
 import UserPopup from '../popup/UserPopup';
 import { Store } from '../../store/Store';
+import TempSideBar from './TempSideBar';
 
 export default function NavBar() {
   const [openUserModal, setOpenUserModal] = useState(false);
   const { state } = useContext(Store);
   const { userInfo } = state;
+  const [isOpen, setIsOpen] = useState(false);
+
+  const props = {
+    isOpen,
+    setIsOpen
+  }
 
   return (
     <React.Fragment>
@@ -63,10 +70,8 @@ export default function NavBar() {
               className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
               aria-controls="navbar-cta"
               aria-expanded="false"
+              onClick={() => setIsOpen(!isOpen)}
             >
-              <span className="sr-only">
-                Open main menu
-              </span>
               <svg
                 className="w-6 h-6"
                 aria-hidden="true"
@@ -110,6 +115,7 @@ export default function NavBar() {
       ) : (
         <React.Fragment></React.Fragment>
       )}
+      <TempSideBar {...props}/>
     </React.Fragment>
   );
 }

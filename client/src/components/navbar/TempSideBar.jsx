@@ -44,10 +44,14 @@ const directSiderBar = [
   },
 ];
 
-export default function SideBar({isOpen, setIsOpen}) {
+export default function TempSideBar({isOpen, setIsOpen}) {
 
   function closeModal() {
     setIsOpen(false);
+  }
+
+  function openModal() {
+    setIsOpen(true);
   }
 
   return (
