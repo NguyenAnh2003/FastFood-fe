@@ -14,11 +14,11 @@ import SavedScreen from './pages/SavedScreen';
 import SignInScreen from './pages/SignInScreen';
 import SignUpScreen from './pages/SignUpScreen';
 import ProfileScreen from './pages/profile/ProfileScreen';
-import OrderHistoryScreen from './pages/OrderHistoryScreen';
 import SingleNews from './pages/SingleNews';
 import About from './pages/about/About';
 import PlaceOrder from './pages/order/PlaceOrder';
 import OrderScreen from './pages/order/OrderScreen';
+import SiderBar from './components/navbar/Sidebar';
 
 function App() {
   return (
@@ -46,7 +46,10 @@ function App() {
               path="/placeorder"
               element={<PlaceOrder />}
             />
-            <Route path="/order/:id" element={<OrderScreen />} />
+            <Route
+              path="/order/:id"
+              element={<OrderScreen />}
+            />
             <Route
               path="/saved"
               element={<SavedScreen />}
@@ -66,7 +69,7 @@ function App() {
             />
             <Route
               path="/orderhistory"
-              element={<OrderHistoryScreen />}
+              element={<SiderBar />}
             />
           </Routes>
         </main>
