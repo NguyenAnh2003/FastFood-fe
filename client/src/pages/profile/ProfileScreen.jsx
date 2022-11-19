@@ -84,7 +84,7 @@ export default function ProfileScreen() {
     <LoadingComponent />
   ) : (
     <div className="flex justify-center items-center container">
-      <div class="w-full">
+      <div class="w-[500px] mt-12">
         <form
           class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
           onSubmit={updateHandler}
@@ -111,9 +111,9 @@ export default function ProfileScreen() {
               </React.Fragment>
             ))}
           </div>
-          <div class="flex items-center justify-between">
+          <div class="flex items-center justify-center">
             <button
-              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              class="profile-btn-3D"
               type="submit"
             >
               Update
