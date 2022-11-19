@@ -64,7 +64,7 @@ function App() {
               element={<SignUpScreen />}
             />
             <Route
-              path="/profile?id=/:id"
+              path="/profile"
               element={<ProfileScreen />}
             />
             <Route

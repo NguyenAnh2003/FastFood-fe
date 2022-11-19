@@ -108,15 +108,6 @@ const UserPopup = ({
                     />
                   </div>
                   <div className="flex flex-row mt-4 justify-between">
-                    <div className="">
-                      <button
-                        type="button"
-                        className="inline-flex justify-center rounded border border-transparent bg-primary-color px-4 py-2 text-sm font-medium text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
-                        onClick={updateHandler}
-                      >
-                        Lưu
-                      </button>
-                    </div>
                     {movingPayment ? (
                       <div className="">
                         <button
