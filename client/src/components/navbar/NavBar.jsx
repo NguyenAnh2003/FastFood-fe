@@ -7,23 +7,28 @@ import DropDownUser from '../DropDownUser';
 import titlePage from './Constants';
 import UserPopup from '../popup/UserPopup';
 import { Store } from '../../store/Store';
+import SideBar from './Sidebar';
 
 export default function NavBar() {
   const [openUserModal, setOpenUserModal] = useState(false);
   const { state } = useContext(Store);
   const { userInfo } = state;
+  const [isOpen, setIsOpen] = useState(false);
+  const props = {
+    isOpen, setIsOpen
+  }
 
   return (
     <React.Fragment>
       <nav className="bg-[#faecd0] px-2 sm:px-4 py-2.5 shadow-lg">
-        <div className="container flex flex-wrap justify-between items-center">
+        <div className="container flex justify-between items-center">
           <Link to={'/'} className="flex items-center">
             <img
               src="https://upload.wikimedia.org/wikipedia/en/a/ae/Los_Pollos_Hermanos_logo.png"
               className="mr-6 h-[60px]"
               alt="Flowbite Logo"
             />
-            <span className="self-center text-3xl font-semibold font-lob whitespace-nowrap text-[#D87707]">
+            <span className="self-center text-xl font-semibold font-lob whitespace-nowrap text-[#D87707]">
               Los Pollos Hermanos
             </span>
           </Link>
@@ -63,10 +68,8 @@ export default function NavBar() {
               className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
               aria-controls="navbar-cta"
               aria-expanded="false"
+              onClick={() => setIsOpen(true)}
             >
-              <span className="sr-only">
-                Open main menu
-              </span>
               <svg
                 className="w-6 h-6"
                 aria-hidden="true"
@@ -86,12 +89,12 @@ export default function NavBar() {
             className="hidden justify-between  items-center marker:w-full lg:flex lg:w-auto lg:order-1"
             id="navbar-cta"
           >
-            <ul className="flex p-4 mt-4 font-lob border border-gray-100 lg:flex-row lg:space-x-4  md:mt-0 md:text-sm lg:font-medium lg:border-0 lg:bg-[#faecd0]">
+            <ul className="flex mt-4 font-lob border border-gray-100 lg:flex-row lg:space-x-4  md:mt-0 md:text-sm lg:font-medium lg:border-0 lg:bg-[#faecd0]">
               {titlePage.map((index, i) => (
                 <li key={i}>
                   <Link
                     to={`${index.directname}`}
-                    className="block py-2 pr-4 pl-3 mr-5 text-3xl lg:text-[#d87707] rounded lg:bg-transparent lg:p-0"
+                    className="block py-2 pr-4 pl-3 mr-5 text-xl lg:text-[#d87707] rounded lg:bg-transparent lg:p-0"
                     aria-current="page"
                   >
                     {index.page}
@@ -110,6 +113,7 @@ export default function NavBar() {
       ) : (
         <React.Fragment></React.Fragment>
       )}
+      <SideBar {...props}/>
     </React.Fragment>
   );
 }
