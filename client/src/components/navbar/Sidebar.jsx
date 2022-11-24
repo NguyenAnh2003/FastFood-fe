@@ -120,7 +120,7 @@ export default function SideBar({isOpen, setIsOpen}) {
                       <div>
                         <ul class="mt-6 space-y-2 tracking-wide">
                           <li class="min-w-max">
-                            <Link to={'/ProfileScreen'} className="bg group flex items-center space-x-4 px-4 py-3 text-[#d87708] hover:bg-[#f5d3d6] hover:text-[#941516] hover:scale-95 rounded-full transition duration-150 ease-in-out">
+                            <Link to={'/profile'} className="bg group flex items-center space-x-4 px-4 py-3 text-[#d87708] hover:bg-[#f5d3d6] hover:text-[#941516] hover:scale-95 rounded-full transition duration-150 ease-in-out">
 
                               <MdAccountCircle
                                 fill="#dc2626"
