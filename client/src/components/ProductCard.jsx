@@ -76,7 +76,7 @@ export default function ProductCard(props) {
           {/* Content */}
           <div className="min-h-[98px] px-2 mb-2 flex flex-col">
             <div className="mb-2 flex justify-between">
-              <h1 className="w-64 text-14 font-bold text-gray-700">
+              <h1 className="w-64 text-2xl font-light text-[#f97316] font-lob">
                 {product.name}
               </h1>
               {existSavedItem ? (
@@ -104,11 +104,11 @@ export default function ProductCard(props) {
           </div>
           {/* Price */}
           <div className="px-2 mb-2 flex flex-col border-t-2 border-[#eeeeee]">
-            <h1 className="my-2 font-bold text-price-color">
+            <h1 className="my-2 font-bold text-price-color font-lob">
               {product.price} đ
             </h1>
             <button
-              className="py-3 mb-2 rounded bg-primary-btn text-white text-16"
+              className="py-3 mb-2 bg-primary-btn font-lob text-white text-xl hover:scale-105 rounded-md transition duration-150 ease-in-out"
               onClick={addToCartHandler}
             >
               Thêm vào giỏ hàng

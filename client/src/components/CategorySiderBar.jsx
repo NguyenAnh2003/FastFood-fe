@@ -70,8 +70,8 @@ export default function CategorySiderBar() {
                     }
                   ${
                     checked
-                      ? 'bg-primary-color text-white'
-                      : 'bg-white'
+                      ? 'bg-primary-color font-bold font-lob'
+                      : 'bg-white font-bold font-lob text-[#f97316]'
                   }
                     relative flex cursor-pointer rounded-lg px-5 py-4 shadow-md focus:outline-none`
                   }
@@ -85,8 +85,8 @@ export default function CategorySiderBar() {
                               as="p"
                               className={`font-medium  ${
                                 checked
-                                  ? 'text-white'
-                                  : 'text-gray-900'
+                                  ? 'text-white text-xl'
+                                  : 'text-gray-900 text-xl'
                               }`}
                             >
                               {category}

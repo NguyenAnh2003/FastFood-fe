@@ -96,7 +96,7 @@ export default function Home() {
               />
               <Link
                 to={'/menu'}
-                className="absolute top-[50%] left-[50%] translate-x-[-50%] w-[280px] h-[50px] items-center flex justify-center shadow-lg bg-[#ffeae3] font-semibold rounded"
+                className="home-btn-3D"
               >
                 Đặt Hàng
               </Link>

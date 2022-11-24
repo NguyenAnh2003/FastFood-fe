@@ -86,8 +86,8 @@ export default function DropDownUser() {
                     to={'/signin'}
                     className={`${
                       active
-                        ? 'bg-primary-color text-white'
-                        : 'text-gray-900'
+                        ? 'font-bold justify-center hover:bg-primary-color hover:text-white hover:scale-100 rounded-lg transition duration-150 ease-in-out'
+                        : 'text-gray-900 justify-center'
                     } group flex w-full items-center px-2 py-2 text-sm`}
                   >
                     Đăng Nhập

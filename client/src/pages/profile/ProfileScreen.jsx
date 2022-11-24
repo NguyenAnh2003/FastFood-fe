@@ -6,6 +6,7 @@ import React, {
 } from 'react';
 import LoadingComponent from '../../components/loading/LoadingComponent';
 import { Store } from '../../store/Store';
+import { Link, useNavigate } from 'react-router-dom';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -84,7 +85,23 @@ export default function ProfileScreen() {
     <LoadingComponent />
   ) : (
     <div className="flex justify-center items-center container">
-      <div class="w-full">
+      <div class="w-[500px] mt-12">
+      <div className="text-center mt-2 mb-5">
+        <h2 className="font-lob text-4xl">
+          Update your personal details!
+        </h2>
+        <span className="text-2xl font-lob">
+          or 
+          <span> </span>
+          <Link
+            to={'/signup'}
+            href="#"
+            className="text-primary-color font-lob font-bold text-2xl ml-1"
+          >
+             register a new account
+          </Link>
+        </span>
+      </div>
         <form
           class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
           onSubmit={updateHandler}
@@ -93,7 +110,7 @@ export default function ProfileScreen() {
             {user.map((item, index) => (
               <React.Fragment>
                 <label
-                  class="block text-gray-700 text-sm font-bold mb-2"
+                  class="block text-gray-700 font-lob text-xl font-bold mb-2 mt-2"
                   for="username"
                 >
                   {item.title}
@@ -111,9 +128,9 @@ export default function ProfileScreen() {
               </React.Fragment>
             ))}
           </div>
-          <div class="flex items-center justify-between">
+          <div class="flex items-center justify-center">
             <button
-              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              class="profile-btn-3D"
               type="submit"
             >
               Update

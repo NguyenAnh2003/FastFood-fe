@@ -55,17 +55,18 @@ export default function SignInScreen() {
   return (
     <div>
       <div className="text-center mt-24">
-        <h2 className="text-20">
+        <h2 className="text-20 font-lob text-5xl">
           Sign in into your account
         </h2>
-        <span className="text-sm">
-          or
+        <span className="text-2xl font-lob">
+          or 
+          <span> </span>
           <Link
             to={'/signup'}
             href="#"
-            className="text-primary-color ml-1"
+            className="text-primary-color font-lob font-bold text-2xl ml-1"
           >
-            register a new account
+             register a new account
           </Link>
         </span>
       </div>
@@ -103,7 +104,7 @@ export default function SignInScreen() {
                   id=""
                   className="mr-1 bg-white"
                 />
-                <span className="text-13 text-gray-700">
+                <span className="text-xl text-gray-700 font-lob">
                   Remember Me
                 </span>
               </div>
@@ -111,7 +112,7 @@ export default function SignInScreen() {
                 <Link
                   to={'/settings'}
                   href="#"
-                  className="text-primary-color text-sm tracking-tight"
+                  className="text-primary-color font-lob font-light text-xl tracking-tight"
                 >
                   Forgot your password?
                 </Link>
@@ -120,7 +121,7 @@ export default function SignInScreen() {
             <div className="w-full md:w-full px-3 mb-6">
               <button
                 type="submit"
-                className="appearance-none block w-full bg-primary-color text-white font-bold border border-gray-200 rounded py-3 px-3 leading-tight  focus:outline-none focus:border-gray-500"
+                className="signin-btn-3D"
               >
                 Sign in
               </button>

@@ -67,13 +67,13 @@ export default function CartScreen() {
         <title>Shopping cart</title>
       </Helmet>
       <div className="container xl:px-10 mx-auto mt-10">
-        <div className="lg:flex shadow-md my-10">
-          <div className="lg:w-3/4 bg-white px-10 py-10">
+        <div className="lg:flex shadow-md my-10 ">
+          <div className="lg:w-3/4 bg-white px-10 py-10 ">
             <div className="flex justify-between border-b border-[#eeeeee] pb-8">
-              <h1 className="font-semibold text-xl">
-                Shopping Cart
+              <h1 className="font-light text-3xl font-lob">
+                Your order
               </h1>
-              <h2 className="font-semibold text-xl">
+              <h2 className="font-light font-lob text-3xl">
                 {cartItems.reduce(
                   (a, c) => a + c.quantity,
                   0
@@ -82,17 +82,17 @@ export default function CartScreen() {
               </h2>
             </div>
             <div className="flex mt-10 mb-5">
-              <h3 className="font-semibold text-gray-600 text-xs uppercase w-2/3">
+              <h3 className="font-semibold text-[#d87707] text-2xl font-lob w-2/3">
                 Product Details
               </h3>
-              <h3 className="font-semibold text-center text-xs uppercase w-1/3 ">
+              <h3 className="font-semibold font-lob text-2xl text-[#d87707] text-center w-1/3 ">
                 Quantity
               </h3>
             </div>
             {/* Product detail */}
             {cartItems.map((item) => (
               <div
-                className="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5"
+                className="flex font-lob font-light items-center hover:bg-gray-100 -mx-8 px-6 py-5"
                 key={item._id}
               >
                 <div className="flex w-2/3">
@@ -104,9 +104,9 @@ export default function CartScreen() {
                     />
                   </div>
                   <div className="flex flex-col justify-between ml-4 flex-grow">
-                    <span className="font-bold">
-                      <p className="text-12">{item.name}</p>
-                      <p className="text-11">
+                    <span className="font-light ">
+                      <p className=" text-xl">{item.name}</p>
+                      <p className="text-xl">
                         {item.price} đ
                       </p>
                     </span>
@@ -114,7 +114,7 @@ export default function CartScreen() {
                       onClick={() =>
                         removeItemHandler(item)
                       }
-                      className="font-semibold text-red-500 text-xs cursor-pointer"
+                      className="font-semibold text-red-500 text-xl cursor-pointer"
                     >
                       Remove
                     </p>
@@ -165,7 +165,7 @@ export default function CartScreen() {
             {/* Back to product screen (home screen) */}
             <button
               onClick={() => navigate(-1)}
-              className="flex font-semibold text-primary-color text-sm mt-10"
+              className="flex font-light font-lob text-primary-color text-xl mt-10"
             >
               <svg
                 className="fill-current mr-2 text-primary-color w-4"
@@ -181,11 +181,11 @@ export default function CartScreen() {
             id="summary"
             className="lg:w-1/4 px-8 py-10 bg-white"
           >
-            <h1 className="font-semibold text-2xl border-b border-[#eeeeee] pb-8">
-              Tổng cộng
+            <h1 className="font-light text-3xl font-lob border-b border-[#eeeeee] pb-8">
+              Total
             </h1>
             <div className="flex justify-between mt-10 mb-5">
-              <span className="font-semibold text-sm uppercase">
+              <span className="font-bold font-playf text-2xl uppercase">
                 Items:{' '}
                 {cartItems.reduce(
                   (a, c) => a + c.quantity,
@@ -193,7 +193,7 @@ export default function CartScreen() {
                 )}
               </span>
               {cartItems.itemsPrice ? (
-                <span className="font-semibold text-sm">
+                <span className="font-semibold font-playf text-xl">
                   {cartItems
                     .reduce(
                       (a, c) => a + c.price * c.quantity,
@@ -209,7 +209,7 @@ export default function CartScreen() {
             <div className="flex flex-col gap-2">
               {cartItems.map((item) => (
                 <span
-                  className="font-semibold text-10 flex flex-row justify-between gap-2"
+                  className="font-light font-playf text-xl flex flex-row justify-between gap-2"
                   key={item._id}
                 >
                   <p className="">
@@ -228,7 +228,7 @@ export default function CartScreen() {
               ))}
             </div>
             <div className="border-t border-[#eeeeee] mt-8">
-              <div className="flex font-semibold justify-between py-6 text-sm">
+              <div className="flex font-semibold font-playf justify-between py-6 text-2xl">
                 <span>Tổng phí</span>
                 {cartItems.itemsPrice ? (
                   <span>{cartItems.totalPrice} đ</span>
@@ -239,7 +239,7 @@ export default function CartScreen() {
               <button
                 onClick={checkOutHandler}
                 disabled={cartItems.length === 0}
-                className="bg-primary-btn py-3 text-sm text-white font-semibold uppercase w-full rounded"
+                className="bg-primary-btn py-3 font-lob text-2xl text-white font-semibold w-full rounded hover:scale-105 transition-all duration-300"
               >
                 Đặt Hàng
               </button>
