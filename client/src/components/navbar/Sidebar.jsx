@@ -84,28 +84,32 @@ export default function SideBar({isOpen, setIsOpen}) {
               >
                 <Dialog.Panel className="fixed inset-0 min-h-screen">
                   <div class="w-56 h-full border-r overflow-hidden hover:bg-white hover:shadow-lg transition-all ease-in-out">
-                    <div class="h-screen flex flex-col relative justify-between pt-2 pb-6 bg-[#c91e34]">
+                    <div class="h-screen flex flex-col relative justify-between pt-2 pb-6 bg-[#faecd0]">
                       <button
                         onClick={closeModal}
                         type="button"
-                        value="close sdiebar"
-                        class="absolute pb-5 top-2 right-2 flex items-center justify-center w-10 h-10 rounded-full"
+                        value="close sidebar"
+                        class="absolute pb-5 pt-5 top-2 right-2 flex items-center justify-center w-10 h-10 rounded-full mb-2 bg-[#ff5b6a] cursor-pointer select-none
+                        active:translate-y-2  active:[box-shadow:0_0px_0_0_#dc2626,0_0px_0_0_#475569]
+                        active:border-b-[0px]
+                        transition-all duration-150 [box-shadow:0_10px_0_0_#dc2626,0_15px_0_0_#475569]
+                        border-b-[1px] border-[#f87171] font-lob text-center text-white"
                       >
                         <AiFillCloseCircle size={30} />
                       </button>
                       <div class="overflow-y-auto flex-1">
-                        <ul class="mt-6 space-y-2 ">
+                        <ul class="mt-[60px] space-y-2 ">
                           {directSiderBar.map((item) => (
                             <li class="min-w-max">
                               <Link
                                 to={item.path}
-                                className="group flex items-center space-x-4 px-4 py-3 text-white hover:bg-[#f5d3d6] hover:text-[#941516] hover:scale-95 rounded-full transition duration-150 ease-in-out"
+                                className="group flex items-center space-x-4 px-4 py-3 text-[#d87708] hover:bg-[#f5d3d6] hover:text-[#941516] hover:scale-95 rounded-full transition duration-150 ease-in-out"
                               >
                                 <item.pathicon
-                                  fill="#65a30d"
-                                  size={20}
+                                  fill="#dc2626"
+                                  size={30}
                                 />
-                                <span class="-mr-1 font-medium">
+                                <span class="-mr-1 font-lob font-medium text-xl">
                                   {item.pathname}
                                 </span>
                               </Link>
@@ -116,13 +120,13 @@ export default function SideBar({isOpen, setIsOpen}) {
                       <div>
                         <ul class="mt-6 space-y-2 tracking-wide">
                           <li class="min-w-max">
-                            <Link to={'/ProfileScreen'} className="bg group flex items-center space-x-4 px-4 py-3 text-white hover:bg-[#f5d3d6] hover:text-[#941516] hover:scale-95 rounded-full transition duration-150 ease-in-out">
+                            <Link to={'/ProfileScreen'} className="bg group flex items-center space-x-4 px-4 py-3 text-[#d87708] hover:bg-[#f5d3d6] hover:text-[#941516] hover:scale-95 rounded-full transition duration-150 ease-in-out">
 
                               <MdAccountCircle
-                                fill="#65a30d"
-                                size={20}
+                                fill="#dc2626"
+                                size={30}
                               />
-                              <span class="-mr-1 font-medium">
+                              <span class="-mr-1 font-lob font-medium text-xl">
                                 Tài khoản
                               </span>
                             </Link>
