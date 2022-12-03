@@ -1,12 +1,16 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { Store } from '../store/Store';
 export default function SignUpScreen() {
+  const { state, dispatch } = useContext(Store);
   const [name, setName] = useState('');
   const [address, setAddress] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] =
+    useState('');
   const navigate = useNavigate();
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -20,11 +24,15 @@ export default function SignUpScreen() {
           name,
           email,
           password,
-          address
+          address,
         }
       );
       console.log(data);
-      localStorage.setItem('userInfo', JSON.stringify(data))
+      dispatch({type: 'USER_SIGNIN', payload: data})
+      localStorage.setItem(
+        'userInfo',
+        JSON.stringify(data)
+      );
       navigate('/');
     } catch (error) {
       console.log(error);
