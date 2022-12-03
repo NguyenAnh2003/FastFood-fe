@@ -4,9 +4,9 @@ Base on MERN FULLSTACK
 
 
 # Development
-orgranize structure of project! (react js structure)
-create libs API
-using redux!
-other page (H support)
-pagination advanced
-create admin panel (manage product)
++orgranize structure of project! (react js structure)
++create libs API
++using redux!
++other page (H support)
++pagination advanced
++create admin panel (manage product)
