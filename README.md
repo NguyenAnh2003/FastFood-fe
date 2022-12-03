@@ -10,3 +10,4 @@ Base on MERN FULLSTACK
 - other page (H support)
 - pagination advanced
 - create admin panel (manage product)
+- migrate project to VITE env
