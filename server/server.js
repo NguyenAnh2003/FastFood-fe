@@ -4,7 +4,6 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import seedRouter from './routers/SeedRouter.js';
 import productRouter from './routers/ProductsRouter.js';
-import data from './data/data.js';
 import combineRouter from './routers/CombineRouter.js';
 import newsRouter from './routers/NewsRouter.js';
 import userRouter from './routers/UserRouter.js';
