@@ -23,8 +23,11 @@ wishlistRouter.post(
   '/add',
   expressAsyncHandler(async (req, res) => {
     const items = new WishList({
-      user: req.user._id,
+      items: req.body.item,
+      user: req.body.user,
     });
+    const saveitem = items.save();
+    res.status(201).send({ message: 'Success', saveitem });
     // const wishList = await
   })
 );

@@ -44,18 +44,25 @@ export default function ProductCard(props) {
   );
 
   const addToWishList = async () => {
-    const { data } = await axios.get(
-      `/api/products/${product._id}`
-    );
-    console.log(data);
-    ctxDispatch({
-      type: 'STORE_SAVED',
-      payload: { ...product },
-    });
-    if (userInfo) {
-      return;
-    } else {
-      navigate('/signin?redirect');
+    try {
+      const { data } = await axios.post(
+        `/api/wishlist/add`,
+        {
+          item: product,
+          user: userInfo._id,
+        }
+      );
+      ctxDispatch({
+        type: 'STORE_SAVED',
+        payload: { ...product },
+      });
+      if (userInfo) {
+        return;
+      } else {
+        navigate('/signin?redirect');
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 
