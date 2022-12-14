@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useContext } from 'react';
+import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { Store } from '../store/Store';
 export default function SignUpScreen() {
@@ -12,6 +13,46 @@ export default function SignUpScreen() {
   const [confirmPassword, setConfirmPassword] =
     useState('');
   const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
+  const inputArray = [
+    {
+      status: name,
+      setState: setName,
+      type: 'text',
+      placeholder: 'Your Name',
+    },
+    {
+      status: address,
+      setState: setAddress,
+      type: 'text',
+      placeholder: 'Your Address',
+    },
+    {
+      status: email,
+      setState: setEmail,
+      type: 'email',
+      placeholder: 'Your Email',
+    },
+    {
+      status: password,
+      setState: setPassword,
+      type: 'password',
+      placeholder: 'Your password',
+    },
+    {
+      status: confirmPassword,
+      setState: setConfirmPassword,
+      type: 'password',
+      placeholder: 'Confirm your password',
+    },
+  ];
+
   const submitHandler = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
@@ -28,7 +69,7 @@ export default function SignUpScreen() {
         }
       );
       console.log(data);
-      dispatch({type: 'USER_SIGNIN', payload: data})
+      dispatch({ type: 'USER_SIGNIN', payload: data });
       localStorage.setItem(
         'userInfo',
         JSON.stringify(data)
@@ -65,16 +106,24 @@ export default function SignUpScreen() {
           className="w-full max-w-xl bg-white rounded shadow-md p-6"
         >
           <div className="flex flex-wrap -mx-3 mb-6">
-            <div className="w-full md:w-full px-3 mb-6">
-              <input
-                placeholder="Name"
-                className="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded py-3 px-3 leading-tight focus:outline-none"
-                type="text"
-                onChange={(e) => setName(e.target.value)}
-                value={name}
-              />
-            </div>
-            <div className="w-full md:w-full px-3 mb-6">
+            {inputArray.map((item, index) => (
+              <div
+                className="w-full md:w-full px-3 mb-6"
+                key={index}
+              >
+                <input
+                  placeholder={item.placeholder}
+                  className="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded py-3 px-3 leading-tight focus:outline-none"
+                  type={item.type === 'email' ? 'email' : item.type}
+                  onChange={(e) =>
+                    item.setState(e.target.value)
+                  }
+                  required
+                  value={item.status}
+                />
+              </div>
+            ))}
+            {/*<div className="w-full md:w-full px-3 mb-6">
               <input
                 placeholder="Address"
                 className="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded py-3 px-3 leading-tight focus:outline-none"
@@ -113,7 +162,7 @@ export default function SignUpScreen() {
                 }
                 value={confirmPassword}
               />
-            </div>
+              </div>*/}
             <div className="w-full md:w-full px-3 mb-6">
               <button
                 type="submit"

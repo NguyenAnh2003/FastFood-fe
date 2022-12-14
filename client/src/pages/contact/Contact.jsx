@@ -22,16 +22,19 @@ export default function Contact() {
       state: name,
       setState: setName,
       placeholder: 'Name',
+      type: 'text'
     },
     {
       state: email,
       setState: setEmail,
       placeholder: 'Email',
+      type: 'email'
     },
     {
       state: phone,
       setState: setPhone,
       placeholder: 'Phone Number',
+      type: 'text'
     },
   ];
 
@@ -45,16 +48,15 @@ export default function Contact() {
           email,
         }
       );
-      if(data) {
+      if (data) {
         setAlert(false);
         setNotify('Please Check your email');
-        setIsOpen(true)
+        setIsOpen(true);
       }
-
     } catch (error) {
       setAlert(true);
       setNotify('Have Some issue');
-      setIsOpen(true)
+      setIsOpen(true);
       console.log(error);
     }
   };
@@ -115,7 +117,12 @@ export default function Contact() {
                 {user.map((item) => (
                   <div class="flex flex-col">
                     <input
-                      type="text"
+                      type={
+                        item.type === 'email'
+                          ? 'email'
+                          : 'text'
+                      }
+                      required
                       name={item.state}
                       id={item.state}
                       value={item.state}

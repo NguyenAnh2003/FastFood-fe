@@ -4,6 +4,7 @@ import React, {
   useEffect,
   useState,
 } from 'react';
+import { useForm } from 'react-hook-form';
 import {
   Link,
   useLocation,
@@ -23,7 +24,8 @@ export default function SignInScreen() {
     useContext(Store);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const { register, handleSubmit, formState: { errors } } = useForm();
+    
   const { userInfo } = state;
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -80,7 +82,8 @@ export default function SignInScreen() {
               <input
                 placeholder="Email"
                 className="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded py-3 px-3 leading-tight focus:outline-none"
-                type="text"
+                type="email"
+                required
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
               />
