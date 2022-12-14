@@ -44,14 +44,14 @@ export default function ProductCard(props) {
   );
 
   const addToWishList = async () => {
-    // const { data } = await axios.post(
-    //   `/api/wishlist/create`,
-    //   {
-    //     item: product,
-    //     user: userInfo._id,
-    //   }
-    // );
-    // console.log(data);
+    const { data } = await axios.post(
+      `/api/wishlist/create`,
+      {
+        item: product,
+        user: userInfo._id,
+      }
+    );
+    console.log(data);
     ctxDispatch({
       type: 'STORE_SAVED',
       payload: { ...product },
@@ -65,17 +65,15 @@ export default function ProductCard(props) {
 
   const removeFromWhistList = async (item) => {
     try {
-      // const { data } = await axios.delete(
-      //   `/api/wishlist/remove`,
-      //   {
-      //     item: product,
-      //     user: userInfo._id,
-      //   }
-      // );
+      await axios.post('/api/wishlist/remove', {
+        // item: product,
+        productId: item._id,
+        user: userInfo._id,
+      });
       ctxDispatch({ type: 'REMOVE_SAVED', payload: item });
       console.log('removed', item);
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
   };
 
