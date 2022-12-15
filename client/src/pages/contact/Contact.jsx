@@ -22,19 +22,19 @@ export default function Contact() {
       state: name,
       setState: setName,
       placeholder: 'Name',
-      type: 'text'
+      type: 'text',
     },
     {
       state: email,
       setState: setEmail,
       placeholder: 'Email',
-      type: 'email'
+      type: 'email',
     },
     {
       state: phone,
       setState: setPhone,
       placeholder: 'Phone Number',
-      type: 'text'
+      type: 'text',
     },
   ];
 
@@ -117,11 +117,7 @@ export default function Contact() {
                 {user.map((item) => (
                   <div class="flex flex-col">
                     <input
-                      type={
-                        item.type === 'email'
-                          ? 'email'
-                          : 'text'
-                      }
+                      type={item.type}
                       required
                       name={item.state}
                       id={item.state}

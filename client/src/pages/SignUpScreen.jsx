@@ -114,7 +114,7 @@ export default function SignUpScreen() {
                 <input
                   placeholder={item.placeholder}
                   className="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded py-3 px-3 leading-tight focus:outline-none"
-                  type={item.type === 'email' ? 'email' : item.type}
+                  type={item.type}
                   onChange={(e) =>
                     item.setState(e.target.value)
                   }
