@@ -1,9 +1,10 @@
 module.exports = {
-  content: ["./src/**/*.{jsx,js}"],
+  content: ['./src/**/*.{jsx,js}'],
   darkMode: 'class',
   theme: {
     fontFamily: {
-      sora: ["Sora"], lob: ["lobster","serif"], playf: ["playfair","serif"]
+      lob: ['lobster', 'serif'],
+      playf: ['playfair', 'serif'],
     },
     extend: {
       fontSize: {
@@ -23,34 +24,32 @@ module.exports = {
         48: '48px',
       },
       boxShadow: {
-        'md': ' 0 0px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);'
+        md: ' 0 0px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);',
       },
       screens: {
-        'sm': '640px',
+        sm: '640px',
         // => @media (min-width: 640px) { ... }
 
-        'md': '768px',
+        md: '768px',
         // => @media (min-width: 768px) { ... }
 
-        'lg': '1024px',
+        lg: '1024px',
         // => @media (min-width: 1024px) { ... }
 
-        'xl': '1280px',
+        xl: '1280px',
         // => @media (min-width: 1280px) { ... }
 
-        '2xl': '1536px'
+        '2xl': '1536px',
       },
       colors: {
-        'description-color': "#7e8d98",
+        'description-color': '#7e8d98',
         'price-color': '#ff6573',
         'primary-btn': '#ff5b6a',
         'primary-color': '#ff5b6a',
-        'hover': '#ecf1f5',
-        'gray': '#7e8d98',
-      }
+        hover: '#ecf1f5',
+        gray: '#7e8d98',
+      },
     },
   },
-  plugins: [
-    require('tailwind-scrollbar-hide')
-  ],
-}
+  plugins: [require('tailwind-scrollbar-hide')],
+};
