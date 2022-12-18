@@ -17,6 +17,8 @@ import {
 } from './Constants.js';
 import { Link } from 'react-router-dom';
 import LoadingComponent from '../../components/loading/LoadingComponent';
+import { getNews } from '../../libs/getNews.js';
+import { getProducts } from '../../libs/getProducts.js';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -66,13 +68,28 @@ export default function Home() {
           payload: data,
         });
         setNumberOfPage(data.totalPagesHome);
-        console.log(data);
+        console.log('data?', data);
       } catch (error) {
         console.log(error);
       }
     };
     fetchData();
   }, [pageNumber]);
+
+  useEffect(() => {
+    const p = getProducts();
+    console.log('from lib?', p);
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      return await axios.get('/api/posts/');
+    };
+    console.log(
+      'News',
+      fetchData().then((res) => res.data)
+    );
+  }, []);
 
   return loading ? (
     <LoadingComponent />
@@ -94,10 +111,7 @@ export default function Home() {
                 src={item.image}
                 alt={item.alt}
               />
-              <Link
-                to={'/menu'}
-                className="home-btn-3D"
-              >
+              <Link to={'/menu'} className="home-btn-3D">
                 Đặt Hàng
               </Link>
             </span>
