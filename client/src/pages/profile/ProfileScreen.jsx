@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, {
   useContext,
+  useEffect,
   useReducer,
   useState,
 } from 'react';
@@ -22,6 +23,7 @@ const reducer = (state, action) => {
 };
 
 export default function ProfileScreen() {
+  const navigate = useNavigate();
   const { state, dispatch: ctxDispatch } =
     useContext(Store);
   const { userInfo } = state;
@@ -81,27 +83,33 @@ export default function ProfileScreen() {
     }
   };
 
+  useEffect(() => {
+    if (!userInfo) {
+      navigate('/signin');
+    }
+  }, [userInfo]);
+
   return loadingUpdate ? (
     <LoadingComponent />
   ) : (
     <div className="flex justify-center items-center container">
       <div class="w-[500px] mt-12">
-      <div className="text-center mt-2 mb-5">
-        <h2 className="font-lob text-4xl">
-          Update your personal details!
-        </h2>
-        <span className="text-2xl font-lob">
-          or 
-          <span> </span>
-          <Link
-            to={'/signup'}
-            href="#"
-            className="text-primary-color font-lob font-bold text-2xl ml-1"
-          >
-             register a new account
-          </Link>
-        </span>
-      </div>
+        <div className="text-center mt-2 mb-5">
+          <h2 className="font-lob text-4xl">
+            Update your personal details!
+          </h2>
+          <span className="text-2xl font-lob">
+            or
+            <span> </span>
+            <Link
+              to={'/signup'}
+              href="#"
+              className="text-primary-color font-lob font-bold text-2xl ml-1"
+            >
+              register a new account
+            </Link>
+          </span>
+        </div>
         <form
           class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
           onSubmit={updateHandler}
@@ -129,10 +137,7 @@ export default function ProfileScreen() {
             ))}
           </div>
           <div class="flex items-center justify-center">
-            <button
-              class="profile-btn-3D"
-              type="submit"
-            >
+            <button class="profile-btn-3D" type="submit">
               Update
             </button>
           </div>
