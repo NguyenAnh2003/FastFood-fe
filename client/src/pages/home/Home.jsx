@@ -51,6 +51,7 @@ export default function Home() {
       loading: true,
       error: '',
     });
+    
   const [pageNumber, setPageNumber] = useState(0);
   const [numberOfPage, setNumberOfPage] = useState(0);
   const pages = new Array(numberOfPage)

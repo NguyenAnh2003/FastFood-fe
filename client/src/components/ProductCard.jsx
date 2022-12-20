@@ -28,7 +28,7 @@ export default function ProductCard(props) {
       window.alert('out of stock');
       return;
     }
-
+    
     ctxDispatch({
       type: 'CART_ADD_ITEM',
       payload: { ...product, quantity },

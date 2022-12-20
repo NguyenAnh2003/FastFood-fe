@@ -15,16 +15,14 @@ const UserPopup = ({
 }) => {
   const { state, dispatch } = useContext(Store);
   const { userInfo } = state;
-  const [email, setEmail] = useState(userInfo.email);
-  const [name, setName] = useState(userInfo.name);
-  const [address, setAddress] = useState(userInfo.address);
+  const [email, setEmail] = useState(userInfo && userInfo.email);
+  const [name, setName] = useState(userInfo && userInfo.name);
+  const [address, setAddress] = useState(userInfo && userInfo.address);
   const [isOpen, setIsOpen] = useState(false);
   const props = {
     isOpen,
     setIsOpen,
   };
-
-  const updateHandler = () => {};
 
   const saveHandler = () => {
     const shippingAddress = {

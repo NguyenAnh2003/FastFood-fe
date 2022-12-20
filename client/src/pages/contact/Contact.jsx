@@ -34,7 +34,7 @@ export default function Contact() {
       state: phone,
       setState: setPhone,
       placeholder: 'Phone Number',
-      type: 'text',
+      type: 'tel',
     },
   ];
 
