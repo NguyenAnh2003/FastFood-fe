@@ -27,9 +27,15 @@ export default function ProfileScreen() {
   const { state, dispatch: ctxDispatch } =
     useContext(Store);
   const { userInfo } = state;
-  const [name, setName] = useState(userInfo.name);
-  const [email, setEmail] = useState(userInfo.email);
-  const [address, setAddress] = useState(userInfo.address);
+  const [name, setName] = useState(
+    userInfo && userInfo.name
+  );
+  const [email, setEmail] = useState(
+    userInfo && userInfo.email
+  );
+  const [address, setAddress] = useState(
+    userInfo && userInfo.address
+  );
   const [{ loadingUpdate }, dispatch] = useReducer(
     reducer,
     {
