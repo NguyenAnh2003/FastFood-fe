@@ -77,10 +77,10 @@ export default function Home() {
     fetchData();
   }, [pageNumber]);
 
-  useEffect(() => {
-    const p = getProducts();
-    console.log('from lib?', p);
-  }, []);
+  // useEffect(() => {
+  //   const p = getProducts();
+  //   console.log('from lib?', p);
+  // }, []);
 
   useEffect(() => {
     const fetchData = async () => {
