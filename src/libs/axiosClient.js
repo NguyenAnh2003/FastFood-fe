@@ -7,16 +7,16 @@ const axiosClient = axios.create({
     queryString.stringify(params),
 });
 
-axiosClient.interceptors.response.use(
-  (res) => {
-    if (res && res.data) {
-      return res.data;
-    }
-    return res;
-  },
-  (error) => {
-    throw error;
-  }
-);
+// axiosClient.interceptors.response.use(
+//   (res) => {
+//     if (res && res.data) {
+//       return res.data;
+//     }
+//     return res;
+//   },
+//   (error) => {
+//     throw error;
+//   }
+// );
 
 export default axiosClient;

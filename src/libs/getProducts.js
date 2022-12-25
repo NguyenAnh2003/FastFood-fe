@@ -1,12 +1,10 @@
-import axios from 'axios';
+import axiosClient from './axiosClient';
 
 export const getProducts = async () => {
   try {
-    const res = await axios.get('/')
-    if(res.data.success) {
-      
-    }
+    const res = await axiosClient.get('/products');
+    return res.data
   } catch (error) {
-    alert(error.message)  
+    alert(error.message);
   }
 };

@@ -4,7 +4,6 @@ import React, {
   useContext,
   useState,
 } from 'react';
-import { Link } from 'react-router-dom';
 import PaymentMethod from '../../pages/PaymentMethod';
 import { Store } from '../../store/Store';
 

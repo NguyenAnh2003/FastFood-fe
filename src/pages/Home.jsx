@@ -144,13 +144,9 @@ export default function Home() {
     fetchData();
   }, [pageNumber]);
 
-  {
-    /** fetch api facade  */
-  }
-  useEffect(() => {
-    const p = getProducts();
-    console.log('from lib?', p);
-  }, []);
+  // useEffect(() => {
+  //   getProducts();
+  // }, []);
 
   useEffect(() => {
     const fetchData = async () => {

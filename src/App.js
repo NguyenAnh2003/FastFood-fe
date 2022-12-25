@@ -20,8 +20,13 @@ import PlaceOrder from './pages/PlaceOrder';
 import OrderScreen from './pages/OrderScreen';
 import SiderBar from './components/navbar/Sidebar';
 import SingleProduct from './pages/SingleProduct';
+import { useContext } from 'react';
+import { Store } from './store/Store';
 
 function App() {
+  const { state } = useContext(Store);
+  const { userInfo } = state;
+  console.log('current user', userInfo);
   return (
     <BrowserRouter>
       <div className="App">

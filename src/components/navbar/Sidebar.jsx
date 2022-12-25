@@ -43,15 +43,13 @@ const directSiderBar = [
   },
 ];
 
-export default function SideBar({isOpen, setIsOpen}) {
-
+export default function SideBar({ isOpen, setIsOpen }) {
   function closeModal() {
     setIsOpen(false);
   }
 
   return (
     <React.Fragment>
-
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog
           as="div"
@@ -98,29 +96,36 @@ export default function SideBar({isOpen, setIsOpen}) {
                       </button>
                       <div class="overflow-y-auto flex-1">
                         <ul class="mt-[60px] space-y-2 ">
-                          {directSiderBar.map((item) => (
-                            <li class="min-w-max">
-                              <Link
-                                to={item.path}
-                                className="group flex items-center space-x-4 px-4 py-3 text-[#d87708] hover:bg-[#f5d3d6] hover:text-[#941516] hover:scale-95 rounded-full transition duration-150 ease-in-out"
+                          {directSiderBar.map(
+                            (item, index) => (
+                              <li
+                                class="min-w-max"
+                                key={index}
                               >
-                                <item.pathicon
-                                  fill="#dc2626"
-                                  size={30}
-                                />
-                                <span class="-mr-1 font-lob font-medium text-xl">
-                                  {item.pathname}
-                                </span>
-                              </Link>
-                            </li>
-                          ))}
+                                <Link
+                                  to={item.path}
+                                  className="group flex items-center space-x-4 px-4 py-3 text-[#d87708] hover:bg-[#f5d3d6] hover:text-[#941516] hover:scale-95 rounded-full transition duration-150 ease-in-out"
+                                >
+                                  <item.pathicon
+                                    fill="#dc2626"
+                                    size={30}
+                                  />
+                                  <span class="-mr-1 font-lob font-medium text-xl">
+                                    {item.pathname}
+                                  </span>
+                                </Link>
+                              </li>
+                            )
+                          )}
                         </ul>
                       </div>
                       <div>
                         <ul class="mt-6 space-y-2 tracking-wide">
                           <li class="min-w-max">
-                            <Link to={'/profile'} className="bg group flex items-center space-x-4 px-4 py-3 text-[#d87708] hover:bg-[#f5d3d6] hover:text-[#941516] hover:scale-95 rounded-full transition duration-150 ease-in-out">
-
+                            <Link
+                              to={'/profile'}
+                              className="bg group flex items-center space-x-4 px-4 py-3 text-[#d87708] hover:bg-[#f5d3d6] hover:text-[#941516] hover:scale-95 rounded-full transition duration-150 ease-in-out"
+                            >
                               <MdAccountCircle
                                 fill="#dc2626"
                                 size={30}

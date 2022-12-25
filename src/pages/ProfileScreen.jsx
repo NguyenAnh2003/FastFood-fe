@@ -72,7 +72,7 @@ export default function ProfileScreen() {
         },
         {
           headers: {
-            Authorization: `Bearer ${userInfo.token}`,
+            Authorization: `Bearer ${userInfo.accesstoken}`,
           },
         }
       );

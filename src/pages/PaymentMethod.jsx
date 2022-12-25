@@ -4,7 +4,7 @@ import React, {
   useContext,
   useState,
 } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Store } from '../store/Store';
 
 const paymentArray = [
@@ -24,9 +24,12 @@ const PaymentMethod = ({ isOpen, setIsOpen }) => {
   const navigate = useNavigate();
 
   const onSubmit = () => {
-    ctxDispatch({type: 'SAVE_PAYMENT_METHOD', payload: paymentMethod})
-    localStorage.setItem('paymentMethod', paymentMethod)
-    navigate('/placeorder')
+    ctxDispatch({
+      type: 'SAVE_PAYMENT_METHOD',
+      payload: paymentMethod,
+    });
+    localStorage.setItem('paymentMethod', paymentMethod);
+    navigate('/placeorder');
   };
 
   return (
@@ -64,7 +67,7 @@ const PaymentMethod = ({ isOpen, setIsOpen }) => {
                   <form onSubmit={onSubmit}>
                     <ul className="grid gap-6 w-full md:grid-cols-2">
                       {paymentArray.map((item) => (
-                        <li>
+                        <li key={item.type}>
                           <input
                             type="radio"
                             id={item.type}
@@ -104,7 +107,6 @@ const PaymentMethod = ({ isOpen, setIsOpen }) => {
                       Move
                     </button>
                   </form>
-
                 </Dialog.Panel>
               </Transition.Child>
             </div>
