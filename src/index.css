@@ -18,40 +18,13 @@
     @apply mx-auto px-5;
   }
   .btn-3D {
-    @apply w-40 h-12 bg-[#f97316] rounded-lg cursor-pointer select-none
-    active:translate-y-2  active:[box-shadow:0_0px_0_0_#dc2626,0_0px_0_0_#475569]
+    @apply rounded-lg cursor-pointer select-none
+    active:translate-y-2 bg-[#ff5b6a] active:[box-shadow:0_0px_0_0_#dc2626,0_0px_0_0_#475569]
     active:border-b-[0px] justify-center
-    transition-all duration-150 [box-shadow:0_10px_0_0_#fb923c,0_15px_0_0_#475569]
-    border-b-[1px] border-[#f87171] ml-auto mr-auto mt-6 font-lob text-center text-32 font-bold text-white;
-  }
-  .contact-btn-3D {
-    @apply w-20 h-8 pt-1 mb-2 bg-[#ff5b6a] rounded-lg cursor-pointer select-none
-    active:translate-y-2  active:[box-shadow:0_0px_0_0_#dc2626,0_0px_0_0_#475569]
-    active:border-b-[0px]
     transition-all duration-150 [box-shadow:0_10px_0_0_#dc2626,0_15px_0_0_#475569]
-    border-b-[1px] border-[#f87171] font-lob text-center text-white;
+    border-b-[1px] border-[#f87171] ml-auto mr-auto font-lob text-center font-bold text-white;
   }
-  .signin-btn-3D {
-    @apply w-full h-10 bg-[#ff5b6a] rounded-lg cursor-pointer select-none
-                active:translate-y-2  active:[box-shadow:0_0px_0_0_#dc2626,0_0px_0_0_#475569]
-                active:border-b-[0px]
-                transition-all duration-150 [box-shadow:0_10px_0_0_#dc2626,0_15px_0_0_#475569]
-                border-b-[1px] border-[#f87171] font-lob text-center text-white text-2xl
-  }
-  .home-btn-3D {
-    @apply absolute top-[50%] left-[50%] translate-x-[-50%] w-[280px] h-[50px] items-center flex justify-center shadow-lg bg-[#ff5b6a] rounded-lg cursor-pointer select-none
-                active:translate-y-2  active:[box-shadow:0_0px_0_0_#dc2626,0_0px_0_0_#475569]
-                active:border-b-[0px]
-                transition-all duration-150 [box-shadow:0_10px_0_0_#dc2626,0_15px_0_0_#475569]
-                border-b-[1px] border-[#f87171] font-lob text-center text-white text-2xl
-  }
-  .profile-btn-3D {
-   @apply w-[200px] h-10 text-2xl bg-[#ff5b6a] rounded-lg cursor-pointer select-none
-    active:translate-y-2  active:[box-shadow:0_0px_0_0_#dc2626,0_0px_0_0_#475569]
-    active:border-b-[0px]
-    transition-all duration-150 [box-shadow:0_10px_0_0_#dc2626,0_15px_0_0_#475569]
-    border-b-[1px] border-[#f87171] font-lob text-center text-white
-  }
+
 }
 
 @layer base {

@@ -55,7 +55,7 @@ export default function NavBar() {
               <DropDownUser />
               <Link
                 to={'/contact'}
-                className="contact-btn-3D"
+                className="w-20 h-8 pt-1 mb-2 btn-3D "
               >
                 {' '}
                 Contact

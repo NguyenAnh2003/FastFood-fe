@@ -19,6 +19,8 @@ import About from './pages/About';
 import PlaceOrder from './pages/PlaceOrder';
 import OrderScreen from './pages/OrderScreen';
 import SiderBar from './components/navbar/Sidebar';
+import SingleProduct from './pages/SingleProduct';
+import Button from './components/test/Button';
 
 function App() {
   return (
@@ -54,6 +56,10 @@ function App() {
               path="/saved"
               element={<SavedScreen />}
             />
+            <Route
+              path="/food/:id"
+              element={<SingleProduct />}
+            />
             {/* User*/}
             <Route
               path="/signin"
@@ -69,7 +75,7 @@ function App() {
             />
             <Route
               path="/orderhistory"
-              element={<SiderBar />}
+              element={<Button />}
             />
           </Routes>
         </main>

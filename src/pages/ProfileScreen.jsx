@@ -143,7 +143,7 @@ export default function ProfileScreen() {
             ))}
           </div>
           <div class="flex items-center justify-center">
-            <button class="profile-btn-3D" type="submit">
+            <button class="btn-3D w-[200px] h-10 text-2xl" type="submit">
               Update
             </button>
           </div>

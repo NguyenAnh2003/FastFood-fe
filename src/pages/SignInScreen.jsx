@@ -124,7 +124,7 @@ export default function SignInScreen() {
             <div className="w-full md:w-full px-3 mb-6">
               <button
                 type="submit"
-                className="signin-btn-3D"
+                className="btn-3D w-full h-10"
               >
                 Sign in
               </button>

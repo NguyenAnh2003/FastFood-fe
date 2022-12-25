@@ -144,10 +144,13 @@ export default function Home() {
     fetchData();
   }, [pageNumber]);
 
-  // useEffect(() => {
-  //   const p = getProducts();
-  //   console.log('from lib?', p);
-  // }, []);
+  {
+    /** fetch api facade  */
+  }
+  useEffect(() => {
+    const p = getProducts();
+    console.log('from lib?', p);
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -179,7 +182,10 @@ export default function Home() {
                 src={item.image}
                 alt={item.alt}
               />
-              <Link to={'/menu'} className="home-btn-3D">
+              <Link
+                to={'/menu'}
+                className="btn-3D absolute top-[50%] left-[50%] translate-x-[-50%] w-[280px] h-[50px] items-center flex justify-center text-2xl"
+              >
                 Đặt Hàng
               </Link>
             </span>

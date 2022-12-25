@@ -1,8 +1,12 @@
-// import axios from 'axios';
-// import axiosClient from './axiosClient';
-// import { getFetch } from './fetch';
+import axios from 'axios';
 
-// export const getProducts = async () => {
-//   const url = '/products';
-//   return axiosClient.get(url, {});
-// };
+export const getProducts = async () => {
+  try {
+    const res = await axios.get('/')
+    if(res.data.success) {
+      
+    }
+  } catch (error) {
+    alert(error.message)  
+  }
+};

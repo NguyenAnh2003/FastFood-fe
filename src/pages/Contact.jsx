@@ -149,7 +149,7 @@ export default function Contact() {
                   </div>
                 ))}
 
-                <button type="submit" className="btn-3D">
+                <button type="submit" className="w-40 h-12 text-32 mt-6 btn-3D">
                   Submit
                 </button>
               </form>
