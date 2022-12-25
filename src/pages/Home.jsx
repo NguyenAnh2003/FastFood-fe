@@ -4,21 +4,16 @@ import React, {
   useState,
 } from 'react';
 import axios from 'axios';
-import ProductCard from '../../components/ProductCard.jsx';
-import NewsCard from '../../components/card/NewsCard.jsx';
+import NewsCard from '../components/card/NewsCard.jsx';
 import { Helmet } from 'react-helmet-async';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import {
-  HeaderSlider,
-  SimpleSlider,
-  subDriection,
-} from './Constants.js';
 import { Link } from 'react-router-dom';
-import LoadingComponent from '../../components/loading/LoadingComponent';
-import { getNews } from '../../libs/getNews.js';
-import { getProducts } from '../../libs/getProducts.js';
+import LoadingComponent from '../components/loading/LoadingComponent';
+import { getNews } from '../libs/getNews.js';
+import { getProducts } from '../libs/getProducts.js';
+import ProductCard from '../components/card/ProductCard.jsx';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -43,6 +38,78 @@ const reducer = (state, action) => {
   }
 };
 
+const settingsSlideProduct = {
+  infinite: true,
+  speed: 500,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  initialSlide: 0,
+  swipe: true,
+  autoplay: true,
+  autoplaySpeed: 5000,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        infinite: true,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        initialSlide: 2,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
+};
+
+const SimpleSlider = {
+  infinite: true,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 3000,
+};
+
+const HeaderSlider = [
+  {
+    image: '/assets/news/banner-1.jpg',
+    alt: 'banner 1',
+  },
+  {
+    image: '/assets/news/banner-2.jpg',
+    alt: 'banner 2',
+  },
+  {
+    image: '/assets/news/banner-3.jpg',
+    alt: 'banner 3',
+  },
+];
+
+const subDriection = [
+  {
+    name: 'Cửa Hàng',
+    path: '/about',
+    thumbnail: '/assets/logo/sub-1.svg',
+  },
+  {
+    name: 'Đặt Hàng',
+    path: '/menu',
+    thumbnail: '/assets/logo/sub-2.svg',
+  },
+];
+
 export default function Home() {
   const [{ loading, error, products, news }, dispatch] =
     useReducer(reducer, {
@@ -51,7 +118,7 @@ export default function Home() {
       loading: true,
       error: '',
     });
-    
+
   const [pageNumber, setPageNumber] = useState(0);
   const [numberOfPage, setNumberOfPage] = useState(0);
   const pages = new Array(numberOfPage)

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Store } from '../store/Store.js';
+import { Store } from '../../store/Store.js';
 import { Link, useNavigate } from 'react-router-dom';
 import {
   AiFillHeart,

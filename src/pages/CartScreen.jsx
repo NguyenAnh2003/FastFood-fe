@@ -2,8 +2,8 @@ import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link, useNavigate } from 'react-router-dom';
-import UserPopup from '../../components/popup/UserPopup';
-import { Store } from '../../store/Store';
+import UserPopup from '../components/popup/UserPopup';
+import { Store } from '../store/Store';
 
 export default function CartScreen() {
   const navigate = useNavigate();
@@ -23,9 +23,7 @@ export default function CartScreen() {
     (a, c) => a + c.quantity * c.price,
     0
   );
-  cartItems.totalPrice = (
-    cartItems.itemsPrice
-  ).toFixed(3);
+  cartItems.totalPrice = cartItems.itemsPrice.toFixed(3);
   console.log(cartItems.totalPrice);
 
   const updateCartHandler = async (item, quantity) => {
@@ -105,7 +103,9 @@ export default function CartScreen() {
                   </div>
                   <div className="flex flex-col justify-between ml-4 flex-grow">
                     <span className="font-light ">
-                      <p className=" text-xl">{item.name}</p>
+                      <p className=" text-xl">
+                        {item.name}
+                      </p>
                       <p className="text-xl">
                         {item.price} đ
                       </p>

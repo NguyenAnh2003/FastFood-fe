@@ -5,8 +5,8 @@ import React, {
   useReducer,
   useState,
 } from 'react';
-import LoadingComponent from '../../components/loading/LoadingComponent';
-import { Store } from '../../store/Store';
+import LoadingComponent from '../components/loading/LoadingComponent';
+import { Store } from '../store/Store';
 import { Link, useNavigate } from 'react-router-dom';
 
 const reducer = (state, action) => {

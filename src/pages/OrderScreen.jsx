@@ -6,8 +6,8 @@ import React, {
 } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
-import LoadingComponent from '../../components/loading/LoadingComponent';
-import { Store } from '../../store/Store';
+import LoadingComponent from '../components/loading/LoadingComponent';
+import { Store } from '../store/Store';
 import {
   PayPalButtons,
   usePayPalScriptReducer,

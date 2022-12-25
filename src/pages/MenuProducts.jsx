@@ -1,12 +1,11 @@
 import axios from 'axios';
 import React, {
-  useContext,
   useEffect,
   useReducer,
   useState,
 } from 'react';
 import { useLocation } from 'react-router-dom';
-import ProductCard from '../components/ProductCard';
+import ProductCard from '../components/card/ProductCard';
 import CategoryDropDown from '../components/CategoryDropDown';
 import CategorySiderBar from '../components/CategorySiderBar';
 import LoadingComponent from '../components/loading/LoadingComponent';

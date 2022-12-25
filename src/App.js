@@ -5,19 +5,19 @@ import {
   Route,
   Routes,
 } from 'react-router-dom';
-import Home from './pages/home/Home';
+import Home from './pages/Home';
 import MenuProducts from './pages/MenuProducts';
 import News from './pages/News';
-import Contact from './pages/contact/Contact';
-import CartScreen from './pages/cart/CartScreen';
+import Contact from './pages/Contact';
+import CartScreen from './pages/CartScreen';
 import SavedScreen from './pages/SavedScreen';
 import SignInScreen from './pages/SignInScreen';
 import SignUpScreen from './pages/SignUpScreen';
-import ProfileScreen from './pages/profile/ProfileScreen';
+import ProfileScreen from './pages/ProfileScreen';
 import SingleNews from './pages/SingleNews';
-import About from './pages/about/About';
-import PlaceOrder from './pages/order/PlaceOrder';
-import OrderScreen from './pages/order/OrderScreen';
+import About from './pages/About';
+import PlaceOrder from './pages/PlaceOrder';
+import OrderScreen from './pages/OrderScreen';
 import SiderBar from './components/navbar/Sidebar';
 
 function App() {

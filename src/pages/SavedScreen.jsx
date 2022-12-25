@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
-import ProductCard from '../components/ProductCard';
 import { Store } from '../store/Store';
 import { useNavigate } from 'react-router-dom';
+import ProductCard from '../components/card/ProductCard';
 
 export default function SavedScreen() {
   const {

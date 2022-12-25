@@ -2,13 +2,12 @@ import axios from 'axios';
 import React, { useContext } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
-import { Store } from '../../store/Store';
-
+import { Store } from '../store/Store';
 const PlaceOrder = () => {
   const navigate = useNavigate();
   const { state, dispatch } = useContext(Store);
   const { cart, userInfo } = state;
-
+  
   const shippingPrice = 15;
   cart.shippingPrice = shippingPrice.toFixed(3);
 
