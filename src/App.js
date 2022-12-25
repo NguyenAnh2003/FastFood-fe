@@ -20,7 +20,6 @@ import PlaceOrder from './pages/PlaceOrder';
 import OrderScreen from './pages/OrderScreen';
 import SiderBar from './components/navbar/Sidebar';
 import SingleProduct from './pages/SingleProduct';
-import Button from './components/test/Button';
 
 function App() {
   return (
@@ -72,10 +71,6 @@ function App() {
             <Route
               path="/profile"
               element={<ProfileScreen />}
-            />
-            <Route
-              path="/orderhistory"
-              element={<Button />}
             />
           </Routes>
         </main>

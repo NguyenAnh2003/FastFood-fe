@@ -1,9 +1,8 @@
 import { Dialog, Transition } from '@headlessui/react';
-import React, { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 import {
   AiTwotoneHome,
   AiFillCloseCircle,
-  AiOutlineMenuUnfold,
 } from 'react-icons/ai';
 import {
   MdFastfood,

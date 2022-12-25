@@ -4,10 +4,28 @@ import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { IoLocationOutline } from 'react-icons/io5';
 import DropDownUser from '../DropDownUser';
-import titlePage from './Constants';
 import UserPopup from '../popup/UserPopup';
 import { Store } from '../../store/Store';
 import SideBar from './Sidebar';
+
+const titlePage = [
+  {
+    page: 'Trang Chủ',
+    directname: '/'
+  },
+  {
+    page: 'Cửa Hàng',
+    directname: '/about'
+  },
+  {
+    page: 'Menu',
+    directname: '/menu'
+  },
+  {
+    page: 'Tin Tức',
+    directname: '/news'
+  },
+]
 
 export default function NavBar() {
   const [openUserModal, setOpenUserModal] = useState(false);
