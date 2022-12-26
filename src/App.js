@@ -18,7 +18,6 @@ import SingleNews from './pages/SingleNews';
 import About from './pages/About';
 import PlaceOrder from './pages/PlaceOrder';
 import OrderScreen from './pages/OrderScreen';
-import SiderBar from './components/navbar/Sidebar';
 import SingleProduct from './pages/SingleProduct';
 import { useContext } from 'react';
 import { Store } from './store/Store';
