@@ -11,9 +11,10 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Link } from 'react-router-dom';
 import LoadingComponent from '../components/loading/LoadingComponent';
-import { getNews } from '../libs/getNews.js';
-import { getProducts } from '../libs/getProducts.js';
 import ProductCard from '../components/card/ProductCard.jsx';
+import getFetch from '../libs/utils/getFetch.js';
+import getPosts from '../libs/apis/getPosts.js';
+import { getSpecialFood } from '../libs/apis/getProducts.js';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -25,7 +26,7 @@ const reducer = (state, action) => {
         loading: false,
         products: action.payload.products,
         news: action.payload.news,
-        pages: action.payload.totalPagesHome,
+        // pages: action.payload.totalPagesHome,
       };
     case 'FETCH_FAIL':
       return {
@@ -36,42 +37,6 @@ const reducer = (state, action) => {
     default:
       return state;
   }
-};
-
-const settingsSlideProduct = {
-  infinite: true,
-  speed: 500,
-  slidesToShow: 3,
-  slidesToScroll: 1,
-  initialSlide: 0,
-  swipe: true,
-  autoplay: true,
-  autoplaySpeed: 5000,
-  responsive: [
-    {
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 1,
-        infinite: true,
-      },
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 1,
-        initialSlide: 2,
-      },
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-      },
-    },
-  ],
 };
 
 const SimpleSlider = {
@@ -119,34 +84,43 @@ export default function Home() {
       error: '',
     });
 
-  const [pageNumber, setPageNumber] = useState(0);
-  const [numberOfPage, setNumberOfPage] = useState(0);
-  const pages = new Array(numberOfPage)
-    .fill(null)
-    .map((v, i) => i);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
         const { data } = await axios.get(
-          `/api/combine/home?page=${pageNumber}`
+          `/api/combine/home`
         );
         dispatch({
           type: 'FETCH_SUCCESS',
           payload: data,
         });
-        setNumberOfPage(data.totalPagesHome);
         console.log('data?', data);
       } catch (error) {
         console.log(error);
       }
     };
     fetchData();
-  }, [pageNumber]);
+  }, []);
 
-  // useEffect(() => {
-  //   getProducts();
-  // }, []);
+  useEffect(() => {
+    const fetchAPI = async () => {
+      const res = await getPosts();
+      console.log('fuck?', res);
+    };
+    fetchAPI();
+  }, []);
+
+  useEffect(() => {
+    const fetchAPI = async () => {
+      try {
+        const res = await getSpecialFood();
+        console.log('new food?', res);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchAPI();
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {

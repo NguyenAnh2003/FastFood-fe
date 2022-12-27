@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useReducer } from 'react';
 import { useParams } from 'react-router-dom';
 import LoadingComponent from '../components/loading/LoadingComponent';
+import getSinglePost from '../libs/apis/getSinglePost';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -26,6 +27,18 @@ export default function SingleNews() {
       post: [],
     }
   );
+
+  useEffect(() => {
+    const fetchAPI = async () => {
+      try {
+        const res = await getSinglePost(id);
+        console.log('single post', res);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchAPI();
+  }, [id]);
 
   useEffect(() => {
     const fetchData = async () => {

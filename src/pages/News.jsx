@@ -3,7 +3,6 @@ import React, { useEffect, useReducer } from 'react';
 import { useState } from 'react';
 import NewsCard from '../components/card/NewsCard';
 import LoadingComponent from '../components/loading/LoadingComponent';
-import { getNews } from '../libs/getNews';
 
 const reducer = (state, action) => {
   switch (action.type) {

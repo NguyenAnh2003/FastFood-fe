@@ -25,6 +25,8 @@ export default function CategoryDropDown() {
     fetchCategory();
   }, [selected]);
 
+  
+
   return (
     <div className="">
       <Listbox value={selected} onChange={setSelected}>
