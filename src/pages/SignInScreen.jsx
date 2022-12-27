@@ -24,8 +24,12 @@ export default function SignInScreen() {
     useContext(Store);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { register, handleSubmit, formState: { errors } } = useForm();
-    
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
   const { userInfo } = state;
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -48,6 +52,7 @@ export default function SignInScreen() {
     }
   };
 
+
   useEffect(() => {
     if (userInfo) {
       navigate(redirect);
@@ -61,14 +66,14 @@ export default function SignInScreen() {
           Sign in into your account
         </h2>
         <span className="text-2xl font-lob">
-          or 
+          or
           <span> </span>
           <Link
             to={'/signup'}
             href="#"
             className="text-primary-color font-lob font-bold text-2xl ml-1"
           >
-             register a new account
+            register a new account
           </Link>
         </span>
       </div>
