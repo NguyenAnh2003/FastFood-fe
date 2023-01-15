@@ -122,7 +122,7 @@ export default function ProfileScreen() {
         >
           <div class="mb-4">
             {user.map((item, index) => (
-              <React.Fragment>
+              <React.Fragment key={index}>
                 <label
                   class="block text-gray-700 font-lob text-xl font-bold mb-2 mt-2"
                   for="username"
