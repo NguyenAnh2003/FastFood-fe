@@ -9,3 +9,8 @@ export const getSpecialFood = () => {
   const res = getFetch('products/special');
   return res;
 };
+
+export const getProductsByCategory = (category) => {
+  const res = getFetch(`products?category=${category}`);
+  return res;
+};

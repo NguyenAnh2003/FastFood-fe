@@ -11,6 +11,7 @@ import CategorySiderBar from '../components/CategorySiderBar';
 import LoadingComponent from '../components/loading/LoadingComponent';
 import Pagination from '../components/Pagination';
 import useResize from '../hook/useResize';
+import { getProductsByCategory } from '../libs/apis/getProducts';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -49,9 +50,7 @@ export default function MenuProducts() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await axios.get(
-        `/api/products?category=${category}`
-      );
+      const data = await getProductsByCategory(category);
       console.log(data);
       dispatch({ type: 'FETCH_REQUEST', payload: data });
       // setNumberOfPage(data.totalPages);

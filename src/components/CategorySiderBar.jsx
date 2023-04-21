@@ -3,6 +3,7 @@ import { RadioGroup } from '@headlessui/react';
 import axios from 'axios';
 import React, { useEffect, Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import { getCategories } from '../libs/apis';
 
 const categoryArray = [
   {
@@ -35,9 +36,10 @@ export default function CategorySiderBar() {
   useEffect(() => {
     const fetchCategory = async () => {
       try {
-        const { data } = await axios.get(
-          '/api/products/categories'
-        );
+        // const { data } = await axios.get(
+        //   '/api/products/categories'
+        // );
+        const data = await getCategories()
         console.log(data);
         setCategories(data);
       } catch (error) {

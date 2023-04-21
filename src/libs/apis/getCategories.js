@@ -1,8 +1,8 @@
 import getFetch from '../utils/getFetch';
 
-const getCategories = () => {
-  const res = getFetch('categories');
+export const getCategories = () => {
+  const res = getFetch('products/categories');
   return res;
 };
 
-export default getCategories;
+

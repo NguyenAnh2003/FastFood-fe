@@ -27,7 +27,6 @@ export default function News() {
       news: [],
     }
   );
-  
   useEffect(() => {
     const fetchData = async () => {
       try {

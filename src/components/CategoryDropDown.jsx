@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, {
   useEffect,
   Fragment,
@@ -6,6 +5,8 @@ import React, {
 } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import { Link } from 'react-router-dom';
+import { getCategories } from '../libs/apis';
+
 
 export default function CategoryDropDown() {
   const [categories, setCategories] = useState([]);
@@ -14,9 +15,7 @@ export default function CategoryDropDown() {
   useEffect(() => {
     const fetchCategory = async () => {
       try {
-        const { data } = await axios.get(
-          '/api/products/categories'
-        );
+        const data  = await getCategories()
         setCategories(data);
       } catch (error) {
         console.log(error);

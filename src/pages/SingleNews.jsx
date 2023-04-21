@@ -29,20 +29,8 @@ export default function SingleNews() {
   );
 
   useEffect(() => {
-    const fetchAPI = async () => {
-      try {
-        const res = await getSinglePost(id);
-        console.log('single post', res);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchAPI();
-  }, [id]);
-
-  useEffect(() => {
     const fetchData = async () => {
-      const { data } = await axios.get(`/api/posts/${id}`);
+      const data  = await getSinglePost(id)
       dispatch({ type: 'FETCH_REQUEST', payload: data });
     };
     fetchData();
