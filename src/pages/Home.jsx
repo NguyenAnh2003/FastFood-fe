@@ -9,12 +9,13 @@ import { Helmet } from 'react-helmet-async';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { Link } from 'react-router-dom';
+import { Link, ScrollRestoration } from 'react-router-dom';
 import LoadingComponent from '../components/loading/LoadingComponent';
 import ProductCard from '../components/card/ProductCard.jsx';
 import getFetch from '../libs/utils/getFetch.js';
 import getPosts from '../libs/apis/getPosts.js';
 import { getSpecialFood } from '../libs/apis/getProducts.js';
+import { useScrollToTop } from '../hook/useScrollToTop.js';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -76,6 +77,8 @@ const subDriection = [
 ];
 
 export default function Home() {
+  // useScrollToTop();
+
   const [{ loading, error, products, news }, dispatch] =
     useReducer(reducer, {
       products: [],
@@ -122,15 +125,6 @@ export default function Home() {
     fetchAPI();
   }, []);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      return await axios.get('/api/posts/');
-    };
-    console.log(
-      'News',
-      fetchData().then((res) => res.data)
-    );
-  }, []);
 
   return loading ? (
     <LoadingComponent />

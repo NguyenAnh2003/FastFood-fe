@@ -1,7 +1,7 @@
 {
   "name": "client",
   "version": "0.1.0",
-  "proxy": "http://localhost:8888",
+  "proxy": "https://localhost:8888",
   "private": true,
   "dependencies": {
     "@headlessui/react": "^1.7.2",

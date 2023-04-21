@@ -50,11 +50,11 @@ export default function MenuProducts() {
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await axios.get(
-        `/api/products?category=${category}&page=${pageNumber}`
+        `/api/products?category=${category}`
       );
       console.log(data);
       dispatch({ type: 'FETCH_REQUEST', payload: data });
-      setNumberOfPage(data.totalPages);
+      // setNumberOfPage(data.totalPages);
     };
     fetchData();
   }, [category, pageNumber]);
