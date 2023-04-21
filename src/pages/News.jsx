@@ -3,6 +3,7 @@ import React, { useEffect, useReducer } from 'react';
 import { useState } from 'react';
 import NewsCard from '../components/card/NewsCard';
 import LoadingComponent from '../components/loading/LoadingComponent';
+import getPosts from '../libs/apis/getPosts';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -26,13 +27,11 @@ export default function News() {
       news: [],
     }
   );
-
-  const [posts, setPosts] = useState([]);
-
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get('/api/posts/');
+        const data  = await getPosts()
         dispatch({ type: 'FETCH_REQUEST', payload: data });
         console.log(data);
       } catch (error) {
@@ -40,18 +39,6 @@ export default function News() {
       }
     };
     fetchData();
-  }, []);
-
-  useEffect(() => {
-    // const posts = getNews().then((res) => res.data);
-    // console.log('from lib?', posts);
-    const fetch = async () => {
-      return await axios
-        .get('/api/posts')
-        .then((res) => res.data)
-        .catch((err) => console.log(err));
-    };
-    console.log('/shit', fetch());
   }, []);
 
   return loading ? (

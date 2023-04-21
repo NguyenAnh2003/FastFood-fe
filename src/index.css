@@ -18,6 +18,6 @@
 
 @layer base {
   body {
-    @apply bg-[url('../public/assets/jollibee-kid-party-bg.png')] bg-fixed;
+    @apply bg-[url('../assets/jollibee-kid-party-bg.png')] bg-fixed;
   }
 }

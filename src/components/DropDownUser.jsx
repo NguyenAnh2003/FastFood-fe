@@ -1,10 +1,8 @@
 import { Menu, Transition } from '@headlessui/react';
+import React from 'react';
 import {
   Fragment,
   useContext,
-  useEffect,
-  useRef,
-  useState,
 } from 'react';
 import { AiOutlineUser } from 'react-icons/ai';
 import { Link } from 'react-router-dom';

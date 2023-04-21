@@ -9,13 +9,14 @@ import { Helmet } from 'react-helmet-async';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { Link, ScrollRestoration } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import LoadingComponent from '../components/loading/LoadingComponent';
 import ProductCard from '../components/card/ProductCard.jsx';
 import getFetch from '../libs/utils/getFetch.js';
 import getPosts from '../libs/apis/getPosts.js';
 import { getSpecialFood } from '../libs/apis/getProducts.js';
 import { useScrollToTop } from '../hook/useScrollToTop.js';
+import { getHomeData } from '../libs/apis/getHomeData.js';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -90,9 +91,7 @@ export default function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get(
-          `/api/combine/home`
-        );
+        const data = await getHomeData();
         dispatch({
           type: 'FETCH_SUCCESS',
           payload: data,
@@ -117,7 +116,7 @@ export default function Home() {
     const fetchAPI = async () => {
       try {
         const res = await getSpecialFood();
-        console.log('new food?', res);
+        console.log('new food? checking with https', res);
       } catch (error) {
         console.log(error);
       }
