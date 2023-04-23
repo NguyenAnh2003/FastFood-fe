@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { Store } from '../store/Store';
+import registerFeature from '../libs/apis/userRegister';
 export default function SignUpScreen() {
   const { state, dispatch } = useContext(Store);
   const [name, setName] = useState('');
@@ -59,14 +60,11 @@ export default function SignUpScreen() {
       alert('Password mismatch!');
     }
     try {
-      const { data } = await axios.post(
-        '/api/user/signup',
-        {
-          name,
-          email,
-          password,
-          address,
-        }
+      const data = await registerFeature(
+        name,
+        email,
+        password,
+        address
       );
       console.log(data);
       dispatch({ type: 'USER_SIGNIN', payload: data });

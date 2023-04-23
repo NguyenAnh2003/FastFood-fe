@@ -11,6 +11,7 @@ import {
   useNavigate,
 } from 'react-router-dom';
 import { Store } from '../store/Store';
+import loginFeature from '../libs/apis/userLogin';
 
 export default function SignInScreen() {
   const navigate = useNavigate();
@@ -34,13 +35,7 @@ export default function SignInScreen() {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post(
-        '/api/user/signin',
-        {
-          email,
-          password,
-        }
-      );
+      const   data = await loginFeature(email, password);
       ctxDispatch({ type: 'USER_SIGNIN', payload: data });
       localStorage.setItem(
         'userInfo',
@@ -51,7 +46,6 @@ export default function SignInScreen() {
       console.log(error);
     }
   };
-
 
   useEffect(() => {
     if (userInfo) {
