@@ -35,7 +35,7 @@ export default function SignInScreen() {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const   data = await loginFeature(email, password);
+      const data = await loginFeature(email, password);
       ctxDispatch({ type: 'USER_SIGNIN', payload: data });
       localStorage.setItem(
         'userInfo',

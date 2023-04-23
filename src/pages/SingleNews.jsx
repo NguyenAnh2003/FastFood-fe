@@ -31,6 +31,7 @@ export default function SingleNews() {
   useEffect(() => {
     const fetchData = async () => {
       const data  = await getSinglePost(id)
+      console.log("news", data);
       dispatch({ type: 'FETCH_REQUEST', payload: data });
     };
     fetchData();

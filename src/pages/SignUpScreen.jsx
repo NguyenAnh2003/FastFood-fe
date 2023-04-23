@@ -14,13 +14,7 @@ export default function SignUpScreen() {
   const [confirmPassword, setConfirmPassword] =
     useState('');
   const navigate = useNavigate();
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
-
+  
   const inputArray = [
     {
       status: name,
