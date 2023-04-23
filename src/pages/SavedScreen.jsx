@@ -3,21 +3,33 @@ import { Helmet } from 'react-helmet-async';
 import { Store } from '../store/Store';
 import { useNavigate } from 'react-router-dom';
 import ProductCard from '../components/card/ProductCard';
+import getWishList from '../libs/apis/getWishlist';
 
 export default function SavedScreen() {
   const {
     state,
     dispatch: { ctxDispatch },
   } = useContext(Store);
+  const { userInfo } = state;
 
   const {
     savedBox: { savedItems },
   } = state;
-
   const navigate = useNavigate();
-  const { userInfo } = state;
 
   useEffect(() => {
+    const fetchAPI = async () => {
+      try {
+        const userId = userInfo._id;
+        const data = await getWishList(userId);
+        console.log('get wishlist', data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+
+    fetchAPI();
+
     if (!userInfo) {
       navigate('/signin');
     }

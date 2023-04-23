@@ -44,6 +44,9 @@ const SingleProduct = () => {
       dispatch({ type: 'FETCH_REQUEST', payload: data });
     };
     fetchAPI();
+
+    // check save func
+
   }, [isSaved]);
 
   const saveFood = async (e) => {
@@ -52,6 +55,7 @@ const SingleProduct = () => {
     try {
       const data = await saveFoodAPI(product, userId);
       console.log('success?', data);
+      setSave(true)
     } catch (error) {
       console.log(error.message);
     }
@@ -63,6 +67,7 @@ const SingleProduct = () => {
     try {
       const data = await unsaveFoodAPI(product, userId);
       console.log('success?', data);
+      setSave(false)
     } catch (error) {
       console.log(error.message);
     }
@@ -95,8 +100,11 @@ const SingleProduct = () => {
             >
               Thêm vào giỏ
             </button>
-            <AiOutlineHeart size={24} onClick={saveFood} />
-            <AiFillHeart size={24} onClick={unsaveFood} />
+            {isSaved ? (
+              <AiFillHeart size={24} color='red' onClick={unsaveFood} />
+            ) : (
+              <AiOutlineHeart size={24} onClick={saveFood} />
+            )}
           </div>
         </div>
       </div>

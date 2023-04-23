@@ -1,8 +1,12 @@
 import axiosClient from './axiosClient';
 
 const postFetch = async (url, params = {}) => {
-  const res = await axiosClient.post(url, params);
-  return res.data;
+  try {
+    const res = await axiosClient.post(url, params);
+    return res.data;
+  } catch (error) {
+    console.log(error.message);
+  }
 };
 
 export default postFetch;
