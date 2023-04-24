@@ -11,6 +11,7 @@ import {
 import { Store } from '../store/Store';
 import saveFoodAPI from '../libs/apis/saveFood';
 import unsaveFoodAPI from '../libs/apis/unsaveFood';
+import getWishList from '../libs/apis/getWishlist';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -42,14 +43,29 @@ const SingleProduct = () => {
       const data = await getSingleProduct(id);
       console.log('single product', data);
       dispatch({ type: 'FETCH_REQUEST', payload: data });
-      console.log('where',typeof(data.price));
+      console.log('where', typeof data.price);
     };
-    fetchAPI();
     // check save func
     const checkSaved = async () => {
-      
-    }
+      try {
+        const userId = userInfo._id;
+        const { rs } = await getWishList(userId);
+        console.log('from check saved', rs.products);
+        rs.products.map((i) => {
+          if (id === i._id) {
+            setSave(true);
+          } else {
+            setSave(false);
+          }
+        });
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    checkSaved();
+    fetchAPI();
   }, [isSaved]);
+  
 
   const saveFood = async (e) => {
     e.preventDefault();
@@ -57,7 +73,7 @@ const SingleProduct = () => {
     try {
       const data = await saveFoodAPI(product, userId);
       console.log('success?', data);
-      setSave(true)
+      setSave(true);
     } catch (error) {
       console.log(error.message);
     }
@@ -68,8 +84,8 @@ const SingleProduct = () => {
     const userId = userInfo._id;
     try {
       const data = await unsaveFoodAPI(product, userId);
-      console.log('success?', data);
-      setSave(false)
+      console.log('success unsave?', data);
+      setSave(false);
     } catch (error) {
       console.log(error.message);
     }
@@ -97,16 +113,22 @@ const SingleProduct = () => {
             <span className="title-font font-medium text-2xl text-gray-900">
               {product.price} đ
             </span>
-            <button
-              className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded"
-            >
+            <button className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">
               Thêm vào giỏ
             </button>
             {isSaved ? (
-              <AiFillHeart size={24} color='red' onClick={unsaveFood} />
+              <AiFillHeart
+                size={24}
+                color="red"
+                onClick={unsaveFood}
+              />
             ) : (
-              <AiOutlineHeart size={24} onClick={saveFood} />
+              <AiOutlineHeart
+                size={24}
+                onClick={saveFood}
+              />
             )}
+            
           </div>
         </div>
       </div>
