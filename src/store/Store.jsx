@@ -20,11 +20,6 @@ const initialState = {
       ? JSON.parse(localStorage.getItem('cartItems'))
       : [],
   },
-  savedBox: {
-    savedItems: localStorage.getItem('savedItems')
-      ? JSON.parse(localStorage.getItem('savedItems'))
-      : [],
-  },
 };
 
 const reducer = (state, action) => {
@@ -65,36 +60,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         cart: { ...state.cart, cartItems: [] },
-        
       };
-    case 'STORE_SAVED': {
-      const newSavedItems = action.payload;
-      const savedItems = [
-        ...state.savedBox.savedItems,
-        newSavedItems,
-      ];
-      localStorage.setItem(
-        'savedItems',
-        JSON.stringify(savedItems)
-      );
-      return {
-        ...state,
-        savedBox: { ...state.savedBox, savedItems },
-      };
-    }
-    case 'REMOVE_SAVED': {
-      const savedItems = state.savedBox.savedItems.filter(
-        (item) => item._id !== action.payload._id
-      );
-      localStorage.setItem(
-        'savedItems',
-        JSON.stringify(savedItems)
-      );
-      return {
-        ...state,
-        savedBox: { ...state.savedBox, savedItems },
-      };
-    }
     case 'SAVE_PAYMENT_METHOD':
       return {
         ...state,
@@ -117,9 +83,6 @@ const reducer = (state, action) => {
       return {
         ...state,
         userInfo: null,
-        savedBox: {
-          savedItems: [],
-        },
       };
     default:
       return state;
