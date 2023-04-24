@@ -42,11 +42,13 @@ const SingleProduct = () => {
       const data = await getSingleProduct(id);
       console.log('single product', data);
       dispatch({ type: 'FETCH_REQUEST', payload: data });
+      console.log('where',typeof(data.price));
     };
     fetchAPI();
-
     // check save func
-
+    const checkSaved = async () => {
+      
+    }
   }, [isSaved]);
 
   const saveFood = async (e) => {
