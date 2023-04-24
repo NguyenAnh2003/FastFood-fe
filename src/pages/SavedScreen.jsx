@@ -46,20 +46,33 @@ export default function SavedScreen() {
           type: 'FETCH_REQUEST',
           payload: data.rs.products,
         });
-        
       } catch (error) {
         console.log(error.message);
       }
     };
 
     fetchAPI();
-    
+
     if (!userInfo) {
       navigate('/signin');
     }
   }, [userInfo, navigate]);
 
-  return !loading ? (
+  return products.length === 0 ? (
+    <div>
+      <Helmet>
+        <title>Your wishlist</title>
+      </Helmet>
+      <h1 className="text-center text-7xl font-lob font-bold uppercase text-[#f97316] mt-10">
+        yêu thích
+      </h1>
+      <div className="min-h-[600px] flex items-center justify-center">
+        <h1 className="text-center text-7xl font-bold uppercase text-[#f97316] mt-10">
+          None
+        </h1>
+      </div>
+    </div>
+  ) : (
     <div className="container">
       <Helmet>
         <title>Your wishlist</title>
@@ -78,20 +91,6 @@ export default function SavedScreen() {
             ))}
           </div>
         </div>
-      </div>
-    </div>
-  ) : (
-    <div>
-      <Helmet>
-        <title>Your wishlist</title>
-      </Helmet>
-      <h1 className="text-center text-7xl font-lob font-bold uppercase text-[#f97316] mt-10">
-        yêu thích
-      </h1>
-      <div className="min-h-[600px] flex items-center justify-center">
-        <h1 className="text-center text-7xl font-bold uppercase text-[#f97316] mt-10">
-          None
-        </h1>
       </div>
     </div>
   );
