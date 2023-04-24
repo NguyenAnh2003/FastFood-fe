@@ -47,11 +47,6 @@ export default function SavedScreen() {
           payload: data.rs.products,
         });
         
-        console.log(
-          'help',
-          products.map((item) => item)
-        );
-        
       } catch (error) {
         console.log(error.message);
       }
