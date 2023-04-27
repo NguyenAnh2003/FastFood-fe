@@ -15,7 +15,6 @@ import ProductCard from '../components/card/ProductCard.jsx';
 import getFetch from '../libs/utils/getFetch.js';
 import getPosts from '../libs/apis/getPosts.js';
 import { getSpecialFood } from '../libs/apis/getProducts.js';
-import { useScrollToTop } from '../hook/useScrollToTop.js';
 import { getHomeData } from '../libs/apis/getHomeData.js';
 
 const reducer = (state, action) => {
