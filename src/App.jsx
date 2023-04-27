@@ -22,69 +22,14 @@ import OrderScreen from './pages/OrderScreen';
 import SingleProduct from './pages/SingleProduct';
 import { useContext } from 'react';
 import { Store } from './store/Store';
+import AppRoutes from './routes';
 
 function App() {
   const { state } = useContext(Store);
   const { userInfo } = state;
   console.log('current user', userInfo);
-  return (
-    <BrowserRouter>
-      <div className="App">
-        <header>
-          <NavBar />
-        </header>
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route
-              path="/menu"
-              element={<MenuProducts />}
-            />
-            <Route path="/news" element={<News />} />
-            <Route
-              path="/news/:id"
-              element={<SingleNews />}
-            />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/cart" element={<CartScreen />} />
-            <Route
-              path="/placeorder"
-              element={<PlaceOrder />}
-            />
-            <Route
-              path="/order/:id"
-              element={<OrderScreen />}
-            />
-            <Route
-              path="/saved"
-              element={<SavedScreen />}
-            />
-            <Route
-              path="/food/:id"
-              element={<SingleProduct />}
-            />
-            {/* User*/}
-            <Route
-              path="/signin"
-              element={<SignInScreen />}
-            />
-            <Route
-              path="/signup"
-              element={<SignUpScreen />}
-            />
-            <Route
-              path="/profile"
-              element={<ProfileScreen />}
-            />
-          </Routes>
-        </main>
-        <footer>
-          <Footer />
-        </footer>
-      </div>
-    </BrowserRouter>
-  );
+  return <AppRoutes/>
 }
+
 
 export default App;
