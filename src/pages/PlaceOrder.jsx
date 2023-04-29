@@ -1,23 +1,38 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import axios from 'axios';
 import React, { useContext } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 import { Store } from '../store/Store';
+import { useMemo } from 'react';
 const PlaceOrder = () => {
   const navigate = useNavigate();
   const { state, dispatch } = useContext(Store);
   const { cart, userInfo } = state;
-  
+
   const shippingPrice = 15;
   cart.shippingPrice = shippingPrice.toFixed(3);
 
-  cart.itemsPrice = cart.cartItems
-    .reduce((a, c) => a + c.quantity * c.price, 0)
-    .toFixed(3);
+  // cart.itemsPrice = cart.cartItems
+  //   .reduce((a, c) => a + c.quantity * c.price, 0)
+  //   .toFixed(3);
 
-  cart.totalPrice = (
-    parseInt(cart.itemsPrice) + parseInt(cart.shippingPrice)
-  ).toFixed(3);
+  cart.itemsPrice = useMemo(() => {
+    return cart.cartItems
+      .reduce((a, c) => a + c.quantity * c.price, 0)
+      .toFixed(3);
+  }, [cart.cartItems]);
+
+  // cart.totalPrice = (
+  //   parseInt(cart.itemsPrice) + parseInt(cart.shippingPrice)
+  // ).toFixed(3);
+
+  cart.totalPrice = useMemo(() => {
+    return (
+      parseInt(cart.itemsPrice) +
+      parseInt(cart.shippingPrice)
+    ).toFixed(3);
+  }, [cart.itemsPrice, cart.shippingPrice]);
 
   console.log(
     'cart',
@@ -47,8 +62,8 @@ const PlaceOrder = () => {
           },
         }
       );
-      dispatch({type: 'CART_CLEAR'});
-      localStorage.removeItem("cartItems")
+      dispatch({ type: 'CART_CLEAR' });
+      localStorage.removeItem('cartItems');
       navigate(`/order/${data.order._id}`);
     } catch (error) {
       console.log(error);

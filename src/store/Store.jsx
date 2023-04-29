@@ -1,8 +1,11 @@
 import { createContext, useReducer } from 'react';
 import React from 'react';
+
 export const Store = createContext();
 
 const initialState = {
+  // storing in COOKIES
+  // local storage used for user settings ...
   userInfo: localStorage.getItem('userInfo')
     ? JSON.parse(localStorage.getItem('userInfo'))
     : null,
@@ -65,7 +68,7 @@ export const reducer = (state, action) => {
         loading: false,
       };
 
-    //
+    // pass props
     case 'CART_ADD_ITEM':
       const newItem = action.payload;
       const existItem = state.cart.cartItems.find(
@@ -119,6 +122,7 @@ export const reducer = (state, action) => {
           shippingAddress: action.payload,
         },
       };
+    // user operators
     case 'USER_SIGNIN':
       return { ...state, userInfo: action.payload };
     case 'USER_LOGOUT':
@@ -126,6 +130,12 @@ export const reducer = (state, action) => {
         ...state,
         userInfo: null,
       };
+    case 'USER_UPDATE':
+      return {
+        ...state,
+        loading: false,
+      };
+    // order
     default:
       return state;
   }

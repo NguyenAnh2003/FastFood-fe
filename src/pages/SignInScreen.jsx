@@ -10,6 +10,7 @@ import {
 } from 'react-router-dom';
 import { Store } from '../store/Store';
 import loginFeature from '../libs/apis/userLogin';
+import { USER_SIGNIN } from '../store/Constanst';
 
 export default function SignInScreen() {
   // const cookies = new
@@ -33,7 +34,7 @@ export default function SignInScreen() {
         email.current.value,
         password.current.value
       );
-      ctxDispatch({ type: 'USER_SIGNIN', payload: data });
+      ctxDispatch({ type: USER_SIGNIN, payload: data });
       localStorage.setItem(
         'userInfo',
         JSON.stringify(data)

@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { Store } from '../store/Store';
 import registerFeature from '../libs/apis/userRegister';
+import { USER_SIGNIN } from '../store/Constanst';
 export default function SignUpScreen() {
   const { state, dispatch } = useContext(Store);
   const name = useRef('');
@@ -58,7 +59,7 @@ export default function SignUpScreen() {
         address.current.value
       );
       console.log(data);
-      dispatch({ type: 'USER_SIGNIN', payload: data });
+      dispatch({ type: USER_SIGNIN, payload: data });
       localStorage.setItem(
         'userInfo',
         JSON.stringify(data)

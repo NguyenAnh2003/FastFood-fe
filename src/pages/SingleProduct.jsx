@@ -80,6 +80,10 @@ const SingleProduct = () => {
     }
   };
 
+  const addToCart = (id) => {
+    
+  };
+
   return loading ? (
     <LoadingComponent />
   ) : (
@@ -105,7 +109,10 @@ const SingleProduct = () => {
             <span className="title-font font-medium text-2xl text-gray-900">
               {product.price} đ
             </span>
-            <button className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">
+            <button
+              onClick={addToCart}
+              className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded"
+            >
               Thêm vào giỏ
             </button>
             {isSaved ? (

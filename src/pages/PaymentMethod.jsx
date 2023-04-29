@@ -6,6 +6,7 @@ import React, {
 } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Store } from '../store/Store';
+import { SAVE_PAYMENT_METHOD } from '../store/Constanst';
 
 const paymentArray = [
   {
@@ -25,7 +26,7 @@ const PaymentMethod = ({ isOpen, setIsOpen }) => {
 
   const onSubmit = () => {
     ctxDispatch({
-      type: 'SAVE_PAYMENT_METHOD',
+      type: SAVE_PAYMENT_METHOD,
       payload: paymentMethod,
     });
     localStorage.setItem('paymentMethod', paymentMethod);

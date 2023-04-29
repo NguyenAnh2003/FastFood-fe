@@ -6,21 +6,8 @@ import React, {
   useState,
 } from 'react';
 import LoadingComponent from '../components/loading/LoadingComponent';
-import { Store } from '../store/Store';
+import { Store, reducer } from '../store/Store';
 import { Link, useNavigate } from 'react-router-dom';
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'UPDATE_REQUEST':
-      return { ...state, loadingUpdate: true };
-    case 'UPDATE_SUCCESS':
-      return { ...state, loadingUpdate: false };
-    case 'UPDATE_FAIL':
-      return { ...state, loadingUpdate: false };
-    default:
-      return state;
-  }
-};
 
 export default function ProfileScreen() {
   const navigate = useNavigate();
@@ -36,10 +23,10 @@ export default function ProfileScreen() {
   const [address, setAddress] = useState(
     userInfo && userInfo.address
   );
-  const [{ loadingUpdate }, dispatch] = useReducer(
+  const [{ loading }, dispatch] = useReducer(
     reducer,
     {
-      loadingUpdate: false,
+      loading: false,
     }
   );
   const user = [
@@ -95,7 +82,7 @@ export default function ProfileScreen() {
     }
   }, [userInfo]);
 
-  return loadingUpdate ? (
+  return loading ? (
     <LoadingComponent />
   ) : (
     <div className="flex justify-center items-center container">
