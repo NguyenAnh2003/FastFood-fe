@@ -51,13 +51,12 @@ const SingleProduct = () => {
         const userId = userInfo._id;
         const { rs } = await getWishList(userId);
         console.log('from check saved', rs.products);
-        rs.products.map((i) => {
-          if (id === i._id) {
-            setSave(true);
-          } else {
-            setSave(false);
-          }
-        });
+        const check = rs.products.some((i) => i._id === id);
+        if (check) {
+          setSave(true);
+        } else {
+          setSave(false);
+        }
       } catch (error) {
         console.log(error.message);
       }
@@ -65,7 +64,6 @@ const SingleProduct = () => {
     checkSaved();
     fetchAPI();
   }, [isSaved]);
-  
 
   const saveFood = async (e) => {
     e.preventDefault();
@@ -131,7 +129,6 @@ const SingleProduct = () => {
                 onClick={saveFood}
               />
             )}
-            
           </div>
         </div>
       </div>
