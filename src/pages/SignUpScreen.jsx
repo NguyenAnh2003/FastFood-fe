@@ -1,13 +1,11 @@
-import axios from 'axios';
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { useContext } from 'react';
-import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { Store } from '../store/Store';
 import registerFeature from '../libs/apis/userRegister';
 import { USER_SIGNIN } from '../store/Constanst';
 export default function SignUpScreen() {
-  const { state, dispatch } = useContext(Store);
+  const { dispatch } = useContext(Store);
   const name = useRef('');
   const address = useRef('');
   const email = useRef('');

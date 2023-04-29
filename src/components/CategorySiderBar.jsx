@@ -1,33 +1,8 @@
 import { useState } from 'react';
 import { RadioGroup } from '@headlessui/react';
-import axios from 'axios';
-import React, { useEffect, Fragment } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getCategories } from '../libs/apis';
-
-const categoryArray = [
-  {
-    type: 'Burger'
-  },
-  {
-    type: 'Combo'
-  },
-  {
-    type: 'Gà Cay'
-  },
-  {
-    type: 'Gà Giòn'
-  },
-  {
-    type: 'Phần Ăn Phụ'
-  },
-  {
-    type: 'Spaghetti'
-  },
-  {
-    type: 'Tráng Miệng'
-  },
-]
 
 export default function CategorySiderBar() {
   const [categories, setCategories] = useState([]);

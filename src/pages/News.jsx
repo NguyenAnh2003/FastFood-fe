@@ -1,6 +1,4 @@
-import axios from 'axios';
 import React, { useEffect, useReducer } from 'react';
-import { useState } from 'react';
 import NewsCard from '../components/card/NewsCard';
 import LoadingComponent from '../components/loading/LoadingComponent';
 import getPosts from '../libs/apis/getPosts';

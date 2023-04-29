@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useEffect, useReducer } from 'react';
 import { useParams } from 'react-router-dom';
 import LoadingComponent from '../components/loading/LoadingComponent';

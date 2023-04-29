@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, {
   useEffect,
   useReducer,
@@ -9,7 +8,6 @@ import ProductCard from '../components/card/ProductCard';
 import CategoryDropDown from '../components/CategoryDropDown';
 import CategorySiderBar from '../components/CategorySiderBar';
 import LoadingComponent from '../components/loading/LoadingComponent';
-import Pagination from '../components/Pagination';
 import useResize from '../hook/useResize';
 import { getProductsByCategory } from '../libs/apis/getProducts';
 import { reducer } from '../store/Store';
@@ -30,11 +28,6 @@ export default function MenuProducts() {
 
   const windowSize = useResize();
 
-  const [pageNumber, setPageNumber] = useState(0);
-  const [numberOfPage, setNumberOfPage] = useState(0);
-  const pages = new Array(numberOfPage)
-    .fill(null)
-    .map((v, i) => i);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,12 +37,8 @@ export default function MenuProducts() {
       // setNumberOfPage(data.totalPages, );
     };
     fetchData();
-  }, [category, pageNumber, windowSize]);
+  }, [category,  windowSize]);
 
-  const props = {
-    pages: pages,
-    setPageNumber: setPageNumber,
-  };
 
   return loading ? (
     <LoadingComponent />

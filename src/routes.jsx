@@ -2,23 +2,22 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from 'react-router-dom';
-import React from 'react';
-import About from './pages/About';
-import MenuProducts from './pages/MenuProducts';
-import News from './pages/News';
-import SingleNews from './pages/SingleNews';
-import Contact from './pages/Contact';
-import CartScreen from './pages/CartScreen';
-import PlaceOrder from './pages/PlaceOrder';
-import OrderScreen from './pages/OrderScreen';
-import SavedScreen from './pages/SavedScreen';
-import SingleProduct from './pages/SingleProduct';
-import SignInScreen from './pages/SignInScreen';
-import SignUpScreen from './pages/SignUpScreen';
-import ProfileScreen from './pages/ProfileScreen';
-import Home from './pages/Home';
+import React, { lazy } from 'react';
 import Layout from './components/Layout';
-import FormTest from './pages/FormTest';
+import { Suspense } from 'react';
+import LoadingComponent from './components/loading/LoadingComponent';
+
+const lazyLoadRoutes = (pageName) => {
+  const LazyElement = lazy(() =>
+    import(`./pages/${pageName}`)
+  );
+
+  return (
+    <Suspense fallback={<LoadingComponent />}>
+      <LazyElement />
+    </Suspense>
+  );
+};
 
 const router = createBrowserRouter([
   {
@@ -27,64 +26,64 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />,
+        element: lazyLoadRoutes('Home'),
       },
       {
         path: 'about',
-        element: <About />,
+        element: lazyLoadRoutes('About'),
       },
       {
         path: 'menu',
-        element: <MenuProducts />,
+        element: lazyLoadRoutes('MenuProducts'),
       },
       {
         path: 'news',
-        element: <News />,
+        element: lazyLoadRoutes('News'),
       },
       {
         path: 'news/:id',
-        element: <SingleNews />,
+        element: lazyLoadRoutes('SingleNews'),
       },
       {
         path: 'contact',
-        element: <Contact />,
+        element: lazyLoadRoutes('Contact'),
       },
       {
         path: 'cart',
-        element: <CartScreen />,
+        element: lazyLoadRoutes('CartScreen'),
       },
       {
         path: 'placeorder',
-        element: <PlaceOrder />,
+        element: lazyLoadRoutes('PlaceOrder'),
       },
       {
         path: 'order/:id',
-        element: <OrderScreen />,
+        element: lazyLoadRoutes('OrderScreen'),
       },
       {
         path: 'saved',
-        element: <SavedScreen />,
+        element: lazyLoadRoutes('SavedScreen'),
       },
       {
         path: 'food/:id',
-        element: <SingleProduct />,
+        element: lazyLoadRoutes('SingleProduct'),
       },
       {
         path: 'signin',
-        element: <SignInScreen />,
+        element: lazyLoadRoutes('SignInScreen'),
       },
       {
         path: 'signup',
-        element: <SignUpScreen />,
+        element: lazyLoadRoutes('SignUpScreen'),
       },
       {
         path: 'profile',
-        element: <ProfileScreen />,
+        element: lazyLoadRoutes('ProfileScreen'),
       },
       // Test
       {
         path: 'test',
-        element: <FormTest />,
+        element: lazyLoadRoutes('FormTest'),
       },
     ],
   },

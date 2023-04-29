@@ -1,6 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
-import axios from 'axios';
-import PopUpValidate from '../components/popup/PopUpValidate';
+import React, { useRef} from 'react';
 import createContact from '../libs/apis/createContact';
 
 export default function Contact() {
