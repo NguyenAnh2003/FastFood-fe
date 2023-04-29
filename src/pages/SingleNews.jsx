@@ -3,19 +3,7 @@ import React, { useEffect, useReducer } from 'react';
 import { useParams } from 'react-router-dom';
 import LoadingComponent from '../components/loading/LoadingComponent';
 import getSinglePost from '../libs/apis/getSinglePost';
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'FETCH_REQUEST':
-      return {
-        ...state,
-        post: action.payload,
-        loading: false,
-      };
-    default:
-      return state;
-  }
-};
+import { reducer } from '../store/Store';
 
 export default function SingleNews() {
   const params = useParams();
@@ -24,7 +12,7 @@ export default function SingleNews() {
     reducer,
     {
       loading: true,
-      post: [],
+      post: {},
     }
   );
 
@@ -32,10 +20,12 @@ export default function SingleNews() {
     const fetchData = async () => {
       const data  = await getSinglePost(id)
       console.log("news", data);
-      dispatch({ type: 'FETCH_REQUEST', payload: data });
+      dispatch({ type: 'FETCH_SINGLE_POST', payload: data });
     };
     fetchData();
   }, [id]);
+
+  
   return loading ? (
     <LoadingComponent />
   ) : (

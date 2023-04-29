@@ -4,22 +4,12 @@ import { useState } from 'react';
 import NewsCard from '../components/card/NewsCard';
 import LoadingComponent from '../components/loading/LoadingComponent';
 import getPosts from '../libs/apis/getPosts';
+import { reducer } from '../store/Store';
+import { FETCH_NEWS } from '../store/Constanst';
 
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'FETCH_REQUEST':
-      return {
-        ...state,
-        news: action.payload,
-        loading: false,
-      };
-    default:
-      return state;
-  }
-};
 
 export default function News() {
-  const [{ loading, error, news }, dispatch] = useReducer(
+  const [{ loading, news }, dispatch] = useReducer(
     reducer,
     {
       loading: true,
@@ -31,7 +21,7 @@ export default function News() {
     const fetchData = async () => {
       try {
         const data  = await getPosts()
-        dispatch({ type: 'FETCH_REQUEST', payload: data });
+        dispatch({ type: FETCH_NEWS, payload: data });
         console.log(data);
       } catch (error) {
         console.log(error);

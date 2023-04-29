@@ -8,23 +8,11 @@ import {
   AiOutlineHeart,
   AiFillHeart,
 } from 'react-icons/ai';
-import { Store } from '../store/Store';
+import { Store, reducer } from '../store/Store';
 import saveFoodAPI from '../libs/apis/saveFood';
 import unsaveFoodAPI from '../libs/apis/unsaveFood';
 import getWishList from '../libs/apis/getWishlist';
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'FETCH_REQUEST':
-      return {
-        ...state,
-        product: action.payload,
-        loading: false,
-      };
-    default:
-      return state;
-  }
-};
+import { FETCH_SINGLE_PRODUCT } from '../store/Constanst';
 
 const SingleProduct = () => {
   const [isSaved, setSave] = useState(false);
@@ -35,14 +23,17 @@ const SingleProduct = () => {
 
   const [{ loading, product }, dispatch] = useReducer(
     reducer,
-    { loading: true, product: [] }
+    { loading: true, product: {} }
   );
 
   useEffect(() => {
     const fetchAPI = async () => {
       const data = await getSingleProduct(id);
       console.log('single product', data);
-      dispatch({ type: 'FETCH_REQUEST', payload: data });
+      dispatch({
+        type: FETCH_SINGLE_PRODUCT,
+        payload: data,
+      });
       console.log('where', typeof data.price);
     };
     // check save func

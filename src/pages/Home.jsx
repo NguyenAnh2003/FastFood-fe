@@ -1,9 +1,4 @@
-import React, {
-  useEffect,
-  useReducer,
-  useState,
-} from 'react';
-import axios from 'axios';
+import React, { useEffect, useReducer } from 'react';
 import NewsCard from '../components/card/NewsCard.jsx';
 import { Helmet } from 'react-helmet-async';
 import Slider from 'react-slick';
@@ -12,79 +7,17 @@ import 'slick-carousel/slick/slick-theme.css';
 import { Link } from 'react-router-dom';
 import LoadingComponent from '../components/loading/LoadingComponent';
 import ProductCard from '../components/card/ProductCard.jsx';
-import getFetch from '../libs/utils/getFetch.js';
-import getPosts from '../libs/apis/getPosts.js';
-import { getSpecialFood } from '../libs/apis/getProducts.js';
 import { getHomeData } from '../libs/apis/getHomeData.js';
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'FETCH_REQUEST':
-      return { ...state, loading: true };
-    case 'FETCH_SUCCESS':
-      return {
-        ...state,
-        loading: false,
-        products: action.payload.products,
-        news: action.payload.news,
-        // pages: action.payload.totalPagesHome,
-      };
-    case 'FETCH_FAIL':
-      return {
-        ...state,
-        loading: false,
-        error: action.payload,
-      };
-    default:
-      return state;
-  }
-};
-
-const SimpleSlider = {
-  infinite: true,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 3000,
-};
-
-const HeaderSlider = [
-  {
-    image: '/assets/news/banner-1.jpg',
-    alt: 'banner 1',
-  },
-  {
-    image: '/assets/news/banner-2.jpg',
-    alt: 'banner 2',
-  },
-  {
-    image: '/assets/news/banner-3.jpg',
-    alt: 'banner 3',
-  },
-];
-
-const subDriection = [
-  {
-    name: 'Cửa Hàng',
-    path: '/about',
-    thumbnail: '/assets/logo/sub-1.svg',
-  },
-  {
-    name: 'Đặt Hàng',
-    path: '/menu',
-    thumbnail: '/assets/logo/sub-2.svg',
-  },
-];
+import { FETCH_HOME_DATA } from '../store/Constanst.js';
+import { reducer } from '../store/Store.jsx';
 
 export default function Home() {
-  // useScrollToTop();
-
-  const [{ loading, error, products, news }, dispatch] =
+  const [{ loading, products, news }, dispatch] =
     useReducer(reducer, {
       products: [],
       news: [],
       loading: true,
-      error: '',
+      error: 'Error load data',
     });
 
   useEffect(() => {
@@ -92,7 +25,7 @@ export default function Home() {
       try {
         const data = await getHomeData();
         dispatch({
-          type: 'FETCH_SUCCESS',
+          type: FETCH_HOME_DATA,
           payload: data,
         });
         console.log('data?', data);
@@ -102,6 +35,36 @@ export default function Home() {
     };
     fetchData();
   }, []);
+
+  const SimpleSlider = {};
+
+  const HeaderSlider = [
+    {
+      image: '/assets/news/banner-1.jpg',
+      alt: 'banner 1',
+    },
+    {
+      image: '/assets/news/banner-2.jpg',
+      alt: 'banner 2',
+    },
+    {
+      image: '/assets/news/banner-3.jpg',
+      alt: 'banner 3',
+    },
+  ];
+
+  const subDriection = [
+    {
+      name: 'Cửa Hàng',
+      path: '/about',
+      thumbnail: '/assets/logo/sub-1.svg',
+    },
+    {
+      name: 'Đặt Hàng',
+      path: '/menu',
+      thumbnail: '/assets/logo/sub-2.svg',
+    },
+  ];
 
   return loading ? (
     <LoadingComponent />

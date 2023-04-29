@@ -5,23 +5,12 @@ import React, {
   useReducer,
 } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Store } from '../store/Store';
+import { Store, reducer } from '../store/Store';
 import { useNavigate } from 'react-router-dom';
 import ProductCard from '../components/card/ProductCard';
 import getWishList from '../libs/apis/getWishlist';
+import { FETCH_SAVED_FOOD } from '../store/Constanst';
 
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'FETCH_REQUEST':
-      return {
-        ...state,
-        products: action.payload,
-        loading: false,
-      };
-    default:
-      return state;
-  }
-};
 
 export default function SavedScreen() {
   const {
@@ -44,7 +33,7 @@ export default function SavedScreen() {
         const data = await getWishList(userId);
         console.log('get wishlist', data.rs.products);
         dispatch({
-          type: 'FETCH_REQUEST',
+          type: FETCH_SAVED_FOOD,
           payload: data.rs.products,
         });
       } catch (error) {

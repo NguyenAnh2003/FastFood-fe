@@ -12,20 +12,8 @@ import LoadingComponent from '../components/loading/LoadingComponent';
 import Pagination from '../components/Pagination';
 import useResize from '../hook/useResize';
 import { getProductsByCategory } from '../libs/apis/getProducts';
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'FETCH_REQUEST':
-      return {
-        ...state,
-        products: action.payload.products,
-        pages: action.payload.totalPages,
-        loading: false,
-      };
-    default:
-      return state;
-  }
-};
+import { reducer } from '../store/Store';
+import { FETCH_PRODUCTS } from '../store/Constanst';
 
 export default function MenuProducts() {
   const { search } = useLocation();
@@ -52,7 +40,7 @@ export default function MenuProducts() {
     const fetchData = async () => {
       const data = await getProductsByCategory(category);
       console.log(data);
-      dispatch({ type: 'FETCH_REQUEST', payload: data });
+      dispatch({ type: FETCH_PRODUCTS, payload: data });
       // setNumberOfPage(data.totalPages, );
     };
     fetchData();
