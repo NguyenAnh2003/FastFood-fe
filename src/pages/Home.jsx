@@ -103,27 +103,6 @@ export default function Home() {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    const fetchAPI = async () => {
-      const res = await getPosts();
-      console.log('fuck?', res);
-    };
-    fetchAPI();
-  }, []);
-
-  useEffect(() => {
-    const fetchAPI = async () => {
-      try {
-        const res = await getSpecialFood();
-        console.log('new food? checking with https', res);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchAPI();
-  }, []);
-
-
   return loading ? (
     <LoadingComponent />
   ) : (
@@ -177,7 +156,7 @@ export default function Home() {
         </Link>
         <div className="flex flex-col my-10 justify-center">
           <div className="grid-cols-1 sm:grid-cols-2 mt-6 grid gap-6 xl:grid-cols-4 lg:grid-cols-3">
-            {products.map((product) => (
+            {products?.map((product) => (
               <ProductCard
                 key={product._id}
                 product={product}

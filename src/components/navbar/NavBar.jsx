@@ -7,25 +7,26 @@ import DropDownUser from '../DropDownUser';
 import UserPopup from '../popup/UserPopup';
 import { Store } from '../../store/Store';
 import SideBar from './Sidebar';
+import { useEffect } from 'react';
 
 const titlePage = [
   {
     page: 'Trang Chủ',
-    directname: '/'
+    directname: '/',
   },
   {
     page: 'Cửa Hàng',
-    directname: '/about'
+    directname: '/about',
   },
   {
     page: 'Menu',
-    directname: '/menu'
+    directname: '/menu',
   },
   {
     page: 'Tin Tức',
-    directname: '/news'
+    directname: '/news',
   },
-]
+];
 
 export default function NavBar() {
   const [openUserModal, setOpenUserModal] = useState(false);
@@ -33,8 +34,10 @@ export default function NavBar() {
   const { userInfo } = state;
   const [isOpen, setIsOpen] = useState(false);
   const props = {
-    isOpen, setIsOpen
-  }
+    isOpen,
+    setIsOpen,
+  };
+
 
   return (
     <React.Fragment>
@@ -131,7 +134,7 @@ export default function NavBar() {
       ) : (
         <React.Fragment></React.Fragment>
       )}
-      <SideBar {...props}/>
+      <SideBar {...props} />
     </React.Fragment>
   );
 }

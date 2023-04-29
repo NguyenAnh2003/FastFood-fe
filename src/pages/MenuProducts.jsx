@@ -53,10 +53,10 @@ export default function MenuProducts() {
       const data = await getProductsByCategory(category);
       console.log(data);
       dispatch({ type: 'FETCH_REQUEST', payload: data });
-      // setNumberOfPage(data.totalPages);
+      // setNumberOfPage(data.totalPages, );
     };
     fetchData();
-  }, [category, pageNumber]);
+  }, [category, pageNumber, windowSize]);
 
   const props = {
     pages: pages,

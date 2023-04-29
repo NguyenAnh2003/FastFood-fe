@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function ProductCard(props) {
+const ProductCard = React.memo((props) => {
   const { product } = props;
+
+  console.log('Re render');
 
   return (
     <div className="flex min-w-full cursor-pointer flex-col gap-3 overflow-hidden lg:mb-14 shadow-md">
@@ -33,14 +35,17 @@ export default function ProductCard(props) {
             <h1 className="my-2 font-bold text-price-color font-lob">
               {product.price} đ
             </h1>
-            <Link to={`/food/${product._id}`} className='text-center py-3 mb-2 bg-primary-btn font-lob text-white text-xl hover:scale-105 rounded-md transition duration-150 ease-in-out'>
-              <button className="">
-                Xem Thêm
-              </button>
+            <Link
+              to={`/food/${product._id}`}
+              className="text-center py-3 mb-2 bg-primary-btn font-lob text-white text-xl hover:scale-105 rounded-md transition duration-150 ease-in-out"
+            >
+              <button className="">Xem Thêm</button>
             </Link>
           </div>
         </div>
       </div>
     </div>
   );
-}
+});
+
+export default ProductCard;

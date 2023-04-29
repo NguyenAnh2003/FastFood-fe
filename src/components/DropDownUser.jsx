@@ -1,9 +1,6 @@
 import { Menu, Transition } from '@headlessui/react';
 import React from 'react';
-import {
-  Fragment,
-  useContext,
-} from 'react';
+import { Fragment, useContext } from 'react';
 import { AiOutlineUser } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { Store } from '../store/Store';
@@ -15,7 +12,7 @@ const userTitle = [
   },
 ];
 
-export default function DropDownUser() {
+const DropDownUser = () => {
   const { state, dispatch: ctxDispatch } =
     useContext(Store);
   const { userInfo } = state;
@@ -61,7 +58,7 @@ export default function DropDownUser() {
                 )}
               </Menu.Item>
             ))}
-            {userInfo  ? (
+            {userInfo ? (
               <Menu.Item>
                 {({ active }) => (
                   <Link
@@ -98,4 +95,6 @@ export default function DropDownUser() {
       </Menu>
     </div>
   );
-}
+};
+
+export default DropDownUser;

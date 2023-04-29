@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
@@ -7,42 +7,36 @@ import { Store } from '../store/Store';
 import registerFeature from '../libs/apis/userRegister';
 export default function SignUpScreen() {
   const { state, dispatch } = useContext(Store);
-  const [name, setName] = useState('');
-  const [address, setAddress] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] =
-    useState('');
+  const name = useRef('');
+  const address = useRef('');
+  const email = useRef('');
+  const password = useRef('');
+  const confirmPassword = useRef('');
   const navigate = useNavigate();
-  
+
   const inputArray = [
     {
-      status: name,
-      setState: setName,
+      ref: name,
       type: 'text',
       placeholder: 'Your Name',
     },
     {
-      status: address,
-      setState: setAddress,
+      ref: address,
       type: 'text',
       placeholder: 'Your Address',
     },
     {
-      status: email,
-      setState: setEmail,
+      ref: email,
       type: 'email',
       placeholder: 'Your Email',
     },
     {
-      status: password,
-      setState: setPassword,
+      ref: password,
       type: 'password',
       placeholder: 'Your password',
     },
     {
-      status: confirmPassword,
-      setState: setConfirmPassword,
+      ref: confirmPassword,
       type: 'password',
       placeholder: 'Confirm your password',
     },
@@ -50,15 +44,18 @@ export default function SignUpScreen() {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    if (password !== confirmPassword) {
+    if (
+      password.current.value !==
+      confirmPassword.current.value
+    ) {
       alert('Password mismatch!');
     }
     try {
       const data = await registerFeature(
-        name,
-        email,
-        password,
-        address
+        name.current.value,
+        email.current.value,
+        password.current.value,
+        address.current.value
       );
       console.log(data);
       dispatch({ type: 'USER_SIGNIN', payload: data });
@@ -107,54 +104,11 @@ export default function SignUpScreen() {
                   placeholder={item.placeholder}
                   className="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded py-3 px-3 leading-tight focus:outline-none"
                   type={item.type}
-                  onChange={(e) =>
-                    item.setState(e.target.value)
-                  }
+                  ref={item.ref}
                   required
-                  value={item.status}
                 />
               </div>
             ))}
-            {/*<div className="w-full md:w-full px-3 mb-6">
-              <input
-                placeholder="Address"
-                className="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded py-3 px-3 leading-tight focus:outline-none"
-                type="text"
-                onChange={(e) => setAddress(e.target.value)}
-                value={address}
-              />
-            </div>
-            <div className="w-full md:w-full px-3 mb-6">
-              <input
-                placeholder="Email"
-                className="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded py-3 px-3 leading-tight focus:outline-none"
-                type="text"
-                onChange={(e) => setEmail(e.target.value)}
-                value={email}
-              />
-            </div>
-            <div className="w-full md:w-full px-3 mb-6">
-              <input
-                placeholder="Password"
-                className="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded py-3 px-3 leading-tight focus:outline-none"
-                type="password"
-                onChange={(e) =>
-                  setPassword(e.target.value)
-                }
-                value={password}
-              />
-            </div>
-            <div className="w-full md:w-full px-3 mb-6">
-              <input
-                placeholder="Confirm"
-                className="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded py-3 px-3 leading-tight focus:outline-none"
-                type="password"
-                onChange={(e) =>
-                  setConfirmPassword(e.target.value)
-                }
-                value={confirmPassword}
-              />
-              </div>*/}
             <div className="w-full md:w-full px-3 mb-6">
               <button
                 type="submit"

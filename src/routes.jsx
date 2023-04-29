@@ -18,6 +18,7 @@ import SignUpScreen from './pages/SignUpScreen';
 import ProfileScreen from './pages/ProfileScreen';
 import Home from './pages/Home';
 import Layout from './components/Layout';
+import FormTest from './pages/FormTest';
 
 const router = createBrowserRouter([
   {
@@ -69,7 +70,7 @@ const router = createBrowserRouter([
         element: <SingleProduct />,
       },
       {
-        path: 'sigin',
+        path: 'signin',
         element: <SignInScreen />,
       },
       {
@@ -79,6 +80,11 @@ const router = createBrowserRouter([
       {
         path: 'profile',
         element: <ProfileScreen />,
+      },
+      // Test
+      {
+        path: 'test',
+        element: <FormTest />,
       },
     ],
   },

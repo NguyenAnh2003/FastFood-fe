@@ -7,8 +7,9 @@ const userInfo = localStorage.getItem('userInfo')
 const axiosClient = axios.create({
   baseURL: 'https://localhost:8888/api/',
   headers: {
-    authorization: `Bearer ${userInfo.token}`
+    authorization: `Bearer ${userInfo.token}`,
   },
+  // withCredentials: true
 });
 
 export default axiosClient;

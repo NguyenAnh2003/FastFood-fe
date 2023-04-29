@@ -1,10 +1,8 @@
-import axios from 'axios';
 import React, {
   useContext,
   useEffect,
-  useState,
+  useRef,
 } from 'react';
-import { useForm } from 'react-hook-form';
 import {
   Link,
   useLocation,
@@ -14,6 +12,7 @@ import { Store } from '../store/Store';
 import loginFeature from '../libs/apis/userLogin';
 
 export default function SignInScreen() {
+  // const cookies = new
   const navigate = useNavigate();
   const { search } = useLocation();
   const redirectInUrl = new URLSearchParams(search).get(
@@ -23,19 +22,17 @@ export default function SignInScreen() {
 
   const { state, dispatch: ctxDispatch } =
     useContext(Store);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const email = useRef('');
+  const password = useRef('');
 
   const { userInfo } = state;
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const data = await loginFeature(email, password);
+      const data = await loginFeature(
+        email.current.value,
+        password.current.value
+      );
       ctxDispatch({ type: 'USER_SIGNIN', payload: data });
       localStorage.setItem(
         'userInfo',
@@ -79,23 +76,19 @@ export default function SignInScreen() {
           <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full md:w-full px-3 mb-6">
               <input
+                ref={email}
                 placeholder="Email"
                 className="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded py-3 px-3 leading-tight focus:outline-none"
                 type="email"
                 required
-                onChange={(e) => setEmail(e.target.value)}
-                value={email}
               />
             </div>
             <div className="w-full md:w-full px-3 mb-6">
               <input
+                ref={password}
                 placeholder="Password"
                 className="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded py-3 px-3 leading-tight focus:outline-none"
                 type="password"
-                onChange={(e) =>
-                  setPassword(e.target.value)
-                }
-                value={password}
               />
             </div>
             <div className="w-full flex items-center justify-between px-3 mb-3">

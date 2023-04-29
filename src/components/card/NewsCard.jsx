@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function NewsCard(props) {
+const NewsCard = React.memo((props) => {
   const { post } = props;
-  
+
   return (
     <div className="flex bg-white min-w-full cursor-pointer flex-col gap-3 overflow-hidden lg:mb-14 shadow-md">
       <Link to={`/news/${post._id}`}>
@@ -38,4 +38,6 @@ export default function NewsCard(props) {
       </div>
     </div>
   );
-}
+})  ;
+
+export default NewsCard;
