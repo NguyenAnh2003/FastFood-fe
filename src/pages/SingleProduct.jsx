@@ -1,9 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import getSingleProduct from '../libs/apis/getSingleProduct';
 import { useReducer } from 'react';
-import LoadingComponent from '../components/loading/LoadingComponent';
 import {
   AiOutlineHeart,
   AiFillHeart,
@@ -21,7 +21,7 @@ const SingleProduct = () => {
   const { userInfo } = state;
   console.log('current user', userInfo);
 
-  const [{ loading, product }, dispatch] = useReducer(
+  const [{ product }, dispatch] = useReducer(
     reducer,
     { loading: true, product: {} }
   );
@@ -84,9 +84,7 @@ const SingleProduct = () => {
     
   };
 
-  return loading ? (
-    <LoadingComponent />
-  ) : (
+  return (
     <div className="">
       <div className="lg:w-4/5 mx-auto flex flex-wrap m-3 bg-white">
         <img

@@ -28,44 +28,26 @@ const initialState = {
 export const reducer = (state, action) => {
   switch (action.type) {
     // fetching
-    case 'FETCH_HOME_DATA':
-      return {
-        ...state,
-        loading: false,
-        products: action.payload.products,
-        news: action.payload.news,
-        // pages: action.payload.totalPagesHome,
-      };
     case 'FETCH_PRODUCTS':
       return {
         ...state,
         products: action.payload.products,
         pages: action.payload.totalPages,
-        loading: false,
-      };
-    case 'FETCH_NEWS':
-      return {
-        ...state,
-        news: action.payload,
-        loading: false,
       };
     case 'FETCH_SAVED_FOOD':
       return {
         ...state,
         products: action.payload,
-        loading: false,
       };
     case 'FETCH_SINGLE_PRODUCT':
       return {
         ...state,
         product: action.payload,
-        loading: false,
       };
     case 'FETCH_SINGLE_POST':
       return {
         ...state,
         post: action.payload,
-        loading: false,
       };
 
     // pass props

@@ -167,9 +167,7 @@ const OrderScreen = ({ isPayPal }) => {
     successPay,
   ]);
 
-  return loading ? (
-    <LoadingComponent />
-  ) : (
+  return (
     <div>
       <Helmet>
         <title>Order</title>

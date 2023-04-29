@@ -1,42 +1,16 @@
-import React, { useEffect, useReducer } from 'react';
+import React from 'react';
 import NewsCard from '../components/card/NewsCard.jsx';
 import { Helmet } from 'react-helmet-async';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { Link } from 'react-router-dom';
-import LoadingComponent from '../components/loading/LoadingComponent';
+import { Link, useLoaderData } from 'react-router-dom';
 import ProductCard from '../components/card/ProductCard.jsx';
-import { getHomeData } from '../libs/apis/getHomeData.js';
-import { FETCH_HOME_DATA } from '../store/Constanst.js';
-import { reducer } from '../store/Store.jsx';
 
 export default function Home() {
-  const [{ loading, products, news }, dispatch] =
-    useReducer(reducer, {
-      products: [],
-      news: [],
-      loading: true,
-      error: 'Error load data',
-    });
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getHomeData();
-        dispatch({
-          type: FETCH_HOME_DATA,
-          payload: data,
-        });
-        console.log('data?', data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
-  }, []);
-
-  const SimpleSlider = {};
+  const data = useLoaderData();
+  const { products, news } = data;
+  console.log('from loader', { products, news });
 
   const HeaderSlider = [
     {
@@ -66,16 +40,14 @@ export default function Home() {
     },
   ];
 
-  return loading ? (
-    <LoadingComponent />
-  ) : (
+  return (
     <React.Fragment>
       <Helmet>
         <title>Home</title>
       </Helmet>
       {/* Slide header (direct to menu page) */}
       <div className="overflow-hidden">
-        <Slider {...SimpleSlider}>
+        <Slider >
           {HeaderSlider.map((item, index) => (
             <span
               key={index}

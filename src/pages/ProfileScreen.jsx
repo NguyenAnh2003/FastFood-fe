@@ -82,9 +82,7 @@ export default function ProfileScreen() {
     }
   }, [userInfo]);
 
-  return loading ? (
-    <LoadingComponent />
-  ) : (
+  return (
     <div className="flex justify-center items-center container">
       <div class="w-[500px] mt-12">
         <div className="text-center mt-2 mb-5">

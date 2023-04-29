@@ -1,13 +1,12 @@
 import React, {
   useEffect,
   useReducer,
-  useState,
+
 } from 'react';
 import { useLocation } from 'react-router-dom';
 import ProductCard from '../components/card/ProductCard';
 import CategoryDropDown from '../components/CategoryDropDown';
 import CategorySiderBar from '../components/CategorySiderBar';
-import LoadingComponent from '../components/loading/LoadingComponent';
 import useResize from '../hook/useResize';
 import { getProductsByCategory } from '../libs/apis/getProducts';
 import { reducer } from '../store/Store';
@@ -18,10 +17,9 @@ export default function MenuProducts() {
   const sp = new URLSearchParams(search);
   const category = sp.get('category') || 'all';
 
-  const [{ loading, products }, dispatch] = useReducer(
+  const [{  products }, dispatch] = useReducer(
     reducer,
     {
-      loading: true,
       products: [],
     }
   );
@@ -40,9 +38,7 @@ export default function MenuProducts() {
   }, [category,  windowSize]);
 
 
-  return loading ? (
-    <LoadingComponent />
-  ) : (
+  return (
     <div className="container overflow-hidden mt-5">
       <h1 className="text-center text-7xl font-lob font-bold uppercase text-[#f97316] mt-10">
         Thực đơn
@@ -51,7 +47,7 @@ export default function MenuProducts() {
       <div className="flex flex-col lg:flex-row gap-3 mt-5">
         <div className="grid-cols-1 col-span-1 w-1/4">
           {/* Filter food */}
-          {windowSize.width > 1024 ? (
+          {windowSize.width > 1023.5 ? (
             <CategorySiderBar />
           ) : (
             <CategoryDropDown />

@@ -2,22 +2,23 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from 'react-router-dom';
-import React, { lazy } from 'react';
+import React, { lazy, Suspense } from 'react';
 import Layout from './components/Layout';
-import { Suspense } from 'react';
 import LoadingComponent from './components/loading/LoadingComponent';
 
 const lazyLoadRoutes = (pageName) => {
-  const LazyElement = lazy(() =>
+  const LazyComponent = lazy(() =>
     import(`./pages/${pageName}`)
   );
 
   return (
     <Suspense fallback={<LoadingComponent />}>
-      <LazyElement />
+      <LazyComponent />
     </Suspense>
   );
 };
+
+const BASE_URL = 'https://localhost:8888/api/';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,12 @@ const router = createBrowserRouter([
       {
         index: true,
         element: lazyLoadRoutes('Home'),
+        loader: async () => {
+          const res = await fetch(`${BASE_URL}welcome`)
+            .then((res) => res.json())
+            .catch((err) => console.log(err));
+          return res;
+        },
       },
       {
         path: 'about',
@@ -39,6 +46,12 @@ const router = createBrowserRouter([
       {
         path: 'news',
         element: lazyLoadRoutes('News'),
+        loader: async () => {
+          const res = await fetch(`${BASE_URL}posts`)
+            .then((rs) => rs.json())
+            .catch((err) => console.log(err));
+          return res;
+        },
       },
       {
         path: 'news/:id',

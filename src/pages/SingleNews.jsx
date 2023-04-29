@@ -1,16 +1,15 @@
 import React, { useEffect, useReducer } from 'react';
-import { useParams } from 'react-router-dom';
-import LoadingComponent from '../components/loading/LoadingComponent';
+import { useMatch, useParams } from 'react-router-dom';
 import getSinglePost from '../libs/apis/getSinglePost';
 import { reducer } from '../store/Store';
 
 export default function SingleNews() {
   const params = useParams();
   const { id } = params;
-  const [{ loading, post }, dispatch] = useReducer(
+
+  const [{ post }, dispatch] = useReducer(
     reducer,
     {
-      loading: true,
       post: {},
     }
   );
@@ -24,10 +23,7 @@ export default function SingleNews() {
     fetchData();
   }, [id]);
 
-  
-  return loading ? (
-    <LoadingComponent />
-  ) : (
+  return (
     <div className="container mt-5 ">
       <div className="bg-white flex flex-col items-center shadow-sm md:py-5">
         <img

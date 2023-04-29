@@ -11,7 +11,6 @@ import ProductCard from '../components/card/ProductCard';
 import getWishList from '../libs/apis/getWishlist';
 import { FETCH_SAVED_FOOD } from '../store/Constanst';
 
-
 export default function SavedScreen() {
   const {
     state,
@@ -21,10 +20,9 @@ export default function SavedScreen() {
 
   const navigate = useNavigate();
 
-  const [{ loading, products }, dispatch] = useReducer(
-    reducer,
-    { loading: true, products: [] }
-  );
+  const [{ products }, dispatch] = useReducer(reducer, {
+    products: [],
+  });
 
   useEffect(() => {
     const fetchAPI = async () => {
