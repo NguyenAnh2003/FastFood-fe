@@ -74,7 +74,7 @@ const router = createBrowserRouter([
         element: lazyLoadRoutes('OrderScreen'),
       },
       {
-        path: 'saved',
+        path: ':userId/saved',
         element: lazyLoadRoutes('SavedScreen'),
       },
       {

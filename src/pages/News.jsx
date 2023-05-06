@@ -1,9 +1,10 @@
 import React from 'react';
-import NewsCard from '../components/card/NewsCard';
+// import NewsCard from '../components/card/NewsCard';
 import { useLoaderData } from 'react-router-dom';
 
-export default function News() {
+const NewsCard = React.lazy(() => import('../components/card/NewsCard'))
 
+export default function News() {
   const data = useLoaderData();
 
   return (

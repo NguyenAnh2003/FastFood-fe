@@ -1,11 +1,17 @@
 import React from 'react';
-import NewsCard from '../components/card/NewsCard.jsx';
 import { Helmet } from 'react-helmet-async';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Link, useLoaderData } from 'react-router-dom';
-import ProductCard from '../components/card/ProductCard.jsx';
+
+const ProductCard = React.lazy(() =>
+  import('../components/card/ProductCard.jsx')
+);
+
+const NewsCard = React.lazy(() =>
+  import('../components/card/NewsCard.jsx')
+);
 
 export default function Home() {
   const data = useLoaderData();
@@ -47,7 +53,7 @@ export default function Home() {
       </Helmet>
       {/* Slide header (direct to menu page) */}
       <div className="overflow-hidden">
-        <Slider >
+        <Slider>
           {HeaderSlider.map((item, index) => (
             <span
               key={index}

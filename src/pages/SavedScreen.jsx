@@ -6,23 +6,21 @@ import React, {
 } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Store, reducer } from '../store/Store';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import ProductCard from '../components/card/ProductCard';
 import getWishList from '../libs/apis/getWishlist';
 import { FETCH_SAVED_FOOD } from '../store/Constanst';
+import { useState } from 'react';
 
 export default function SavedScreen() {
+  const { userId } = useParams();
+  const [products, setSavedFood] = useState([]);
   const {
     state,
-    dispatch: { ctxDispatch },
   } = useContext(Store);
+  console.log('userId', userId);
   const { userInfo } = state;
-
   const navigate = useNavigate();
-
-  const [{ products }, dispatch] = useReducer(reducer, {
-    products: [],
-  });
 
   useEffect(() => {
     const fetchAPI = async () => {
@@ -30,10 +28,7 @@ export default function SavedScreen() {
         const userId = userInfo._id;
         const data = await getWishList(userId);
         console.log('get wishlist', data.rs.products);
-        dispatch({
-          type: FETCH_SAVED_FOOD,
-          payload: data.rs.products,
-        });
+        setSavedFood(...products, data.rs.products)
       } catch (error) {
         console.log(error.message);
       }

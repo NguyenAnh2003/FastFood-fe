@@ -63,7 +63,7 @@ export default function Header() {
               ) : (
                 <React.Fragment></React.Fragment>
               )}
-              <Link to={'/saved'}>
+              <Link to={`/${userInfo._id}/saved`}>
                 <AiOutlineHeart fill="#000" size={24} />
               </Link>
               <Link to={'/cart'}>
