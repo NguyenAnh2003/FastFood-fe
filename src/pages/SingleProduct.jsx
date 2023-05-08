@@ -32,7 +32,7 @@ const SingleProduct = () => {
       console.log('single product', data);
       dispatch({
         type: FETCH_SINGLE_PRODUCT,
-        payload: data,
+        payload: data.rs,
       });
       console.log('where', typeof data.price);
     };

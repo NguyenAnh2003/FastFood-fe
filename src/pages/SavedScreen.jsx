@@ -15,9 +15,7 @@ import { useState } from 'react';
 export default function SavedScreen() {
   const { userId } = useParams();
   const [products, setSavedFood] = useState([]);
-  const {
-    state,
-  } = useContext(Store);
+  const { state } = useContext(Store);
   console.log('userId', userId);
   const { userInfo } = state;
   const navigate = useNavigate();
@@ -28,7 +26,7 @@ export default function SavedScreen() {
         const userId = userInfo._id;
         const data = await getWishList(userId);
         console.log('get wishlist', data.rs.products);
-        setSavedFood(...products, data.rs.products)
+        setSavedFood(data.rs.products);
       } catch (error) {
         console.log(error.message);
       }
